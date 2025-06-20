@@ -1,0 +1,314 @@
+﻿@{
+    ViewData["Title"] = "แสดงสำนักงาน";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-sm-2 align-self-end float-end">
+                            <a href="javascript:CreateStationModal();" class="btn btn-info"><i class="fa-solid fa-circle-plus"></i><span> เพิ่มสำนักงาน</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive mt-4">
+                        <partial name="_CompanyInfo--Table" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--begin::Modal-->
+<div class="modal fade" id="stationcreate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">เพิ่มสำนักงาน</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="stationcreate-code" class="form-control-label">รหัสสำนักงาน:</label>
+                        <input type="text" class="form-control" id="stationcreate-code">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-name" class="form-control-label">ชื่อสำนักงาน:</label>
+                        <input type="text" class="form-control" id="stationcreate-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-address" class="form-control-label">ที่อยู่:</label>
+                        <textarea type="text" class="form-control" id="stationcreate-address" cols="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-city" class="form-control-label">อำเภอ:</label>
+                        <input type="text" class="form-control" id="stationcreate-city">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-country" class="form-control-label">จังหวัด:</label>
+                        <input type="text" class="form-control" id="stationcreate-country">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-postcode" class="form-control-label">รหัสไปรษณีย์:</label>
+                        <input type="text" class="form-control" id="stationcreate-postcode">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-tel" class="form-control-label">โทรศัพท์:</label>
+                        <input type="text" class="form-control" id="stationcreate-tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-logo" class="form-control-label">รูป:</label>
+                        <input id="stationcreate-logo" type="file" name="logo" accept=".png, .jpg, .jpeg" onchange="stationcreatelogopreview(event)" />
+                    </div>
+                    <div class="form-group">
+                        <img id="stationcreate-logo_preview" class="w-50" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="CreateStationModalClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+<!--begin::Modal-->
+<div class="modal fade" id="stationedit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">แก้ไขสำนักงาน</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group d-none">
+                        <input type="text" class="form-control" id="stationedit-id" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-code" class="form-control-label">รหัสสำนักงาน:</label>
+                        <input type="text" class="form-control" id="stationedit-code" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-name" class="form-control-label">ชื่อสำนักงาน:</label>
+                        <input type="text" class="form-control" id="stationedit-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-address" class="form-control-label">ที่อยู่:</label>
+                        <textarea type="text" class="form-control" id="stationedit-address" cols="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-city" class="form-control-label">อำเภอ:</label>
+                        <input type="text" class="form-control" id="stationedit-city">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-country" class="form-control-label">จังหวัด:</label>
+                        <input type="text" class="form-control" id="stationedit-country">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-postcode" class="form-control-label">รหัสไปรษณีย์:</label>
+                        <input type="text" class="form-control" id="stationedit-postcode">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-tel" class="form-control-label">โทรศัพท์:</label>
+                        <input type="text" class="form-control" id="stationedit-tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-logo" class="form-control-label">รูป:</label>
+                        <input id="stationedit-logo" type="file" name="logo" accept=".png, .jpg, .jpeg" onchange="stationeditlogopreview(event)" />
+                    </div>
+                    <div class="form-group">
+                        <img id="stationedit-logo_preview" class="w-50" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="EditStationModalClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+
+<script>
+    var tablestationinfo
+    $(document).ready(function () {
+        $('#stationcreate-modal').appendTo("body");
+        $('#stationedit-modal').appendTo("body");
+        clear();
+        tablestationinfo = $('#table--stationinfo').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pageLength": 25,
+            "destroy": true,
+            "searching": false,
+            "dom": 'rt<"bottom"flp><"clear">',
+            "contentType": "application/json; charset=utf-8",
+            "ajax": {
+                url: '/CompanyInfo/GetCompanyInfoTable',
+                type: "POST"
+            },
+            columns: [
+                { "data": 'code' },
+                { "data": 'name' },
+                { "data": 'actionEdit' },
+                { "data": 'actionDelete' }
+            ],
+            rowId: function (a) {
+                return 'stationinfoid_' + a.id;
+            },
+        });
+    });
+
+    function CreateStationModal() {
+        clear();
+        $('#stationcreate-modal').modal('show');
+    }
+
+    function EditStationModal(stationid) {
+        clear();
+        $('#stationedit-modal').modal('show');
+        var code = tablestationinfo.row('#stationinfoid_' + stationid).data().code;
+        var name = tablestationinfo.row('#stationinfoid_' + stationid).data().name;
+        var office = tablestationinfo.row('#stationinfoid_' + stationid).data().office;
+        var address = tablestationinfo.row('#stationinfoid_' + stationid).data().address;
+        var city = tablestationinfo.row('#stationinfoid_' + stationid).data().city;
+        var country = tablestationinfo.row('#stationinfoid_' + stationid).data().country;
+        var postcode = tablestationinfo.row('#stationinfoid_' + stationid).data().postCode;
+        var logo = tablestationinfo.row('#stationinfoid_' + stationid).data().logo;
+
+        $('#stationedit-id').val(stationid);
+        $('#stationedit-code').val(code);
+        $('#stationedit-name').val(name);
+        $('#stationedit-address').val(address);
+        $('#stationedit-city').val(city);
+        $('#stationedit-country').val(country);
+        $('#stationedit-postcode').val(postcode);
+        $('#stationedit-tel').val(office);
+
+        if (logo.length > 0)
+            $('#stationedit-logo_preview').attr('src', 'data:image/jpg;base64,' + logo);
+    }
+
+    function CreateStationModalClick() {
+        var fileData = new FormData();
+        fileData.append('code', $('#stationcreate-code').val());
+        fileData.append('name', $('#stationcreate-name').val());
+        fileData.append('address', $('#stationcreate-address').val());
+        fileData.append('city', $('#stationcreate-city').val());
+        fileData.append('country', $('#stationcreate-country').val());
+        fileData.append('postcode', $('#stationcreate-postcode').val());
+        fileData.append('tel', $('#stationcreate-tel').val());
+
+        var fileUpload = $("#stationcreate-logo").get(0);
+        if (fileUpload.files.length > 0) {
+            fileData.append("logo", $("#stationcreate-logo")[0].files[0]);
+        }
+
+        $.ajax({
+            url: '/CompanyInfo/CreateStation',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#stationcreate-modal').modal('hide');
+                    SwalFunc.Success("Create Success");
+                    tablestationinfo.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function EditStationModalClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#stationedit-id').val());
+        fileData.append('code', $('#stationedit-code').val());
+        fileData.append('name', $('#stationedit-name').val());
+        fileData.append('address', $('#stationedit-address').val());
+        fileData.append('city', $('#stationedit-city').val());
+        fileData.append('country', $('#stationedit-country').val());
+        fileData.append('postcode', $('#stationedit-postcode').val());
+        fileData.append('tel', $('#stationedit-tel').val());
+
+        var fileUpload = $("#stationedit-logo").get(0);
+        if (fileUpload.files.length > 0) {
+            fileData.append("logo", $("#stationedit-logo")[0].files[0]);
+        }
+
+
+        $.ajax({
+            url: '/CompanyInfo/UpadateStation',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#stationedit-modal').modal('hide');
+                    SwalFunc.Success("Update Success");
+                    tablestationinfo.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function DeleteStationModalClick(stationid) {
+        SwalFunc.ConfirmAjaxDeleteWithReload(stationid, "/CompanyInfo/DeleteStation", "POST", tablestationinfo);
+    }
+
+    function clear() {
+        $('#stationcreate-id').val('');
+        $('#stationcreate-code').val('');
+        $('#stationcreate-name').val('');
+        $('#stationcreate-address').val('');
+        $('#stationcreate-city').val('');
+        $('#stationcreate-country').val('');
+        $('#stationcreate-postcode').val('');
+        $('#stationcreate-tel').val('');
+
+        $('#stationedit-id').val('');
+        $('#stationedit-code').val('');
+        $('#stationedit-name').val('');
+        $('#stationedit-address').val('');
+        $('#stationedit-city').val('');
+        $('#stationedit-country').val('');
+        $('#stationedit-postcode').val('');
+        $('#stationedit-tel').val('');
+
+        $('#stationcreate-logo_preview').attr('src', '');
+        $('#stationcreate-logo').val('');
+        $('#stationedit-logo_preview').attr('src', '');
+        $('#stationedit-logo').val('');
+    }
+    var stationcreatelogopreview = function (event) {
+        var output = document.getElementById('stationcreate-logo_preview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+
+    var stationeditlogopreview = function (event) {
+        var output = document.getElementById('stationedit-logo_preview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>

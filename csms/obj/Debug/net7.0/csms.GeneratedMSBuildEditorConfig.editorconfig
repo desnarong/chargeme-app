@@ -1,0 +1,123 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = csms
+build_property.RootNamespace = csms
+build_property.ProjectDir = D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\csms\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\csms
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/ChargePoint/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcmdlUG9pbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/ChargePoint/_ChargePoint--Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcmdlUG9pbnRcX0NoYXJnZVBvaW50LS1UYWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/ChargeTag/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcmdlVGFnXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/ChargeTag/_ChargeTag--Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcmdlVGFnXF9DaGFyZ2VUYWctLVRhYmxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Conector/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uZWN0b3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Conector/_Conector--Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uZWN0b3JcX0NvbmVjdG9yLS1UYWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Home/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Home/_DetailLog--Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfRGV0YWlsTG9nLS1UYWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Other/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3RoZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Shared/_Sidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Shared/_TopNavbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ub3BOYXZiYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/StationInfo/Holiday.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGlvbkluZm9cSG9saWRheS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/StationInfo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGlvbkluZm9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/StationInfo/_StationInfo--Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGlvbkluZm9cX1N0YXRpb25JbmZvLS1UYWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/StationInfo/_StationInfo_Holiday--Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGlvbkluZm9cX1N0YXRpb25JbmZvX0hvbGlkYXktLVRhYmxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Transaction/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Transaction/_Transaction--Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cX1RyYW5zYWN0aW9uLS1UYWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/New Proj/@งานนอก/_ev/_evnew/webapp/chargeme-app/csms/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-jmne7a0vhu

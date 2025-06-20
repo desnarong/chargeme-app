@@ -1,0 +1,253 @@
+﻿@using csms.Entities
+@model TblStation
+@{
+    ViewData["Title"] = "ตารางวันหยุดนอกจากวันเสาร์-อาทิตย์";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            @*<div class="card-header">
+                    <span class="h4">อัตราค่าไฟฟ้าชาร์จ</span>
+                </div>*@
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="form-group row ">
+                        <div class="col-2"></div>
+                        <div class="col-sm-1 align-self-end">
+                            <label for="station-id" class="form-control-label">สำนักงาน</label>
+                        </div>
+                        <div class="col-sm-2 align-self-end">
+                            <input type="text" value="@Model.FCode" class="form-control" id="station-id" readonly>
+                        </div>
+                        <div class="col-sm-1 align-self-end">
+                            <label for="station-name" class="form-control-label">ชื่อสำนักงาน</label>
+                        </div>
+                        <div class="col-sm-3 align-self-end">
+                            <input type="text" value="@Model.FName" class="form-control" id="station-name" readonly>
+                        </div>
+                        <div class="col-sm-2 align-self-end float-end">
+                            <a href="javascript:CreateHolidayModal();" class="btn btn-info"><i class="fa-solid fa-circle-plus"></i><span> เพิ่มวันหยุด</span></a>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-9"></div>
+                            <div class="col-sm-2 align-self-end float-end">
+                                <a href="javascript:CreateSHolidayModal();" class="btn btn-info"><i class="fa-solid fa-circle-plus"></i><span> เพิ่มวันหยุด</span></a>
+                            </div>
+                        </div>
+                    </div>*@
+                <div class="card-body">
+                    @*<div class="text-center">
+                            <label for="stationedit-name" class="form-control-label font-600">ตารางวันหยุดนอกจากวันเสาร์-อาทิตย์</label>
+                        </div>*@
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <div class="table-responsive mt-4">
+                                <partial name="_StationInfo_Holiday--Table" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--begin::Modal-->
+<div class="modal fade" id="holidaycreate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">เพิ่มวันหยุด</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="holidaycreate-date" class="form-control-label">วันที่:</label>
+                        <input id="holidaycreate-date" class="form-control" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="holidaycreate-name" class="form-control-label">รายละเอียด:</label>
+                        <input type="text" class="form-control" id="holidaycreate-name">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="CreateHolidayModalClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+<!--begin::Modal-->
+<div class="modal fade" id="holidayedit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">แก้ไขวันหยุด</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="holidayedit-id" class="form-control-label">รหัส:</label>
+                        <input id="holidayedit-id" class="form-control" type="text" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="holidayedit-date" class="form-control-label">วันที่:</label>
+                        <input id="holidayedit-date" class="form-control" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="holidayedit-name" class="form-control-label">รายละเอียด:</label>
+                        <input type="text" class="form-control" id="holidayedit-name">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="EditHolidayModalClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+<script>
+    var tableholiday
+    $(document).ready(function () {
+        $('#holidaycreate-modal').appendTo("body");
+        $('#holidayedit-modal').appendTo("body");
+
+        var d = new Date();
+        var toDay = d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear();
+
+        // Datepicker
+        $("#holidaycreate-date").datepicker({
+            format: "dd/mm/yyyy",
+            language: "th",
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $("#holidayedit-date").datepicker({
+            format: "dd/mm/yyyy",
+            language: "th",
+            autoclose: true,
+            todayHighlight: false
+        });
+
+        $('#holidaycreate-date').datepicker('setDate', toDay);
+
+        tableholiday = $('#table--holiday').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pageLength": 25,
+            "destroy": true,
+            "searching": false,
+            "dom": 'rt<"bottom"flp><"clear">',
+            "contentType": "application/json; charset=utf-8",
+            "ajax": {
+                url: '/StationInfo/GetHolidayTable',
+                type: "POST",
+                data: function (d) {
+                    return $.extend({}, d, {
+                        "stationid": '@Model.FId',
+                    });
+                },
+                complete: function (data) {
+                }
+            },
+            columns: [
+                { "data": 'day' },
+                { "data": 'name' },
+                { "data": 'actionEdit' },
+                { "data": 'actionDelete' }
+            ],
+            rowId: function (a) {
+                return 'holidayid_' + a.id;
+            },
+        });
+    });
+    function CreateHolidayModal() {
+        $('#holidaycreate-modal').modal('show');
+    }
+    function CreateHolidayModalClick() {
+        var fileData = new FormData();
+        fileData.append('companyid', '@Model.FId');
+        fileData.append('date', $('#holidaycreate-date').val());
+        fileData.append('name', $('#holidaycreate-name').val());
+
+        $.ajax({
+            url: '/StationInfo/CreateHoliday',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#holidaycreate-modal').modal('hide');
+                    SwalFunc.Success("Create Success");
+                    tableholiday.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+    function EditHolidayModal(holidayid) {
+        $('#holidayedit-modal').modal('show');
+        var id = tableholiday.row('#holidayid_' + holidayid).data().id;
+        var day = tableholiday.row('#holidayid_' + holidayid).data().day;
+        var name = tableholiday.row('#holidayid_' + holidayid).data().name;
+
+        $('#holidayedit-id').val(id);
+        $('#holidayedit-date').datepicker('setDate', day);
+        $('#holidayedit-name').val(name);
+    }
+    function EditHolidayModalClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#holidayedit-id').val());
+        fileData.append('date', $('#holidayedit-date').val());
+        fileData.append('name', $('#holidayedit-name').val());
+
+        $.ajax({
+            url: '/StationInfo/UpdateHoliday',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#holidayedit-modal').modal('hide');
+                    SwalFunc.Success("Update Success");
+                    tableholiday.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+    function clear() {
+        var d = new Date();
+        var toDay = d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear();
+
+        $('#holidayedit-id').val('');
+        $('#holidayedit-date').datepicker('setDate', toDay);
+        $('#holidayedit-description').val('');
+
+        $('#holidaycreate-date').datepicker('setDate', toDay);
+        $('#holidaycreate-description').val('');
+    }
+    function DeleteHolidayClick(Id) {
+        SwalFunc.ConfirmAjaxDeleteWithReload(Id, "/StationInfo/DeleteHoliday", "POST", tableholiday);
+    }
+</script>

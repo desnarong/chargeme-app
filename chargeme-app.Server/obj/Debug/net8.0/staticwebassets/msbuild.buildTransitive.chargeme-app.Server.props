@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\chargeme-app.Server.props" />
+</Project>

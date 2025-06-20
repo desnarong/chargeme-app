@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>EV CSMS</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App Icons -->
+    <link rel="shortcut icon" href="@Url.Content("/images/favicon.ico")">
+
+    <!-- Basic Css files -->
+    <link href="@Url.Content("/css/bootstrap.min.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("/css/metismenu.min.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("/css/icons.css")" rel="stylesheet" type="text/css">
+    @*<link href="~/manager/css/fontawesome@v5.15.1.css" rel="stylesheet" />*@
+    <link href="@Url.Content("/css/fontawesome@v6.4.0.css")" rel="stylesheet" />
+    <link href="@Url.Content("/lib/bootstrap-datepicker-1.9.0/css/bootstrap-datepicker3.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/lib/datatables.net/buttons.bootstrap4.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/lib/datatables.net/dataTables.bootstrap4.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/lib/datatables.net/responsive.bootstrap4.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/lib/sweetalert2/dist/sweetalert2.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/lib/dropzone/dist/dropzone.css")" rel="stylesheet" />
+    <link href="@Url.Content("/lib/bootstrap-dialog/bootstrap-dialog.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/style.css")" rel="stylesheet" type="text/css">
+
+    <link href="@Url.Content("/css/site.css")" rel="stylesheet" type="text/css">
+
+    <!-- jQuery  -->
+    <script src="@Url.Content("/js/jquery.min.js")"></script>
+    <script src="@Url.Content("/js/bootstrap.bundle.min.js")"></script>
+    <script src="@Url.Content("/js/modernizr.min.js")"></script>
+    <script src="@Url.Content("/js/metisMenu.min.js")"></script>
+    <script src="@Url.Content("/js/jquery.slimscroll.js")"></script>
+    <script src="@Url.Content("/js/waves.js")"></script>
+    <script src="@Url.Content("/js/fontawesome@v6.4.0.js")"></script>
+    <script src="@Url.Content("/lib/bootstrap-datepicker-1.9.0/js/bootstrap-datepicker.min.js")"></script>
+    <script src="@Url.Content("/lib/bootstrap-datepicker-1.9.0/locales/bootstrap-datepicker.th.min.js")"></script>
+    <!-- Required datatable js -->
+    <script src="@Url.Content("/lib/datatables.net/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("/lib/datatables.net/dataTables.bootstrap4.min.js")"></script>
+    <!-- Buttons examples -->
+    <script src="@Url.Content("/lib/datatables.net/dataTables.buttons.min.js")"></script>
+    <script src="@Url.Content("/lib/datatables.net/buttons.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("/lib/datatables.net/jszip.min.js")"></script>
+    <script src="@Url.Content("/lib/datatables.net/pdfmake.min.js")"></script>
+    <script src="@Url.Content("/lib/datatables.net/vfs_fonts.js")"></script>
+    <script src="@Url.Content("/lib/datatables.net/buttons.html5.min.js")"></script>
+    <script src="@Url.Content("/lib/datatables.net/buttons.print.min.js")"></script>
+    <script src="@Url.Content("/lib/datatables.net/buttons.colVis.min.js")"></script>
+    <!-- Responsive examples -->
+    <script src="@Url.Content("/lib/datatables.net/dataTables.responsive.min.js")"></script>
+    <script src="@Url.Content("/lib/datatables.net/responsive.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("/lib/sweetalert2/dist/sweetalert2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/js/sweetalert_func_th.js")"></script>
+    <script src="@Url.Content("/lib/dropzone/dist/dropzone.js")"></script>
+    <script src="@Url.Content("/lib/bootstrap-dialog/bootstrap-dialog.min.js")"></script>
+    
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</head>
+<body class="fixed-left">
+    <!-- Loader -->
+    @*<div id="preloader"><div id="status"><div class="spinner"></div></div></div>*@
+    <!-- Begin page -->
+    <div id="wrapper">
+        <!-- Top Bar Start -->
+        <div class="topbar">
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <a href="@Url.Action("Index", "Home")" class="logo">
+                    @*<img src="~/manager/images/logo.png" alt="" height="20" class="logo-large">
+                    <img src="~/manager/images/logo-sm.png" alt="" height="22" class="logo-sm">*@
+                    <div class="row mt-3 logo-large">
+                        <div class="col-md-12 text-white h4"> <i class="fas fa-charging-station"></i><span> EV CSMS </span></div>
+                        <div class="col-md-12 text-white p-0" style="font-size:16px; margin-top:-20px"> ระบบจัดการสถานีชาร์จรถยนต์ไฟฟ้า </div>
+                    </div>
+                    <div class="row mt-3 logo-sm">
+                        <div class="col-md-12 text-white h4"> <i class="fas fa-charging-station"></i></div>
+                    </div>
+                </a>
+                
+            </div>
+
+            <nav class="navbar-custom">
+                <partial name="_TopNavbar" />
+            </nav>
+        </div>
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="slimscroll-menu" id="remove-scroll">
+                <!--- Sidemenu -->
+                <partial name="_Sidebar" />
+                <!--- Sidemenu -->
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- Sidebar -left -->
+        <!-- Top Bar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <!-- container-fluid -->
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End content -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+        <footer class="footer">
+            © 2024 EVCSMS <span class="d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by U-Electric System Limited.</span>
+        </footer>
+    </div>
+    <!-- END wrapper -->
+    <!-- App js -->
+    <script src="@Url.Content("/js/app.js")"></script>
+</body>
+</html>

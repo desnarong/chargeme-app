@@ -1,0 +1,24 @@
+{
+  "Version": 1,
+  "Hash": "mF3Fr3wyZK/Pb+bHt+kg9PkiQ3Gx92k69LMj/nsWkO4=",
+  "Source": "chargeme-app.Server",
+  "BasePath": "_content/chargeme-app.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\chargeme-app.client\\chargeme-app.client.esproj",
+      "Version": 2,
+      "Source": "chargeme-app.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

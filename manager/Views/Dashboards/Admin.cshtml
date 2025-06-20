@@ -1,0 +1,284 @@
+﻿@using manager.Entities;
+@using Newtonsoft.Json;
+@{
+    ViewBag.Title = "Dashboards";
+    ViewBag.pTitle = "Dashboards";
+    ViewBag.pageTitle = "Dashboards";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var userdata = Context.Session.GetString("UserData");
+    var userInfo = JsonConvert.DeserializeObject<TblUser>(userdata) ?? new TblUser();
+}
+<style>
+    .color-all {
+        color: #4785b1;
+    }
+
+    .color-online {
+        color: #3bbb74;
+    }
+
+    .color-offline {
+        color: #d3d3d3;
+    }
+
+    .color-working {
+        color: #eda103;
+    }
+
+    .color-broken {
+        color: #b67044;
+    }
+
+    .w-100px {
+        width: 100px !important;
+    }
+</style>
+<script src="~/assets/libs/microsoft-signalr/signalr.min.js"></script>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="row">
+            <!-- Number of Chargers -->
+            <div class="col-xl-3">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-lg flex-shrink-0">
+                                <span class="avatar-title bg-primary-subtle text-primary rounded-2 fs-2">
+                                    <i class="ri-charging-pile-2-line la-2x"></i>
+                                </span>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden ms-3">
+                                <p class="text-uppercase fw-semibold text-muted text-truncate mb-3" data-key="t-numberofchargers">Number of Chargers</p>
+                                <div class="d-flex align-items-center mb-3">
+                                    <h4 class="flex-grow-1 mb-0"><span class="counter-value" id="numberofchargers">0</span></h4>
+                                </div>
+                                <p class="text-muted fs-11 fw-light text-truncate mb-0" data-key="t-totalnumberofchargersofthecompany">Total chargers owned by the company</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number of Connectors -->
+            <div class="col-xl-3">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-lg flex-shrink-0">
+                                <span class="avatar-title bg-primary-subtle text-info rounded-2 fs-2">
+                                    <i class="ri-plug-2-line la-2x"></i>
+                                </span>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <p class="text-uppercase fw-medium text-muted mb-3" data-key="t-numberofconnectors">Number of Connectors</p>
+                                <div class="d-flex align-items-center mb-3">
+                                    <h4 class="flex-grow-1 mb-0"><span class="counter-value" id="numberofconnectors">0</span></h4>
+                                </div>
+                                <p class="text-muted fs-11 fw-light text-truncate mb-0" data-key="t-totalnumberofconnectorsofthecompany">Total connectors owned by the company</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connectors Working -->
+            <div class="col-xl-3">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-lg flex-shrink-0">
+                                <span class="avatar-title bg-primary-subtle text-success rounded-2 fs-2">
+                                    <i class="ri-plug-2-fill la-2x"></i>
+                                </span>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden ms-3">
+                                <p class="text-uppercase fw-medium text-muted text-truncate mb-3" data-key="t-connectorsworking">Working Connectors</p>
+                                <div class="d-flex align-items-center mb-3">
+                                    <h4 class="flex-grow-1 mb-0"><span class="counter-value" id="connectorsworking">0</span></h4>
+                                </div>
+                                <p class="text-muted fs-11 fw-light text-truncate mb-0" data-key="t-totalworkingconnectors">Connectors currently in operation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connectors Lost -->
+            <div class="col-xl-3">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-lg flex-shrink-0">
+                                <span class="avatar-title bg-primary-subtle text-danger rounded-2 fs-2">
+                                    <i class="ri-plug-2-fill la-2x"></i>
+                                </span>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden ms-3">
+                                <p class="text-uppercase fw-medium text-muted text-truncate mb-3" data-key="t-connectorslost">Disconnected Connectors</p>
+                                <div class="d-flex align-items-center mb-3">
+                                    <h4 class="flex-grow-1 mb-0"><span class="counter-value" id="connectorslost">0</span></h4>
+                                </div>
+                                <p class="text-muted text-truncate mb-0" data-key="t-disconnectedthismonth">Disconnected this now</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1" data-key="t-chargers">Chargers</h4>
+            </div><!-- end card header -->
+            <div class="card-body">
+                <div class="table-responsive table-card">
+                    <table class="table table-hover table-borderless table-centered align-middle table-nowrap mb-0">
+                        <thead class="text-muted bg-light-subtle">
+                            <tr>
+                                <th data-key="t-logo">#</th>
+                                <th data-key="t-station">Station</th>
+                                <th data-key="t-charger">Charger</th>
+                                <th data-key="t-connecters">Connecters</th>
+                                <th data-key="t-detail">Detail</th>
+                                <th class="text-center" data-key="t-connection">Connection</th>
+                                <th data-key="t-status">Status</th>
+                                <th data-key="t-information">Information</th>
+                                <th data-key="t-view">View</th>
+                            </tr>
+                        </thead><!-- end thead -->
+                        <tbody>
+                        </tbody><!-- end tbody -->
+                    </table><!-- end table -->
+                </div><!-- end tbody -->
+            </div><!-- end cardbody -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+</div>
+<script>
+    var chargepointcount = 0, running = 0, broken = 0;
+    var companyId = '@userInfo.FCompanyId';
+
+    $(document).ready(function () {
+        var connection = new signalR.HubConnectionBuilder().withUrl('@Url.Content("/chargePointHub")').build();
+
+        connection.on("ChargePointMessage", function (message) {
+            // Parse the JSON string
+            let data;
+            try {
+                data = JSON.parse(message);
+            } catch (error) {
+                console.error("Error parsing JSON:", error);
+                return;
+            }
+
+            // Filter data based on companyId
+            let filteredData;
+            if (companyId === "00000000-0000-0000-0000-000000000000") {
+                filteredData = data;
+            } else {
+                filteredData = $.grep(data, function (item) {
+                    return item.CompanyId === companyId;
+                });
+            }
+
+            // Reset counters
+            chargepointcount = 0;
+            running = 0;
+            broken = 0;
+            let chargepointid = '';
+
+            // Count unique chargers and connector statuses
+            for (let i = 0; i < filteredData.length; i++) {
+                if (chargepointid !== filteredData[i].ChargerId) {
+                    chargepointid = filteredData[i].ChargerId;
+                    chargepointcount += 1;
+                }
+
+                if (filteredData[i].Status === 'Charging' || filteredData[i].Status === 'Occupied') {
+                    running += 1;
+                }
+                // Exclude Status: '' or null to avoid counting all as broken
+                if (filteredData[i].Status === 'Faulted' || filteredData[i].Status === 'Unavailable') {
+                    broken += 1;
+                }
+            }
+
+            // Get the table body
+            const $tbody = $("table.table tbody");
+
+            // Clear table body for fresh update
+            $tbody.empty();
+
+            // Handle empty filteredData
+            if (filteredData.length === 0) {
+                $tbody.append('<tr><td colspan="8" class="text-center">No chargers found</td></tr>');
+            } else {
+                // Update or add rows for filtered data
+                $.each(filteredData, function (index, item) {
+                    // Format LastStatusTime as dd/MM/yyyy HH:mm:ss
+                    let formattedLastStatusTime = '';
+                    if (item.LastStatusTime) {
+                        const date = new Date(item.LastStatusTime);
+                        if (!isNaN(date)) {
+                            formattedLastStatusTime = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
+                        }
+                    }
+                    let comment = item.Comment || '';
+                    // Prepare row HTML with Status column showing Status field
+                    const rowHtml = `
+                      <tr data-id="${item.Id}">
+                        <td>${index + 1}</td>
+                        <td>${item.StationName}</td>
+                        <td>${item.ChargerName}</td>
+                        <td>${item.ConnectorName} (${item.ConnectorCode})</td>
+                        <td>${comment}</td>
+                        <td class='text-center'>${item.IsOnline}</td>
+                        <td>${item.LastStatus || ''}</td>
+                        <td>
+                          Last Status: ${formattedLastStatusTime}<br>
+                          Last Meter: ${item.LastMeter} kWh<br>
+                          Current Charge: ${item.CurrentChargeKw} kW<br>
+                          State of Charge: ${item.StateOfCharge}%
+                        </td>
+                        <td>${item.ActionView}</td>
+                      </tr>
+                    `;
+                    $tbody.append(rowHtml);
+                });
+            }
+
+            // Update HTML elements with counts
+            $('#numberofchargers').html(chargepointcount);
+            $('#numberofconnectors').html(filteredData.length);
+            $('#connectorsworking').html(running);
+            $('#connectorslost').html(broken);
+
+            // Reset counters
+            chargepointcount = 0;
+            running = 0;
+            broken = 0;
+        });
+
+        // Start the SignalR connection
+        connection.start().then(function () {
+            console.log("SignalR connection started");
+        }).catch(function (err) {
+            console.error("SignalR connection error:", err.toString());
+        });
+    });
+</script>
+@section scripts{
+    <!-- apexcharts -->
+    <script src="~/assets/libs/apexcharts/apexcharts.min.js"></script>
+
+    <!-- Dashboard init -->
+    <script src="~/assets/js/pages/dashboard-crm.init.js"></script>
+
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+}

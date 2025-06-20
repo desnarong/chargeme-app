@@ -1,0 +1,327 @@
+﻿@{
+    ViewBag.Title = "Offices";
+    ViewBag.pTitle = "Index";
+    ViewBag.pageTitle = "Offices";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-sm-2 align-self-end float-end">
+                            <a href="javascript:CreateCompanyModal();" class="btn btn-primary"><i class="ri-add-circle-line la-1-50x align-middle"></i><span class="align-middle" data-key="add-company"> Add Company</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive mt-4">
+                        <table id="table--companyinfo" class="table table-striped table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th width="20%" data-key="code">Code</th>
+                                    <th width="60%" data-key="name">Name</th>
+                                    <th width="10%" data-key="edit">Edit</th>
+                                    <th width="10%" data-key="delete">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--begin::Modal-->
+<div class="modal fade" id="companycreate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" data-key="add-company">Add Office</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="companycreate-code" class="form-label" data-key="code">Code:</label>
+                        <input type="text" class="form-control" id="companycreate-code">
+                    </div>
+                    <div class="mb-3">
+                        <label for="companycreate-name" class="form-label" data-key="name">Name:</label>
+                        <input type="text" class="form-control" id="companycreate-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="companycreate-address" class="form-label" data-key="address">Address:</label>
+                        <textarea type="text" class="form-control" id="companycreate-address" cols="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="companycreate-city" class="form-label" data-key="district">District:</label>
+                        <input type="text" class="form-control" id="companycreate-city">
+                    </div>
+                    <div class="mb-3">
+                        <label for="companycreate-country" class="form-label" data-key="province">Province:</label>
+                        <input type="text" class="form-control" id="companycreate-country">
+                    </div>
+                    <div class="mb-3">
+                        <label for="companycreate-postcode" class="form-label" data-key="postcode">Postcode:</label>
+                        <input type="text" class="form-control" id="companycreate-postcode">
+                    </div>
+                    <div class="mb-3">
+                        <label for="companycreate-tel" class="form-label" data-key="phone">Phone:</label>
+                        <input type="text" class="form-control" id="companycreate-tel">
+                    </div>
+                    <div class="mb-3">
+                        <label for="companycreate-logo" class="form-label" data-key="image">Image:</label>
+                        <input id="companycreate-logo" type="file" name="logo" accept=".png, .jpg, .jpeg" onchange="companycreatelogopreview(event)" />
+                    </div>
+                    <div class="mb-3">
+                        <img id="companycreate-logo_preview" class="w-50" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="CreateCompanyModalClick()" data-key="save">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+<!--begin::Modal-->
+<div class="modal fade" id="companyedit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" data-key="t-updatecompany">Update Office</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group d-none">
+                        <input type="text" class="form-control" id="companyedit-id" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyedit-code" class="form-label" data-key="t-code">Code:</label>
+                        <input type="text" class="form-control" id="companyedit-code" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyedit-name" class="form-label" data-key="t-name">Name:</label>
+                        <input type="text" class="form-control" id="companyedit-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyedit-address" class="form-label" data-key="t-address">Address:</label>
+                        <textarea type="text" class="form-control" id="companyedit-address" cols="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyedit-city" class="form-label" data-key="t-district">District:</label>
+                        <input type="text" class="form-control" id="companyedit-city">
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyedit-country" class="form-label" data-key="t-province">Province:</label>
+                        <input type="text" class="form-control" id="companyedit-country">
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyedit-postcode" class="form-label" data-key="t-postcode">Postcode:</label>
+                        <input type="text" class="form-control" id="companyedit-postcode">
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyedit-tel" class="form-label" data-key="t-phone">Phone:</label>
+                        <input type="text" class="form-control" id="companyedit-tel">
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyedit-logo" class="form-label" data-key="t-image">Image:</label>
+                        <input id="companyedit-logo" type="file" name="logo" accept=".png, .jpg, .jpeg" onchange="companyeditlogopreview(event)" />
+                    </div>
+                    <div class="mb-3">
+                        <img id="companyedit-logo_preview" class="w-50" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="EditCompanyModalClick()" data-key="t-save">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="t-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+
+<script>
+    var tablecompanyinfo
+    $(document).ready(function () {
+        clear();
+        tablecompanyinfo = $('#table--companyinfo').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pageLength": 25,
+            "destroy": true,
+            "searching": false,
+            "contentType": "application/json; charset=utf-8",
+            "ajax": {
+                url: '/Company/GetCompanyTable',
+                type: "POST"
+            },
+            columns: [
+                { "data": 'code' },
+                { "data": 'name' },
+                { "data": 'actionEdit' },
+                { "data": 'actionDelete' }
+            ],
+            rowId: function (a) {
+                return 'company' + a.id;
+            },
+        });
+    });
+
+    function CreateCompanyModal() {
+        clear();
+        $('#companycreate-modal').modal('show');
+    }
+
+    function EditCompanyModal(companyid) {
+        clear();
+        $('#companyedit-modal').modal('show');
+        var code = tablecompanyinfo.row('#company' + companyid).data().code;
+        var name = tablecompanyinfo.row('#company' + companyid).data().name;
+        var office = tablecompanyinfo.row('#company' + companyid).data().office;
+        var address = tablecompanyinfo.row('#company' + companyid).data().address;
+        var city = tablecompanyinfo.row('#company' + companyid).data().city;
+        var country = tablecompanyinfo.row('#company' + companyid).data().country;
+        var postcode = tablecompanyinfo.row('#company' + companyid).data().postCode;
+        var logo = tablecompanyinfo.row('#company' + companyid).data().logo;
+
+        $('#companyedit-id').val(companyid);
+        $('#companyedit-code').val(code);
+        $('#companyedit-name').val(name);
+        $('#companyedit-address').val(address);
+        $('#companyedit-city').val(city);
+        $('#companyedit-country').val(country);
+        $('#companyedit-postcode').val(postcode);
+        $('#companyedit-tel').val(office);
+
+        if (logo)
+            $('#companyedit-logo_preview').attr('src', 'data:image/jpg;base64,' + logo);
+    }
+
+    function CreateCompanyModalClick() {
+        var fileData = new FormData();
+        fileData.append('code', $('#companycreate-code').val());
+        fileData.append('name', $('#companycreate-name').val());
+        fileData.append('address', $('#companycreate-address').val());
+        fileData.append('city', $('#companycreate-city').val());
+        fileData.append('country', $('#companycreate-country').val());
+        fileData.append('postcode', $('#companycreate-postcode').val());
+        fileData.append('tel', $('#companycreate-tel').val());
+
+        var fileUpload = $("#companycreate-logo").get(0);
+        if (fileUpload.files.length > 0) {
+            fileData.append("logo", $("#companycreate-logo")[0].files[0]);
+        }
+
+        $.ajax({
+            url: '/Company/CreateCompany',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#companycreate-modal').modal('hide');
+                    SwalFunc.Success("Create Success");
+                    tablecompanyinfo.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function EditCompanyModalClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#companyedit-id').val());
+        fileData.append('code', $('#companyedit-code').val());
+        fileData.append('name', $('#companyedit-name').val());
+        fileData.append('address', $('#companyedit-address').val());
+        fileData.append('city', $('#companyedit-city').val());
+        fileData.append('country', $('#companyedit-country').val());
+        fileData.append('postcode', $('#companyedit-postcode').val());
+        fileData.append('tel', $('#companyedit-tel').val());
+
+        var fileUpload = $("#companyedit-logo").get(0);
+        if (fileUpload.files.length > 0) {
+            fileData.append("logo", $("#companyedit-logo")[0].files[0]);
+        }
+
+
+        $.ajax({
+            url: '/Company/UpadateCompany',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#companyedit-modal').modal('hide');
+                    SwalFunc.Success("Update Success");
+                    tablecompanyinfo.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function DeleteCompanyModalClick(companyid) {
+        SwalFunc.ConfirmAjaxDeleteWithReload(companyid, "/Company/DeleteCompany", "POST", tablecompanyinfo);
+    }
+
+    function clear() {
+        $('#companycreate-id').val('');
+        $('#companycreate-code').val('');
+        $('#companycreate-name').val('');
+        $('#companycreate-address').val('');
+        $('#companycreate-city').val('');
+        $('#companycreate-country').val('');
+        $('#companycreate-postcode').val('');
+        $('#companycreate-tel').val('');
+
+        $('#companyedit-id').val('');
+        $('#companyedit-code').val('');
+        $('#companyedit-name').val('');
+        $('#companyedit-address').val('');
+        $('#companyedit-city').val('');
+        $('#companyedit-country').val('');
+        $('#companyedit-postcode').val('');
+        $('#companyedit-tel').val('');
+
+        $('#companycreate-logo_preview').attr('src', '');
+        $('#companycreate-logo').val('');
+        $('#companyedit-logo_preview').attr('src', '');
+        $('#companyedit-logo').val('');
+    }
+    var companycreatelogopreview = function (event) {
+        var output = document.getElementById('companycreate-logo_preview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+
+    var companyeditlogopreview = function (event) {
+        var output = document.getElementById('companyedit-logo_preview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>
+@section scripts{
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+}

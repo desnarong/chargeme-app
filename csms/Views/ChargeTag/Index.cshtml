@@ -1,0 +1,340 @@
+﻿@{
+    ViewData["Title"] = "บัตร RFID";
+}
+<script src="~/manager/lib/onscan-js/onscan.min.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-sm-2 align-self-end float-end">
+                            <a href="javascript:CreateChargeTagModal();" class="btn btn-info"><i class="fa-solid fa-circle-plus"></i><span> เพิ่มบัตร</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive mt-4">
+                        <partial name="_ChargeTag--Table" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--begin::Modal-->
+<div class="modal fade" id="chargetagcreate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">เพิ่มบัตรใหม่</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="chargetag-id" class="form-control-label">รหัส:</label>
+                        <div class="row">
+                            <div class="col-md-8 ml-1"><input type="text" class="form-control" id="chargetag-id"></div>
+                            <div class="col-md-3">
+                                <button id="btn-scanner" type="button" class="btn btn-info">สแกนบัตร</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="chargetag-platenumber" class="form-control-label">ทะเบียน:</label>
+                        <input type="text" class="form-control" id="chargetag-platenumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="chargetag-name" class="form-control-label">ผู้ใช้งาน:</label>
+                        <input type="text" class="form-control" id="chargetag-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="chargetag-owner" class="form-control-label">หน่วยงาน:</label>
+                        <input type="text" class="form-control" id="chargetag-owner">
+                    </div>
+                    <div class="form-group">
+                        <label for="chargetag-expireday" class="form-control-label">ใช้ได้ถึงวันที่:</label>
+                        <input type="text" class="form-control" id="chargetag-expireday">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="CreateChargeTagClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+<!--begin::Modal-->
+<div class="modal fade" id="chargetagedit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">แก้ไขบัตรใหม่</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="chargetagedit-id" class="form-control-label">รหัส:</label>
+                        <input type="text" class="form-control" id="chargetagedit-id" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="chargetagedit-platenumber" class="form-control-label">ทะเบียน:</label>
+                        <input type="text" class="form-control" id="chargetagedit-platenumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="chargetagedit-name" class="form-control-label">ผู้ใช้งาน:</label>
+                        <input type="text" class="form-control" id="chargetagedit-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="chargetagedit-owner" class="form-control-label">หน่วยงาน:</label>
+                        <input type="text" class="form-control" id="chargetagedit-owner">
+                    </div>
+                    <div class="form-group">
+                        <label for="chargetagedit-expireday" class="form-control-label">ใช้ได้ถึงวันที่:</label>
+                        <input type="text" class="form-control" id="chargetagedit-expireday">
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="chargetagedit-blocked">
+                        <label class="custom-control-label" for="chargetagedit-blocked">ปิดใช้ชั่วคราว</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="EditChargeTagClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+<script>
+    var chargetagtable;
+    var initstatus = false;
+
+    $(document).ready(function () {
+        var d = new Date();
+        var toDay = d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear();
+
+        $('#chargetagedit-modal').appendTo("body");
+        $('#chargetagcreate-modal').appendTo("body");
+
+        // Datepicker
+        $("#chargetag-expireday").datepicker({
+            format: "dd/mm/yyyy",
+            language: "th",
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $("#chargetagedit-expireday").datepicker({
+            format: "dd/mm/yyyy",
+            language: "th",
+            autoclose: true,
+        });
+
+        $('#chargetag-expireday', '#chargetagedit-expireday').datepicker('setDate', toDay);
+
+        $('#chargetagcreate-modal').appendTo("body");
+
+        chargetagtable = $('#table--chargetag').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pageLength": 25,
+            "destroy": true,
+            "searching": false,
+            "dom": 'rt<"bottom"flp><"clear">',
+            "contentType": "application/json; charset=utf-8",
+            "ajax": {
+                url: '/ChargeTag/GetChargeTagTable',
+                type: "POST"
+            },
+            columns: [
+                { "data": 'tagCode' },
+                { "data": 'plateNo' },
+                { "data": 'customerName' },
+                { "data": 'agencyName' },
+                { "data": 'expiryDate' },
+                { "data": 'blockedStatus' },
+                { "data": 'actionEdit' },
+                { "data": 'actionDelete' }
+            ],
+            "columnDefs": [
+                { "targets": 0, "orderable": true },
+                { "targets": 1, "orderable": true },
+                { "targets": 2, "orderable": true },
+                { "targets": 3, "orderable": true },
+                { "targets": 4, "orderable": true },
+                { "targets": 5, "orderable": true },
+                { "targets": 6, "orderable": false },
+                { "targets": 7, "orderable": false },
+            ],
+            rowId: function (a) {
+                return 'chargetagid_' + a.tagId;
+            },
+        });
+    });
+
+    function CreateChargeTagModal() {
+        $('#chargetagcreate-modal').modal('show');
+    }
+
+    function CreateChargeTagClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#chargetag-id').val());
+        fileData.append('platenumber', $('#chargetag-platenumber').val());
+        fileData.append('name', $('#chargetag-name').val());
+        fileData.append('owner', $('#chargetag-owner').val());
+        fileData.append('expireday', $('#chargetag-expireday').val());
+
+        $.ajax({
+            url: '/ChargeTag/CreateChargeTag',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#chargetagcreate-modal').modal('hide');
+                    SwalFunc.Success("Create Success");
+                    chargetagtable.ajax.reload();
+                    clear();
+                } else {
+                    SwalFunc.Error(data);
+                }
+            }
+        });
+    }
+
+    function EditChargeTagModal(tagId) {
+        $('#chargetagedit-modal').modal('show');
+        var plateNo = chargetagtable.row('#chargetagid_' + tagId).data().plateNo;
+        var customerName = chargetagtable.row('#chargetagid_' + tagId).data().customerName;
+        var agencyName = chargetagtable.row('#chargetagid_' + tagId).data().agencyName;
+        var expiryDate = chargetagtable.row('#chargetagid_' + tagId).data().expiryDate;
+        var blocked = chargetagtable.row('#chargetagid_' + tagId).data().blocked;
+
+        $('#chargetagedit-id').val(tagId);
+        $('#chargetagedit-platenumber').val(plateNo);
+        $('#chargetagedit-name').val(customerName);
+        $('#chargetagedit-owner').val(agencyName);
+        $('#chargetagedit-expireday').val(expiryDate);
+        $('#chargetagedit-blocked').prop('checked', blocked);
+    }
+
+    function EditChargeTagClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#chargetagedit-id').val());
+        fileData.append('platenumber', $('#chargetagedit-platenumber').val());
+        fileData.append('name', $('#chargetagedit-name').val());
+        fileData.append('owner', $('#chargetagedit-owner').val());
+        fileData.append('expireday', $('#chargetagedit-expireday').val());
+        fileData.append('blocked', $('#chargetagedit-blocked').is(":checked"));
+
+        $.ajax({
+            url: '/ChargeTag/UpadateChargeTag',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#chargetagedit-modal').modal('hide');
+                    SwalFunc.Success("Update Success");
+                    chargetagtable.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function DeleteChargeTagModalClick(Id) {
+        SwalFunc.ConfirmAjaxDeleteWithReload(Id, "/ChargeTag/DeleteChargeTag", "POST", chargetagtable);
+    }
+
+    $('#btn-scanner').click(function () {
+        if (initstatus) destroyOnScan();
+        initOnScanCard();
+        $('#chargetagcreate-modal').focus();
+    });
+
+    function initOnScanCard() {
+        initstatus = true;
+        var suffixKeyCodes = [9, 13];
+        var prefixKeyCodes = [];
+
+        var options = {
+            timeBeforeScanTest: 100,
+            avgTimeByChar: 30,
+            minLength: 6,
+            suffixKeyCodes: suffixKeyCodes,
+            prefixKeyCodes: prefixKeyCodes,
+            scanButtonLongPressTime: 500,
+            stopPropagation: false,
+            preventDefault: false,
+            reactToPaste: true,
+            reactToKeyDown: true,
+            singleScanQty: 1
+        };
+
+        options.onScan = function (barcode, qty) {
+            var card = decimalToHexString(barcode);
+            $('#chargetag-id').val(card);
+        };
+        onScan.attachTo(this, options);
+        //console.log("onScan initOnScanCard!");
+        
+    }
+    function decimalToHexString(input) {
+        var number = Number(input);
+        if (number < 0) {
+            number = 0xFFFFFFFF + Number(number) + 1;
+        }
+
+        var hexString = number.toString(16).toUpperCase();
+        var reversedString = hexString.split('').reverse().join('');
+
+        // Group the characters in pairs
+        var pairArray = [];
+        for (var i = 0; i < hexString.length; i += 2) {
+            pairArray.push(hexString.substr(i, 2));
+        }
+        pairArray.reverse();
+
+        // Join the pairs back into a single string
+        var switchedString = pairArray.join('');
+
+        return switchedString;
+    }
+
+    var destroyOnScan = function () {
+        initstatus = false;
+        //console.log("onScan destroyed!");
+        onScan.detachFrom(this);
+    }
+
+    function clear() {
+        $('#chargetagedit-id').val('');
+        $('#chargetagedit-platenumber').val('');
+        $('#chargetagedit-name').val('');
+        $('#chargetagedit-owner').val('');
+        $('#chargetagedit-expireday').val('');
+        $('#chargetagedit-blocked').prop('checked', false);
+
+        $('#chargetag-id').val('');
+        $('#chargetag-platenumber').val('');
+        $('#chargetag-name').val('');
+        $('#chargetag-owner').val('');
+        $('#chargetag-expireday').val('');
+    }
+</script>

@@ -1,0 +1,384 @@
+﻿@{
+    ViewBag.Title = "Chargers";
+    ViewBag.pTitle = "Chargers";
+    ViewBag.pageTitle = "Chargers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-sm-2 align-self-end float-end">
+                            <a href="javascript:CreateChargerModal()" class="btn btn-primary"><i class="ri-add-circle-line la-1-50x align-middle"></i><span class="align-middle" data-key="t-addcharger"> Add Charger</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="table--charger" class="table nowrap align-middle dataTable no-footer">
+                        <thead>
+                            <tr>
+                                <th width="20%" data-key="t-code">Code</th>
+                                <th width="20%" data-key="t-name">Name</th>
+                                <th width="20%" data-key="t-station">Station</th>
+                                <th width="20%" data-key="t-note">Note</th>
+                                <th width="10%" data-key="t-edit">Edit</th>
+                                <th width="10%" data-key="t-delete">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--begin:Create:Modal-->
+<div class="modal fade" id="chargercreate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel" data-key="t-addcharger">Add Charger</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="chargecreate-id" class="form-label" data-key="t-code">Code</label>
+                        <input type="text" class="form-control" id="chargecreate-id">
+                    </div>
+                    <div class="mb-3">
+                        <label for="chargecreate-name" class="form-label" data-key="t-name">Name</label>
+                        <input type="text" class="form-control" id="chargecreate-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="chargecreate-station" class="form-label" data-key="t-station">Station</label>
+                        <select id="chargecreate-station" class="form-control">
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="chargecreate-note" class="form-label" data-key="t-note">Note</label>
+                        <input type="text" class="form-control" id="chargecreate-note">
+                    </div>
+                    <div class="mb-3">
+                        <label for="charge-create-image" class="form-label" data-key="t-image">Image</label>
+                        <input id="charge-create-image" type="file" name="image" accept=".png, .jpg, .jpeg" onchange="chargecreateimagepreview(event)" />
+                    </div>
+                    <div class="mb-3">
+                        <img id="charge-create-image_preview" class="w-50" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="CreateChargerClick()" data-key="t-save">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="t-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end:EDIT:Modal-->
+<!--begin:EDIT:Modal-->
+<div class="modal fade" id="charger-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel" data-key="t-updatecharger">Update Charger</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group d-none">
+                        <input type="text" class="form-control" id="chargeid" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="charge-id" class="form-label" data-key="t-code">Code</label>
+                        <input type="text" class="form-control" id="charge-id" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="charge-name" class="form-label" data-key="t-name">Name</label>
+                        <input type="text" class="form-control" id="charge-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="charge-station" class="form-label" data-key="t-station">Station</label>
+                        <select id="charge-station" class="form-control">
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="charge-note" class="form-label" data-key="t-note">Note</label>
+                        <input type="text" class="form-control" id="charge-note">
+                    </div>
+                    <div class="mb-3">
+                        <label for="charge-image" class="form-label" data-key="t-image">Image</label>
+                        <input id="charge-image" type="file" name="image" accept=".png, .jpg, .jpeg" onchange="chargeimagepreview(event)" />
+                    </div>
+                    <div class="mb-3">
+                        <img id="charge-image_preview" class="w-50" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="EditChargerClick()" data-key="t-save">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="t-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end:EDIT:Modal-->
+<script>
+    var tablecharger;
+    $(document).ready(function () {
+        $('#charger-modal').appendTo("body");
+
+        tablecharger = $('#table--charger').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pageLength": 25,
+            "destroy": true,
+            "searching": false,
+            //"dom": 'rt<"bottom"flp><"clear">',
+            "contentType": "application/json; charset=utf-8",
+            "ajax": {
+                url: '/Chargers/GetChargerTable',
+                type: "POST"
+            },
+            columns: [
+                { "data": 'shortName' },
+                { "data": 'name' },
+                { "data": 'stationName' },
+                { "data": 'comment' },
+                { "data": 'actionEdit' },
+                { "data": 'actionDelete' }
+            ],
+            "columnDefs": [
+                { "targets": 0, "orderable": true },
+                { "targets": 1, "orderable": true },
+                { "targets": 2, "orderable": true },
+                { "targets": 3, "orderable": true },
+                { "targets": 4, "orderable": false },
+                { "targets": 5, "orderable": false },
+            ],
+            rowId: function (a) {
+                return 'chargerid_' + a.chargerId;
+            },
+        });
+    });
+
+    function CreateChargerModal() {
+        clear();
+        $('#chargercreate-modal').modal('show');
+        GetStationSelect(0);
+    }
+
+    function CreateChargerClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#chargecreate-id').val());
+        fileData.append('name', $('#chargecreate-name').val());
+        fileData.append('stationid', $('#chargecreate-station').val());
+        fileData.append('comment', $('#chargecreate-note').val());
+
+        var fileUpload = $("#charge-create-image").get(0);
+
+        if (fileUpload.files.length > 0) {
+            fileData.append("file", $("#charge-create-image")[0].files[0]);
+        }
+
+
+        $.ajax({
+            url: '/Chargers/CreateCharger',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#chargercreate-modal').modal('hide');
+                    Swal.fire({
+                        title: 'Charger!',
+                        text: 'Create charger success!',
+                        icon: 'success',
+                        showCancelButton: false,
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        buttonsStyling: false,
+                        showCloseButton: true
+                    });
+                    tablecharger.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function EditChargerModal(id) {
+        clear();
+        $('#charger-modal').modal('show');
+
+        var chargerId = tablecharger.row('#chargerid_' + id).data().chargerId;
+        var name = tablecharger.row('#chargerid_' + id).data().name;
+        var stationId = tablecharger.row('#chargerid_' + id).data().stationId;
+        var comment = tablecharger.row('#chargerid_' + id).data().comment;
+        var images = tablecharger.row('#chargerid_' + id).data().image;
+        var shortName = tablecharger.row('#chargerid_' + id).data().shortName;
+        GetStationSelect(stationId);
+        $('#chargeid').val(chargerId);
+        $('#charge-id').val(shortName);
+        $('#charge-name').val(name);
+        $('#charge-station').val(stationId);
+        $('#charge-note').val(comment);
+        if (images)
+            $('#charge-image_preview').attr('src', 'data:image/jpg;base64,' + images);
+    }
+
+    function EditChargerClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#chargeid').val());
+        fileData.append('name', $('#charge-name').val());
+        fileData.append('stationid', $('#charge-station').val());
+        fileData.append('comment', $('#charge-note').val());
+
+
+        var fileUpload = $("#charge-image").get(0);
+
+
+        if (fileUpload.files.length > 0) {
+            fileData.append("file", $("#charge-image")[0].files[0]);
+        }
+
+        $.ajax({
+            url: '/Chargers/UpadateCharger',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#charger-modal').modal('hide');
+                    Swal.fire({
+                        title: 'Charger!',
+                        text: 'Update charger success!',
+                        icon: 'success',
+                        showCancelButton: false,
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        buttonsStyling: false,
+                        showCloseButton: true
+                    });
+                    tablecharger.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+    function DeleteChargerModalClick(id) {
+        //SwalFunc.ConfirmAjaxDeleteWithReload(Id, "/Chargers/DeleteCharger", "POST", tablecharger);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to delete it?",
+            icon: "warning",
+            showCancelButton: true,
+            customClass: {
+                confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                cancelButton: 'btn btn-danger w-xs mt-2',
+            },
+            confirmButtonText: "Yes, delete it!",
+            buttonsStyling: false,
+            showCloseButton: true
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    url: "/Chargers/DeleteCharger",
+                    type: "POST",
+                    data: { id: id },
+                    success: function (data) {
+                        if (data == 'success') {
+                            Swal.fire({
+                                title: 'Deleted!',
+                                text: 'Your charger has been deleted.',
+                                icon: 'success',
+                                customClass: {
+                                    confirmButton: 'btn btn-primary w-xs mt-2',
+                                },
+                                buttonsStyling: false
+                            })
+                            tablecharger.ajax.reload();
+                        }
+                    }
+                });
+            }
+        });
+    }
+    function GetStationSelect(id) {
+        $.ajax({
+            url: '/Chargers/GetStationSelect',
+            type: "POST",
+            success: function (data) {
+                var obj = data.data;
+                var options = '';
+                $("#chargecreate-station").find('option').remove();
+                $("#charge-station").find('option').remove();
+                if (obj.length > 0) {
+                    for (var i = 0; i < obj.length; i++) {
+                        if (id == obj[i].fId) {
+                            options += '<option selected value="' + obj[i].fId + '">' + obj[i].fName + '</option>';
+                        }
+                        else {
+                            options += '<option value="' + obj[i].fId + '">' + obj[i].fName + '</option>';
+                        }
+                    }
+                }
+                else {
+                    options += '<option value="0">กรุณาเพิ่มสถานีชาร์จก่อน</option>';
+                }
+                $("#charge-station").append(options);
+                $("#chargecreate-station").append(options);
+            }
+        });
+    }
+    function clear() {
+        $('#charge-id').val('');
+        $('#charge-name').val('');
+        $('#charge-station').val(0);
+        $('#charge-note').val('');
+
+        $('#chargecreate-id').val('');
+        $('#chargecreate-name').val('');
+        $('#chargecreate-station').val(0);
+        $('#chargecreate-note').val('');
+        $('#charge-create-image_preview').attr('src', '');
+        $('#charge-image_preview').attr('src', '');
+        $('#charge-image').val('');
+        $('#charge-create-image').val('');
+    }
+    //image preview
+    var chargecreateimagepreview = function (event) {
+        var output = document.getElementById('charge-create-image_preview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+
+    var chargeimagepreview = function (event) {
+        var output = document.getElementById('charge-image_preview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>
+
+@section scripts{
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+}

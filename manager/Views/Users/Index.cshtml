@@ -1,0 +1,370 @@
+﻿@{
+    ViewBag.Title = "Users";
+    ViewBag.pTitle = "Users";
+    ViewBag.pageTitle = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-sm-2 align-self-end float-end">
+                            <a href="javascript:CreateUserModal();" class="btn btn-primary"><i class="ri-add-circle-line la-1-50x align-middle"></i><span class="align-middle" data-key="add-user"> Add User</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive mt-4">
+                        <table id="table--userinfo" class="table nowrap align-middle dataTable no-footer">
+                            <thead>
+                                <tr>
+                                    <th data-key="t-username">User Name</th>
+                                    <th data-key="t-name">Name</th>
+                                    <th data-key="t-position">Position</th>
+                                    <th data-key="t-resetpassword">Reset Password</th>
+                                    <th data-key="t-edit">Edit</th>
+                                    <th data-key="t-delete">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--begin::Modal-->
+<div class="modal fade" id="usercreate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" data-key="t-createuser">Create User</h5>
+                <button type="button" class="btn-close" id="close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="usercreate-company" class="form-label" data-key="t-office">Office <span class="text-danger">*</span></label>
+                        <select id="usercreate-company" class="form-control">
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="usercreate-username" class="form-label" data-key="t-username">Username</label>
+                        <input type="text" class="form-control" id="usercreate-username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="usercreate-name" class="form-label" data-key="t-name">Name</label>
+                        <input type="text" class="form-control" id="usercreate-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="usercreate-lastname" class="form-label" data-key="t-lastname">Last Name</label>
+                        <input type="text" class="form-control" id="usercreate-lastname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="usercreate-tel" class="form-label" data-key="t-phone">Phone</label>
+                        <input type="text" class="form-control" id="usercreate-tel">
+                    </div>
+                    <div class="mb-3">
+                        <label for="usercreate-password" class="form-label" data-key="t-password">Password</label>
+                        <input type="text" class="form-control" id="usercreate-password">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="CreateUserModalClick()" data-key="save">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="t-close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+<!--begin::Modal-->
+<div class="modal fade" id="useredit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" data-key="t-updateuser">Update User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                    <div class="form-group d-none">
+                        <input type="text" class="form-control" id="useredit-id" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="useredit-company" class="form-label" data-key="t-office">Office <span class="text-danger">*</span></label>
+                        <select id="useredit-company" class="form-control">
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="useredit-username" class="form-label" data-key="t-username">Username</label>
+                        <input type="text" class="form-control" id="useredit-username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="useredit-name" class="form-label" data-key="t-name">Name</label>
+                        <input type="text" class="form-control" id="useredit-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="useredit-lastname" class="form-label" data-key="t-lastname">Last Name</label>
+                        <input type="text" class="form-control" id="useredit-lastname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="useredit-tel" class="form-label" data-key="t-phone">Phone</label>
+                        <input type="text" class="form-control" id="useredit-tel">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="EditUserModalClick()" data-key="save">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="t-close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+<script>
+    var tableuserinfo
+    $(document).ready(function () {
+        clear();
+        GetCompanySelect(0);
+        tableuserinfo = $('#table--userinfo').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pageLength": 25,
+            "destroy": true,
+            "searching": false,
+            "contentType": "application/json; charset=utf-8",
+            "ajax": {
+                url: '/Users/GetUserTable',
+                type: "POST"
+            },
+            columns: [
+                { "data": 'username' },
+                { "data": 'name' },
+                { "data": 'lastname' },
+                { "data": 'actionReset' },
+                { "data": 'actionEdit' },
+                { "data": 'actionDelete' }
+            ],
+            rowId: function (a) {
+                return 'userinfoid_' + a.id;
+            },
+        });
+    });
+
+    function CreateUserModal() {
+        clear();
+        $('#usercreate-modal').modal('show');
+    }
+
+    function EditUserModal(userid) {
+        clear();
+        $('#useredit-modal').modal('show');
+        var username = tableuserinfo.row('#userinfoid_' + userid).data().username;
+        var name = tableuserinfo.row('#userinfoid_' + userid).data().name;
+        var lastname = tableuserinfo.row('#userinfoid_' + userid).data().lastname;
+        var mobile = tableuserinfo.row('#userinfoid_' + userid).data().mobile;
+        var companyid = tableuserinfo.row('#userinfoid_' + userid).data().companyId;
+        if (companyid == null) companyid = 0;
+
+        $('#useredit-id').val(userid);
+        $('#useredit-username').val(username);
+        $('#useredit-name').val(name);
+        $('#useredit-lastname').val(lastname);
+        $('#useredit-tel').val(mobile);
+        $('#useredit-company').val(companyid);
+    }
+
+    function CreateUserModalClick() {
+        var fileData = new FormData();
+        fileData.append('username', $('#usercreate-username').val());
+        fileData.append('name', $('#usercreate-name').val());
+        fileData.append('lastname', $('#usercreate-lastname').val());
+        fileData.append('tel', $('#usercreate-tel').val());
+        fileData.append('password', $('#usercreate-password').val());
+        fileData.append('companyid', $('#usercreate-company').val());
+        $.ajax({
+            url: '/Users/CreateUser',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#usercreate-modal').modal('hide');
+                    Swal.fire({
+                        title: 'User!',
+                        text: 'Create Success!',
+                        icon: 'success',
+                        showCancelButton: false,
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        buttonsStyling: false,
+                        showCloseButton: true
+                    });
+                    tableuserinfo.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function EditUserModalClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#useredit-id').val());
+        fileData.append('username', $('#useredit-username').val());
+        fileData.append('name', $('#useredit-name').val());
+        fileData.append('lastname', $('#useredit-lastname').val());
+        fileData.append('mobile', $('#useredit-tel').val());
+        fileData.append('companyid', $('#useredit-company').val());
+        $.ajax({
+            url: '/Users/UpadateUser',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#useredit-modal').modal('hide');
+                    Swal.fire({
+                        title: 'User!',
+                        text: 'Update Success!',
+                        icon: 'success',
+                        showCancelButton: false,
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        buttonsStyling: false,
+                        showCloseButton: true
+                    });
+                    tableuserinfo.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function ResetPasswordClick(id) {
+        Swal.fire({
+            icon: 'warning',
+            title: "User!",
+            text: 'Reset Password?',
+            showCancelButton: true,
+            customClass: {
+                confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                cancelButton: 'btn btn-danger w-xs mt-2',
+            },
+            confirmButtonText: "Yes",
+            buttonsStyling: false,
+            showCloseButton: true
+        }).then((result) => {
+            if (result.value == true) {
+                var fileData = new FormData();
+                fileData.append('id', id);
+
+                $.ajax({
+                    url: '/Users/ResetPassword',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+                    success: function (data) {
+                        if (data == 'success') {
+                            $('#resetpassword-modal').modal('hide');
+                            Swal.fire({
+                                title: 'User!',
+                                text: 'Reset Password Success!',
+                                icon: 'success',
+                                showCancelButton: false,
+                                customClass: {
+                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                    cancelButton: 'btn btn-danger w-xs mt-2',
+                                },
+                                buttonsStyling: false,
+                                showCloseButton: true
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'User!',
+                                text: 'Can not reset password User Super Admin!',
+                                icon: 'error',
+                                showCancelButton: false,
+                                customClass: {
+                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                    cancelButton: 'btn btn-danger w-xs mt-2',
+                                },
+                                buttonsStyling: false,
+                                showCloseButton: true
+                            });
+                        }
+                    }
+                });
+            }
+            else {
+                console.log("failed");
+            }
+        });
+    }
+
+    function DeleteUserModalClick(userid) {
+        SwalFunc.ConfirmAjaxDeleteWithReload(userid, "/Users/DeleteUser", "POST", tableuserinfo);
+    }
+
+    function clear() {
+        $('#usercreate-username').val('');
+        $('#usercreate-lastname').val('');
+        $('#usercreate-name').val('');
+        $('#usercreate-password').val('');
+        $('#usercreate-tel').val('');
+
+        $('#useredit-id').val('');
+        $('#useredit-username').val('');
+        $('#useredit-lastname').val('');
+        $('#useredit-name').val('');
+        $('#useredit-tel').val('');
+
+    }
+
+    function GetCompanySelect(id) {
+        $.ajax({
+            url: '/Users/GetCompanySelect',
+            type: "POST",
+            success: function (data) {
+                var obj = data.data;
+                var options = '';
+                $("#usercreate-company").find('option').remove();
+                $("#useredit-company").find('option').remove();
+                options += '<option selected value="00000000-0000-0000-0000-000000000000">สำนักงานหลัก</option>';
+                if (obj.length > 0) {
+                    for (var i = 0; i < obj.length; i++) {
+                        if (id == obj[i].fId) {
+                            options += '<option selected value="' + obj[i].fId + '">' + obj[i].fName + '</option>';
+                        }
+                        else {
+                            options += '<option value="' + obj[i].fId + '">' + obj[i].fName + '</option>';
+                        }
+                    }
+                }
+                $("#usercreate-company").append(options);
+                $("#useredit-company").append(options);
+            }
+        });
+    }
+</script>
+@section scripts{
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+}

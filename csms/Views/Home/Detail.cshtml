@@ -1,0 +1,380 @@
+﻿@model csms.Models.ConnectorStatusDataModel
+@{ 
+    var datas = Model.connectorStatusViewDatas;
+    var data = datas.FirstOrDefault();
+    var ChargerId = data.ChargerId;
+    var IsOnline = data.IsOnline;
+    var IsHeartBeat = data.IsHeartBeat;
+    var HeartBeatlastDate = data.HeartBeatlastDate;
+    var Image = data.Image;
+    var ChargePointName = data.ChargePointName;
+}
+<script src="@Url.Content("/lib/microsoft/signalr/dist/browser/signalr.min.js")"></script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-12 mb-2"><span class="h6 font-600">เครื่องชาร์จ @data.ChargePointName</span><span class="h6 font-600 ml-3">รหัสเครื่องชาร์จ @data.ChargerCode</span></div>
+                            </div>
+                            <div class="row align-middle">
+                                
+                                <div class="col-1 mt-1" id="IsOnline">
+                                    <i class='fa-sharp fa-cloud fa-2x @IsOnline'></i>
+                                </div>
+                                <div class="col-9 mt-2">
+                                    <i id="IsHeartBeat" class="fa fa-circle @IsHeartBeat" aria-hidden="true"></i>
+                                    <span class="font-weight-bold">Last heart beat </span><span id="HeartBeatlastDate"> @HeartBeatlastDate </span>
+                                </div>
+                            </div>
+                            <div class="row align-middle">
+                                <div class="col-2">
+                                    <a href="javascript:ResetChargepoint();" class="btn btn-info"><span> Restart</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="col-12 right">
+                                @if (Image != null)
+                                {
+                                    <a href="javascript:LightboxModal()"><img id="charge-image_preview" src="data:image/jpg;base64,@(Convert.ToBase64String(Image))" class="rounded float-right w-100px" /></a>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <table id="table--detail" class="table mt-3 mb-0 text-center">
+                        <thead>
+                            <tr>
+                                <th>รหัส</th>
+                                <th>หัวชาร์จ</th>
+                                <th>สถานะ</th>
+                                <th>หน่วย(kWh)</th>
+                                <th>กำลังไฟฟ้า(kW)</th>
+                                <th>SoC(%)</th>
+                                <th>เวลา</th>
+                                <th>จำนวนเงิน</th>
+                                <th>คำสั่ง</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in datas)
+                            {
+                                <tr>
+                                    <td>@item.ConnectorCode</td>
+                                    <td>@item.ConnectorName</td>
+                                    <td id="laststatus_@item.Id"></td>
+                                    <td id="lastMeter_@item.Id"></td>
+                                    <td id="currentChargeKw_@item.Id"></td>
+                                    <td id="stateOfCharge_@item.Id"></td>
+                                    <td id="curenttime_@item.Id"></td>
+                                    <td id="curentcost_@item.Id"></td>
+                                    <td class="font-weight-bold"><a href='javascript:RemoteStartTransaction("@item.ChargerId", "@item.Id");' class='color-online'>START</a> | <a href='javascript:RemoteStopTransaction("@item.ChargerId", "@item.Id");' class='color-broken'>STOP</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <span class="h6">OCPP Message Monitor:</span>
+            </div>
+            <div class="card-body">
+                <partial name="_DetailLog--Table" />
+            </div>
+        </div>
+    </div>
+</div>
+<!-- The Modal/Lightbox -->
+<div id="LightboxModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        
+    </div>
+</div>
+<div class="modal fade" id="LightboxModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> @($"เครื่องชาร์จ {ChargePointName}")</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                @if (Image != null)
+                {
+                    <img src="data:image/jpg;base64,@(Convert.ToBase64String(Image))" style="width:100%">
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var chargelog;
+    var groups, data;
+    var chargepointcount = 0, running = 0, broken = 0;
+    $(document).ready(function () {
+        $('#LightboxModal').appendTo("body");
+        //SignalR
+        var connection = new signalR.HubConnectionBuilder().withUrl("@Url.Content("/chargePointHub")").build();
+        connection.on("ChargePointDetailMessage_@ChargerId", function (message) {
+            data = JSON.parse(message);
+
+            //if (data.IsOnline =='color-online') {
+            //    //$('#IsHeartBeat').removeClass(".color-offline .color-online ");
+
+
+            //}
+
+            console.log(data);
+
+            $('#IsOnline').html(data.IsOnline);
+            $('#HeartBeatlastDate').html(data.HeartBeatlastDate);
+            //console.log($("#IsHeartBeat").find('.color-offline'));
+            //$('#IsHeartBeat').removeClass(".color-offline .color-online ");
+            //$('#IsHeartBeat').addClass(data.IsHeartBeat);
+            //$('#IsOnline').html(data.IsOnline);
+            $('#IsHeartBeat').addClass(data.IsHeartBeat);
+            $('#laststatus_' + data.Id).html(data.LastStatus);
+            //$('#transaction_' + data.Id).html(data.TransactionId);
+            $('#lastMeter_' + data.Id).html(data.LastMeter);
+            $('#currentChargeKw_' + data.Id).html(data.CurrentChargeKw);
+            if (data.StateOfCharge >= 0)
+                $('#stateOfCharge_' + data.Id).html(data.StateOfCharge);
+
+        });
+
+        connection.start().then(function () {
+
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        chargelog = $('#table--chargelog').DataTable({
+            "processing": false,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "dom": 'rt<"bottom"><"clear">',
+            "destroy": true,
+            "searching": false,
+            "contentType": "application/json; charset=utf-8",
+            "scrollY": true,
+            "ajax": {
+                url: '/Home/GetChargeLogsTable',
+                type: "POST",
+                data: function (d) {
+                    return $.extend({}, d, {
+                        "ChargePoint": '@ChargerId',
+                        "ConectorId": '@data.Id'
+                    });
+                },
+                complete: function (data) {
+                }
+            },
+            columns: [
+                { "data": 'logState' },
+                { "data": 'logType' },
+                { "data": 'connectorId' },
+                { "data": 'message' },
+                { "data": 'logTime' },
+                { "data": 'result' },
+            ],
+            order: [[4, 'desc']],
+        });
+
+        //var i = setInterval(function () {
+        //    // do your thing
+        //    chargelog.ajax.reload();
+        //}, 10000);
+    });
+
+    function LightboxModal() {
+        $('#LightboxModal').modal('show');
+    }
+
+    function ResetChargepoint() {
+        var dialog = new BootstrapDialog({
+            title: 'Reset',
+            message: '@string.Format("Should the charging station '{0}' really be restarted?", ChargePointName)',
+            spinicon: 'fa fa-spinner fa-fw',
+            buttons: [{
+                id: 'btnDialogReset',
+                label: 'Reset',
+                icon: 'fas fa-redo',
+                autospin: true,
+                action: function (dialogRef) {
+                    dialogRef.enableButtons(false);
+                    dialogRef.setClosable(false);
+                    dialogRef.getModalBody().html('Reset');
+
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                            if (xmlhttp.status == 200) {
+                                dialogRef.getModalBody().html(xmlhttp.responseText);
+                            }
+                            else {
+                                dialogRef.getModalBody().html('An error occured.');
+                            }
+
+                            dialogRef.setClosable(true);
+                            dialogRef.enableButtons(true);
+                            var $resetButton = dialog.getButton('btnDialogReset');
+                            $resetButton.hide();
+                            var $cancelButton = dialog.getButton('btnDialogCancel');
+                            $cancelButton.text('Close');
+
+                        }
+                    };
+                    ////xmlhttp.open("GET", "Html.Raw(Url.Content("~/manager/Home/Reset?Id=" + ChargerId))", true);
+                    //xmlhttp.open("GET", "Html.Raw(Url.ActionLink("Reset", "Home", new { Id = ChargerId }, null))", true);
+                    xmlhttp.open("GET", "/Home/Reset?id" + ChargerId, true);
+                    xmlhttp.send();
+                }
+            }, {
+                id: 'btnDialogCancel',
+                label: 'Cancel',
+                action: function (dialogRef) {
+                    dialogRef.close();
+                    //window.location.href = window.location.href; //This is a possibility
+                    //window.location.reload(); //Another possiblity
+                    chargelog.ajax.reload();
+                    //history.go(0); //And another
+                }
+            }]
+        });
+        dialog.open();
+    }
+
+    function RemoteStartTransaction(ChargerId, ConnectorId) {
+
+        var dialog = new BootstrapDialog({
+            title: 'Start',
+            message: 'Should the charging station really be Start?',
+            spinicon: 'fa fa-spinner fa-fw',
+            buttons: [{
+                id: 'btnStart',
+                label: 'Start',
+                autospin: true,
+                cssClass: 'btn btn-danger',
+                action: function (dialogRef) {
+                    dialogRef.enableButtons(false);
+                    dialogRef.setClosable(false);
+                    dialogRef.getModalBody().html('Start of the charging station is triggered...');
+
+                    const xmlhttp = new XMLHttpRequest()
+                    xmlhttp.open('GET', '/Home/RemoteStartTransaction?id=' + ChargerId + '&connectorId=' + ConnectorId)
+                    xmlhttp.setRequestHeader('Content-type', 'application/json')
+
+                    //http.send() // Make sure to stringify
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                            if (xmlhttp.status == 200) {
+                                //console.log(xmlhttp.responseText);
+                                dialogRef.getModalBody().html(xmlhttp.responseText);
+                            }
+                            else {
+                                dialogRef.getModalBody().html('An error occured.');
+                            }
+
+                            dialogRef.setClosable(true);
+                            dialogRef.enableButtons(true);
+                            var $resetButton = dialog.getButton('btnStart');
+                            $resetButton.hide();
+                            var $cancelButton = dialog.getButton('btnDialogCancel');
+                            $cancelButton.text('Close');
+
+                        }
+                    };
+
+                    xmlhttp.send() // Make sure to stringify
+                }
+            }, {
+                id: 'btnDialogCancel',
+                label: 'Cancel',
+                action: function (dialogRef) {
+                    dialogRef.close();
+                    //window.location.href = window.location.href; //This is a possibility
+                    //window.location.reload(); //Another possiblity
+                    chargelog.ajax.reload();
+                    //history.go(0); //And another
+                }
+            }]
+        });
+        dialog.open();
+    }
+
+    function RemoteStopTransaction(ChargerId, ConnectorId) {
+
+        var dialog = new BootstrapDialog({
+            title: 'Stop',
+            message: 'Should the charging station really be stop?',
+            spinicon: 'fa fa-spinner fa-fw',
+            buttons: [{
+                id: 'btnStop',
+                label: 'Stop',
+                autospin: true,
+                cssClass: 'btn btn-danger',
+                action: function (dialogRef) {
+                    dialogRef.enableButtons(false);
+                    dialogRef.setClosable(false);
+                    dialogRef.getModalBody().html('Stop of the charging station is triggered...');
+
+                    const xmlhttp = new XMLHttpRequest()
+                    xmlhttp.open('GET', '/Home/RemoteStopTransaction?id=' + ChargerId + '&connectorId=' + ConnectorId)
+                    xmlhttp.setRequestHeader('Content-type', 'application/json')
+
+                    //http.send() // Make sure to stringify
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                            if (xmlhttp.status == 200) {
+                                //console.log(xmlhttp.responseText);
+                                dialogRef.getModalBody().html(xmlhttp.responseText);
+                            }
+                            else {
+                                dialogRef.getModalBody().html('An error occured.');
+                            }
+
+                            dialogRef.setClosable(true);
+                            dialogRef.enableButtons(true);
+                            var $resetButton = dialog.getButton('btnStop');
+                            $resetButton.hide();
+                            var $cancelButton = dialog.getButton('btnDialogCancel');
+                            $cancelButton.text('Close');
+
+                        }
+                    };
+
+                    xmlhttp.send() // Make sure to stringify
+                }
+            }, {
+                id: 'btnDialogCancel',
+                label: 'Cancel',
+                action: function (dialogRef) {
+                    dialogRef.close();
+                    //window.location.href = window.location.href; //This is a possibility
+                    //window.location.reload(); //Another possiblity
+                    chargelog.ajax.reload();
+                    //  history.go(0); //And another
+                }
+            }]
+        });
+        dialog.open();
+    }
+</script>

@@ -1,0 +1,88 @@
+﻿@using csms.Entities
+@using Newtonsoft.Json
+@{
+    var userInfo = JsonConvert.DeserializeObject<TblUser>(Context.Session.GetString("UserData"));
+}
+<ul class="navbar-right d-flex list-inline float-right mb-0">
+    <!-- User-->
+    <li class="list-inline-item dropdown notification-list">
+        <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
+           aria-haspopup="false" aria-expanded="false">
+            <span class="d-none d-md-inline-block ml-1">@userInfo.FName @userInfo.FLastname <i class="mdi mdi-chevron-down"></i> </span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
+            <a class="dropdown-item" onclick="ChangePasswordModal()"><i class="dripicons-scale text-muted"></i> Change Password</a>
+        </div>
+        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
+            <a class="dropdown-item" href="@Url.ActionLink("Logout","Auth")"><i class="dripicons-exit text-muted"></i> Logout</a>
+        </div>
+    </li>
+</ul>
+<ul class="list-inline menu-left mb-0">
+    <li class="float-left">
+        <button class="button-menu-mobile open-left waves-effect">
+            <i class="mdi mdi-menu"></i>
+        </button>
+    </li>
+</ul>
+<ul class="list-inline menu-left mb-0">
+    <li class="float-left ml-3 mt-3">
+        <span class="h4">@ViewData["Title"]</span>
+    </li>
+</ul>
+@*<ul class="list-inline menu-left mb-0">
+        <li class="float-left">
+            <button class="button-menu-mobile open-left waves-effect">
+                <i class="mdi mdi-menu"></i>
+            </button>
+        </li>
+    </ul>*@
+
+<script>
+    function ChangePasswordModal() {
+
+    }
+
+    function ChangePasswordModalClick() {
+        swal.fire({
+            type: 'warning',
+            title: "คุณต้องการจะเปลี่ยนรหัสผ่านใช่หรือไม่",
+            showCancelButton: true,
+            confirmButtonText: `ยืนยัน`,
+            cancelButtonText: `ยกเลิก`,
+            allowOutsideClick: true,
+            allowEscapeKey: true,
+            customClass: {
+                confirmButton: "btn btn-info mr-2",
+                cancelButton: "btn btn-default",
+            },
+            buttonsStyling: false,
+        }).then((result) => {
+            if (result.value == true) {
+                var fileData = new FormData();
+                fileData.append('id', id);
+                fileData.append('oldpasssword', $('#changepassword-oldpasssword').val());
+                fileData.append('newpasssword', $('#changepassword-newpasssword').val());
+
+                $.ajax({
+                    url: '/User/ChangePassword',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+                    success: function (data) {
+                        if (data == 'success') {
+                            $('#useredit-modal').modal('hide');
+                            SwalFunc.Success("Update Success");
+                        } else {
+                            SwalFunc.Error("Current Password not match");
+                        }
+                    }
+                });
+            }
+            else {
+                console.log("failed");
+            }
+        });
+    }
+</script>

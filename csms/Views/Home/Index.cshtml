@@ -1,0 +1,213 @@
+﻿@using csms.Entities;
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "หน้าแรก";
+
+    var userdata = Context.Session.GetString("UserData");
+    var userInfo = JsonConvert.DeserializeObject<TblUser>(userdata) ?? new TblUser();
+}
+<script src="@Url.Content("/lib/microsoft/signalr/dist/browser/signalr.min.js")"></script>
+<style>
+    #table--dashboard tbody tr {
+        cursor: pointer;
+    }
+    .mb-sm-2 {
+        margin-bottom: .5rem !important;
+    }
+    .mb-sm-3 {
+        margin-bottom: 1rem !important;
+    }
+    .mb-sm-4 {
+        margin-bottom: 1.5rem !important;
+    }
+    .mb-sm-5 {
+        margin-bottom: 2rem !important;
+    }
+</style>
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card">
+            <div class="shadow p-2 pt-4 pb-4 rounded" style="padding-bottom: 30px !important ">
+                <div class="row m-2 align-items-center text-center" style="margin: 9px !important;">
+                    <div class="col-md-4 col-lg-4 text-lg-right mb-sm-5"><i class="fas fa-charging-station fa-4x" style="color:#2980B9"></i></div>
+                    <div class="col-md-8 col-lg-8">
+                        <div class="row align-items-center text-center">
+                            <div class="col-md-12"><span class="h6">จำนวนเครื่องชาร์จ </span></div>
+                            <div class="col-md-12" style="font-size:36px; font-weight:700;" id="ct-chargepoint">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card">
+            <div class="shadow p-2 pt-4 pb-4 rounded">
+                <div class="row m-2 align-items-center text-center">
+                    <div class="col-md-4 col-lg-4 text-lg-right mb-sm-5"><img src="@Url.Content("/icons/base/PlugCCSOnline.png")" style="width:auto; height:63px;" /></div>
+                    <div class="col-md-8 col-lg-8">
+                        <div class="row align-items-center text-center">
+                            <div class="col-md-12"><span class="h6">จำนวนหัวชาร์จ </span></div>
+                            <div class="col-md-12" style="font-size:36px; font-weight:700;" id="ct-connecter">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card">
+            <div class="shadow p-2 pt-4 pb-4 rounded">
+                <div class="row m-2 align-items-center text-center">
+                    <div class="col-md-4 col-lg-4 text-lg-right mb-sm-5"><img src="@Url.Content("/icons/base/PlugCCSWorking.png")" style="width:auto; height:63px;" /></div>
+                    <div class="col-md-8 col-lg-8">
+                        <div class="row align-items-center text-center">
+                            <div class="col-md-12"><span class="h6">หัวชาร์จที่ทำงานอยู่ </span></div>
+                            <div class="col-md-12" style="font-size:36px; font-weight:700;" id="ct-connecterrunning">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card">
+            <div class="shadow p-2 pt-4 pb-4 rounded">
+                <div class="row m-2 align-items-center text-center">
+                    <div class="col-md-4 col-lg-4 text-lg-right mb-sm-5"><img src="@Url.Content("/icons/base/PlugCCSBroken.png")" style="width:auto; height:63px;" /></div>
+                    <div class="col-md-8 col-lg-8">
+                        <div class="row align-items-center text-center">
+                            <div class="col-md-12"><span class="h6">หัวชาร์จที่มีปัญหา </span></div>
+                            <div class="col-md-12" style="font-size:36px; font-weight:700;" id="ct-connecterbroken">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="table-responsive mt-4">
+                        <table id="table--dashboard" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>สถานีชาร์จ</th>
+                                    <th>Code</th>
+                                    <th>เครื่องชาร์จ</th>
+                                    <th>หัวชาร์จ</th>
+                                    <th>รายละเอียด</th>
+                                    <th>เชื่อมต่อ</th>
+                                    <th>สถานะ</th>
+                                    <th>ข้อมูลการชาร์จ</th>
+                                    @*<th>แสดงรายละเอือด</th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var tabledashboard;
+    var groups, data;
+    var chargepointcount = 0, running = 0, broken = 0;
+    var companyId = '@userInfo.FCompanyId';
+    $(document).ready(function () {
+        tabledashboard = "";
+        //SignalR
+        var connection = new signalR.HubConnectionBuilder().withUrl("@Url.Content("/chargePointHub")").build();
+        connection.on("ChargePointMessage", function (message) {
+            data = JSON.parse(message);
+            //console.log(data);
+            //console.log(companyId);
+            let filteredData;
+            if (companyId === "00000000-0000-0000-0000-000000000000") {
+                filteredData = data;
+            } else {
+                filteredData = $.grep(data, function (item) {
+                    return item.CompanyId === companyId;
+                });
+            }
+            
+            var chargepointid = '';
+            for (var i = 0; i < filteredData.length; i++) {
+                if (chargepointid != filteredData[i].ChargerId) {
+                    chargepointid = filteredData[i].ChargerId;
+                    chargepointcount += 1;
+                }
+
+                if (filteredData[i].Status == 'Charging' || filteredData[i].Status == 'Occupied') {
+                    running += 1;
+                    //console.log(running);
+                }
+                if (filteredData[i].Status == 'Faulted' || filteredData[i].Status == 'Unavailable' || filteredData[i].Status == '') {
+                    broken += 1;
+                }
+                //console.log("chargepointid:" + chargepointid + " => " + data[i].ChargerId);
+                //console.log("chargepointcount:" + chargepointcount);
+            };
+            tabledashboard.clear().rows.add(filteredData).draw()
+            tabledashboard.rows().every(function () {
+                var rowNode = this.node();
+                var rowIndex = this.index();
+                $(rowNode).attr('data-dt-row', rowIndex);
+            });
+
+            $('tr').hover(function () {
+                var thisNode = $(this);
+                var rowIdx = thisNode.attr('data-dt-row');
+                $("tr").css("background-color", "white");
+                $("tr[data-dt-row='" + rowIdx + "']").css("background-color", "#eff3f6");
+            });
+
+            $('#ct-chargepoint').html(chargepointcount);
+            $('#ct-connecter').html(filteredData.length);
+            $('#ct-connecterrunning').html(running);
+            $('#ct-connecterbroken').html(broken);
+            chargepointcount = 0;
+            running = 0;
+            broken = 0;
+        });
+
+        connection.start().then(function () {
+
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        tabledashboard = $('#table--dashboard').DataTable({
+            "filter": false,
+            "orderMulti": false,
+            "destroy": true,
+            "searching": false,
+            "dom": 'rt<"bottom"><"clear">',
+            "contentType": "application/json; charset=utf-8",
+            "data": data,
+            "columns": [
+                { "data": "StationName" },
+                { "data": "ConnectorCode" },
+                { "data": "ChargePointName" },
+                { "data": "ConnectorName" },
+                { "data": "Comment" },
+                { "data": "IsOnline" },
+                { "data": "LastStatus" },
+                { "data": "Reason" },
+                /*{ "data":"ActionView"}*/
+            ]
+        });
+
+        $('#table--dashboard tbody').on('click', 'tr', function () {
+            var data = tabledashboard.row(this).data();
+            var a = $.parseHTML(data.ActionView);
+            window.location.href = a[0].href;
+        });
+    });
+</script>

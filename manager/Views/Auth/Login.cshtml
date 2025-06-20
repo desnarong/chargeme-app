@@ -1,0 +1,195 @@
+﻿@{
+    ViewBag.Title = "Sign In";
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="ladylip" data-sidebar-size="lg">
+<head>
+    @Html.Partial("~/Views/Shared/_title_meta.cshtml")
+    @Html.Partial("~/Views/Shared/_head_css.cshtml")
+</head>
+<body>
+
+    <!-- auth-page wrapper -->
+    <div class="auth-page-wrapper auth-bg-cover py-5 d-flex justify-content-center align-items-center min-vh-100">
+        <div class="bg-overlay"></div>
+        <!-- auth-page content -->
+        <div class="auth-page-content overflow-hidden pt-lg-5">
+            <div class="container" style="max-width: 840px !important;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-lg-6">
+                                    <div class="p-lg-5 p-4 auth-one-bg h-100">
+                                        <div class="bg-overlay"></div>
+                                        <div class="position-relative h-100 d-flex flex-column">
+                                            <div class="mt-auto">
+                                                <div class="mb-3">
+                                                    <i class="ri-double-quotes-l display-4 text-success"></i>
+                                                </div>
+
+                                                <div id="qoutescarouselIndicators" class="carousel slide" data-bs-ride="carousel">
+                                                    <div class="carousel-indicators">
+                                                        <button type="button" data-bs-target="#qoutescarouselIndicators" data-bs-slide-to="0" class="active"
+                                                                aria-current="true" aria-label="Slide 1"></button>
+                                                        <button type="button" data-bs-target="#qoutescarouselIndicators" data-bs-slide-to="1"
+                                                                aria-label="Slide 2"></button>
+                                                        <button type="button" data-bs-target="#qoutescarouselIndicators" data-bs-slide-to="2"
+                                                                aria-label="Slide 3"></button>
+                                                    </div>
+                                                    <div class="carousel-inner text-center text-white pb-5">
+                                                        <div class="carousel-item active">
+                                                            <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
+                                                        </div>
+                                                        <div class="carousel-item">
+                                                            <p class="fs-15 fst-italic">" The theme is really great with an amazing customer support."</p>
+                                                        </div>
+                                                        <div class="carousel-item">
+                                                            <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end carousel -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end col -->
+
+                                <div class="col-lg-6">
+                                    <div class="p-lg-5 p-4">
+                                        <div>
+                                            <h5 class="text-primary">ยินดีต้อนรับกลับมา !</h5>
+                                            <p class="text-muted">ลงชื่อเข้าใช้เพื่อไปยัง ChargeMe Manager</p>
+                                        </div>
+
+                                        <div class="mt-4">
+                                            <form action="@Url.Action("Login", "Auth")" method="post">
+                                                @Html.AntiForgeryToken() <!-- เพิ่ม AntiForgeryToken -->
+
+                                                <div class="mb-3">
+                                                    <label for="username" class="form-label">ชื่อผู้ใช้</label>
+                                                    <input type="text" class="form-control" id="username" name="Username" placeholder="กรอกชื่อผู้ใช้">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <div class="float-end">
+                                                        <a href="@Url.Action("PasswordResetCover", "Authentication")" class="text-muted">ลืมรหัสผ่าน?</a>
+                                                    </div>
+                                                    <label class="form-label" for="password-input">รหัสผ่าน</label>
+                                                    <div class="position-relative auth-pass-inputgroup mb-3">
+                                                        <input type="password" class="form-control pe-5 password-input" name="Password" placeholder="กรอกรหัสผ่าน" id="password-input">
+                                                        <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="RememberMe" id="auth-remember-check">
+                                                    <label class="form-check-label" for="auth-remember-check">จดจำฉัน</label>
+                                                </div>
+
+                                                <div class="mt-4">
+                                                    <button class="btn btn-secondary w-100" type="submit">ลงชื่อเข้าใช้</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            <!-- end row -->
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col -->
+
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end auth page content -->
+        <!-- footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-center">
+                            <p class="mb-0">
+                                &copy;
+                                <script>document.write(new Date().getFullYear())</script> ChargeMe. Crafted with <i class="mdi mdi-heart text-danger"></i> by U-Electric System Limited.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end Footer -->
+    </div>
+    <!-- end auth-page-wrapper -->
+
+
+    @Html.Partial("~/Views/Shared/_vendor_scripts.cshtml")
+
+    <script>
+        $(document).ready(function () {
+            // เมื่อคลิกปุ่ม Sign In
+            $('.btn-secondary').click(function (e) {
+                e.preventDefault(); // ป้องกันการ submit ฟอร์มแบบปกติ
+
+                // ดึงข้อมูลจากฟอร์ม
+                var username = $('#username').val();
+                var password = $('#password-input').val();
+                var rememberMe = $('#auth-remember-check').is(':checked');
+
+                // ตรวจสอบว่ากรอกข้อมูลครบหรือไม่
+                if (!username || !password) {
+                    alert('กรุณากรอกชื่อผู้ใช้และรหัสผ่าน');
+                    return;
+                }
+
+                // สร้าง object สำหรับส่งข้อมูล
+                var loginData = {
+                    Username: username, // ต้องตรงกับ property ใน UserModel
+                    Password: password, // ต้องตรงกับ property ใน UserModel
+                    RememberMe: rememberMe
+                };
+
+                // ดึง AntiForgeryToken จากฟอร์ม
+                var token = $('input[name="__RequestVerificationToken"]').val();
+
+                // เพิ่ม token ลงใน loginData
+                loginData.__RequestVerificationToken = token;
+
+                // ส่ง AJAX request ไปยัง server
+                $.ajax({
+                    url: '/Auth/Login', // ปรับ URL ตาม route จริง
+                    type: 'POST',
+                    data: loginData,
+                    success: function (response) {
+                        if (response.success) {
+                            if (response.company === '00000000-0000-0000-0000-000000000000')
+                                window.location.href = response.returnUrl || '/Dashboards/Admin';
+                            else
+                                window.location.href = response.returnUrl || '/Dashboards/Index';
+                        } else {
+                            // แสดงข้อความผิดพลาดจาก server
+                            alert(response.message || 'การเข้าสู่ระบบล้มเหลว');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        // เมื่อเกิดข้อผิดพลาด
+                        alert('เกิดข้อผิดพลาด: ' + xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- password-addon init -->
+    <script src="~/assets/js/pages/password-addon.init.js"></script>
+
+</body>
+</html>

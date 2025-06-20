@@ -1,0 +1,129 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = manager
+build_property.RootNamespace = manager
+build_property.ProjectDir = c:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\manager\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = c:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\manager
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Cards/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Chargers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcmdlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Company/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Connecters/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29ubmVjdGVyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Dashboards/Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkc1xBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Dashboards/ConnecterDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkc1xDb25uZWN0ZXJEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Dashboards/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Shared/_footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9mb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Shared/_head_css.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9oZWFkX2Nzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Shared/_menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9tZW51LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Shared/_page_title.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9wYWdlX3RpdGxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Shared/_sidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9zaWRlYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Shared/_title_meta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF90aXRsZV9tZXRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Shared/_topbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF90b3BiYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Shared/_vendor_scripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF92ZW5kb3Jfc2NyaXB0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Stations/Holiday.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGlvbnNcSG9saWRheS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Stations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGlvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Stations/_StationInfo--Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGlvbnNcX1N0YXRpb25JbmZvLS1UYWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Stations/_StationInfo_Holiday--Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGlvbnNcX1N0YXRpb25JbmZvX0hvbGlkYXktLVRhYmxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Transactions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/SDrive/PFT/_Projects/Chargeme/Source/chargeme-app/manager/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ystajp3leh

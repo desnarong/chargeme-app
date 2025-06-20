@@ -1,0 +1,310 @@
+﻿@{
+    ViewData["Title"] = "แสดงเครื่องชาร์จ";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-sm-2 align-self-end float-end">
+                                <a href="javascript:CreateChargePointModal()" class="btn btn-info"><i class="fa-solid fa-circle-plus"></i><span> เพิ่มเครื่องชาร์จ</span></a>
+                            </div>
+                        </div>
+                    </div>
+                <div class="card-body">
+                    <div class="table-responsive mt-4">
+                        <partial name="_ChargePoint--Table" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--begin:Create:Modal-->
+<div class="modal fade" id="chargepointcreate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">เพิ่มเครื่องชาร์จ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="chargecreate-id" class="form-control-label">รหัสเครื่องชาร์จ:</label>
+                        <input type="text" class="form-control" id="chargecreate-id">
+                    </div>
+                    <div class="form-group">
+                        <label for="chargecreate-name" class="form-control-label">ชื่อเครื่องชาร์จ:</label>
+                        <input type="text" class="form-control" id="chargecreate-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="chargecreate-station" class="form-control-label">สถานีชาร์จ:</label>
+                        <select id="chargecreate-station" class="form-control">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="chargecreate-note" class="form-control-label">หมายเหตุ:</label>
+                        <input type="text" class="form-control" id="chargecreate-note">
+                    </div>
+                    <div class="form-group">
+                        <label for="charge-create-image" class="form-control-label">รูป:</label>
+                        <input id="charge-create-image" type="file" name="image" accept=".png, .jpg, .jpeg" onchange="chargecreateimagepreview(event)" />
+                    </div>
+                    <div class="form-group">
+                        <img id="charge-create-image_preview" class="w-50" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="CreateChargePointClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end:EDIT:Modal-->
+<!--begin:EDIT:Modal-->
+<div class="modal fade" id="chargepoint-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลเครื่องชาร์จ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group d-none">
+                        <input type="text" class="form-control" id="chargeid" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="charge-id" class="form-control-label">รหัสเครื่องชาร์จ:</label>
+                        <input type="text" class="form-control" id="charge-id" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="charge-name" class="form-control-label">ชื่อเครื่องชาร์จ:</label>
+                        <input type="text" class="form-control" id="charge-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="charge-station" class="form-control-label">สถานีชาร์จ:</label>
+                        <select id="charge-station" class="form-control">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="charge-note" class="form-control-label">หมายเหตุ:</label>
+                        <input type="text" class="form-control" id="charge-note">
+                    </div>
+                    <div class="form-group">
+                        <label for="charge-image" class="form-control-label">รูป:</label>
+                        <input id="charge-image" type="file" name="image" accept=".png, .jpg, .jpeg" onchange="chargeimagepreview(event)" />
+                    </div>
+                    <div class="form-group">
+                        <img id="charge-image_preview" class="w-50" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="EditChargePointClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end:EDIT:Modal-->
+<script>
+    var tablechargepoint;
+    $(document).ready(function () {
+        $('#chargepoint-modal').appendTo("body");
+
+        tablechargepoint = $('#table--chargepoint').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pageLength": 25,
+            "destroy": true,
+            "searching": false,
+            "dom": 'rt<"bottom"flp><"clear">',
+            "contentType": "application/json; charset=utf-8",
+            "ajax": {
+                url: '/ChargePoint/GetChargePointTable',
+                type: "POST"
+            },
+            columns: [
+                { "data": 'shortName' },
+                { "data": 'name' },
+                { "data": 'stationName' },
+                { "data": 'comment' },
+                { "data": 'actionEdit' },
+                { "data": 'actionDelete' }
+            ],
+            "columnDefs": [
+                { "targets": 0, "orderable": true },
+                { "targets": 1, "orderable": false },
+                { "targets": 2, "orderable": false },
+                { "targets": 3, "orderable": false },
+                { "targets": 4, "orderable": false },
+                { "targets": 5, "orderable": false },
+            ],
+            rowId: function (a) {
+                return 'chargepointid_' + a.chargerId;
+            },
+        });
+    });
+
+    function CreateChargePointModal() {
+        clear();
+        $('#chargepointcreate-modal').modal('show');
+        GetStationSelect(0);
+    }
+
+    function CreateChargePointClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#chargecreate-id').val());
+        fileData.append('name', $('#chargecreate-name').val());
+        fileData.append('stationid', $('#chargecreate-station').val());
+        fileData.append('comment', $('#chargecreate-note').val());
+
+        var fileUpload = $("#charge-create-image").get(0);
+
+        if (fileUpload.files.length > 0) {
+            fileData.append("file", $("#charge-create-image")[0].files[0]);
+        }
+
+
+        $.ajax({
+            url: '/ChargePoint/CreateChargePoint',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#chargepointcreate-modal').modal('hide');
+                    SwalFunc.Success("Create Success");
+                    tablechargepoint.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function EditChargePointModal(id) {
+        clear();
+        $('#chargepoint-modal').modal('show');
+
+        var chargerId = tablechargepoint.row('#chargepointid_' + id).data().chargerId;
+        var name = tablechargepoint.row('#chargepointid_' + id).data().name;
+        var stationId = tablechargepoint.row('#chargepointid_' + id).data().stationId;
+        var comment = tablechargepoint.row('#chargepointid_' + id).data().comment;
+        var images = tablechargepoint.row('#chargepointid_' + id).data().image;
+        var shortName = tablechargepoint.row('#chargepointid_' + id).data().shortName;
+        GetStationSelect(stationId);
+        $('#chargeid').val(chargerId);
+        $('#charge-id').val(shortName);
+        $('#charge-name').val(name);
+        $('#charge-station').val(stationId);
+        $('#charge-note').val(comment);
+        if (images.length > 0)
+            $('#charge-image_preview').attr('src', 'data:image/jpg;base64,' + images);
+    }
+
+    function EditChargePointClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#chargeid').val());
+        fileData.append('name', $('#charge-name').val());
+        fileData.append('stationid', $('#charge-station').val());
+        fileData.append('comment', $('#charge-note').val());
+
+
+        var fileUpload = $("#charge-image").get(0);
+
+
+        if (fileUpload.files.length > 0) {
+            fileData.append("file", $("#charge-image")[0].files[0]);
+        }
+
+        $.ajax({
+            url: '/ChargePoint/UpadateChargePoint',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#chargepoint-modal').modal('hide');
+                    SwalFunc.Success("Update Success");
+                    tablechargepoint.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+    function DeleteChargePointModalClick(Id) {
+        SwalFunc.ConfirmAjaxDeleteWithReload(Id, "/ChargePoint/DeleteChargePoint", "POST", tablechargepoint);
+    }
+    function GetStationSelect(id) {
+        $.ajax({
+            url: '/ChargePoint/GetStationSelect',
+            type: "POST",
+            success: function (data) {
+                var obj = data.data;
+                var options = '';
+                $("#chargecreate-station").find('option').remove();
+                $("#charge-station").find('option').remove();
+                if (obj.length > 0) {
+                    for (var i = 0; i < obj.length; i++) {
+                        if (id == obj[i].fId) {
+                            options += '<option selected value="' + obj[i].fId + '">' + obj[i].fName + '</option>';
+                        }
+                        else {
+                            options += '<option value="' + obj[i].fId + '">' + obj[i].fName + '</option>';
+                        }
+                    }
+                }
+                else {
+                    options += '<option value="0">กรุณาเพิ่มสถานีชาร์จก่อน</option>';
+                }
+                $("#charge-station").append(options);
+                $("#chargecreate-station").append(options);
+            }
+        });
+    }
+    function clear() {
+        $('#charge-id').val('');
+        $('#charge-name').val('');
+        $('#charge-station').val(0);
+        $('#charge-note').val('');
+
+        $('#chargecreate-id').val('');
+        $('#chargecreate-name').val('');
+        $('#chargecreate-station').val(0);
+        $('#chargecreate-note').val('');
+        $('#charge-create-image_preview').attr('src','');
+        $('#charge-image_preview').attr('src', '');
+        $('#charge-image').val('');
+        $('#charge-create-image').val('');
+    }
+    //image preview
+    var chargecreateimagepreview = function (event) {
+        var output = document.getElementById('charge-create-image_preview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+
+    var chargeimagepreview = function (event) {
+        var output = document.getElementById('charge-image_preview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>

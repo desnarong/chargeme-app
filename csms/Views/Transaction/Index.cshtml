@@ -1,0 +1,236 @@
+﻿@{
+    ViewData["Title"] = "แสดงรายการ";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label class="col-form-label">สถานี</label>
+                            <select id="transaction-station" class="form-control">
+                                <option value="0">ทั้งหมด</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label class="col-form-label">เครื่องชาร์จ</label>
+                            <select id="transaction-chargepoint" class="form-control">
+                                <option value="0">ทั้งหมด</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2 d-none">
+                            <label class="col-form-label">บัตร RFID</label>
+                            <label id="transaction-plateno" class="col-form-label color-all"></label>
+                            <select id="transaction-chargetag" class="form-control">
+                                <option value="0">ทั้งหมด</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label class="col-form-label">จากวันที่</label>
+                            <input id="inp--startdate" class="form-control" type="text">
+                        </div>
+                        <div class="col-sm-2">
+                            <label class="col-form-label">ถึง</label>
+                            <input id="inp--enddate" class="form-control" type="text">
+                        </div>
+                        <div class="col-sm-4 align-self-end">
+                            <button onclick="SearchTransaction()" class="ml-2 btn btn-info"><i class="fa-solid fa-search"></i> ค้นหา</button>
+                            <a href="javascript:Print()" class="ml-1 btn"><i class="fa-solid fa-print fa-2x text-info"></i></a>
+                            <a href="javascript:CSVExport()" class="ml-1 btn"><i class="fa-solid fa-file-csv fa-2x text-info"></i></a>
+
+                        </div>
+                    </div>
+                    <div class="table-responsive mt-4">
+                        <partial name="_Transaction--Table" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var tabletransaction
+    $(document).ready(function () {
+        var date = new Date(), y = date.getFullYear(), m = date.getMonth();
+        var firstDay = new Date(y, m, 1);
+        var lastDay = new Date(y, m + 1, 0);
+
+        // Datepicker
+        $("#inp--startdate").datepicker({
+            format: "dd/mm/yyyy",
+            language: "th",
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $("#inp--enddate").datepicker({
+            format: "dd/mm/yyyy",
+            language: "th",
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $('#inp--startdate').datepicker('setDate', firstDay);
+        $('#inp--enddate').datepicker('setDate', lastDay);
+
+        tabletransaction = $('#table--transaction').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pageLength": 25,
+            "destroy": true,
+            "searching": false,
+            "contentType": "application/json; charset=utf-8",
+            "dom": 'rt<"bottom"flp><"clear">',
+            "ajax": {
+                url: '/Transaction/GetTransactionTable',
+                type: "POST",
+                data: function (d) {
+                    return $.extend({}, d, {
+                        "station": $('#transaction-station').val(),
+                        "chargepoint": $('#transaction-chargepoint').val(),
+                        "startdate": $('#inp--startdate').val(),
+                        "enddate": $('#inp--enddate').val(),
+                    });
+                },
+                complete: function (data) {
+                }
+            },
+            columns: [
+                { "data": 'chargerCode' },
+                { "data": 'connectorNo' },
+                { "data": 'startTagId' },
+                { "data": 'plateNo' },
+                { "data": 'startDateTime' },
+                { "data": 'usedTime' },
+                { "data": 'chargeSum' },
+                { "data": 'transactionNo' },
+                { "data": 'cost' },
+                { "data": 'stopReason' }
+            ],
+            "columnDefs": [
+                { "targets": 0, "orderable": true },
+                { "targets": 1, "orderable": false },
+                { "targets": 2, "orderable": true },
+                { "targets": 3, "orderable": false },
+                { "targets": 4, "orderable": true },
+                { "targets": 5, "orderable": false },
+                { "targets": 6, "orderable": false },
+                { "targets": 7, "orderable": true },
+                { "targets": 8, "orderable": false },
+            ],
+            rowId: function (a) {
+                return 'transactionid_' + a.companyId;
+            },
+            buttons: [
+                {
+                    extend: 'csv',
+                    charset: 'UTF-8',
+                    fieldSeparator: ',',
+                    bom: true,
+                    filename: 'transactioncsv',
+                    title: 'TransactionCSV'
+                }
+            ]
+        });
+        GetStationSelect();
+        GetChargePointSelect();
+        //GetChargeTagSelect();
+    });
+
+    function SearchTransaction() {
+        tabletransaction.ajax.reload();
+    }
+    function CSVExport() {
+        tabletransaction.button('.buttons-csv').trigger();
+    }
+    function Print() {
+        let a = document.createElement('a');
+        var url = '/Transaction/Print?chargepoint=' + $('#transaction-chargepoint').val();
+        url += "&chargetag=" + $('#transaction-chargetag').val();
+        url += "&startdate=" + $('#inp--startdate').val();
+        url += "&enddate=" + $('#inp--enddate').val();
+
+        a.target = '_blank';
+        a.href = url;
+        a.click();
+    }
+    function GetChargePointSelect() {
+        $.ajax({
+            url: '/Transaction/GetChargePointSelect',
+            type: "POST",
+            success: function (data) {
+                var obj = data.data;
+                var options = '';
+
+                $("#transaction-chargepoint").find('option').remove();
+                options += '<option value="0">ทั้งหมด</option>';
+                if (obj.length > 0) {
+                    for (var i = 0; i < obj.length; i++) {
+                        options += '<option value="' + obj[i].chargerId + '_' + obj[i].connectorId + '">' + obj[i].shortName + ' #' + obj[i].connectorId + '</option>';
+                    }
+                    $("#transaction-chargepoint").append(options);
+                }
+            }
+        });
+    }//
+    function GetStationSelect() {
+        $.ajax({
+            url: '/Transaction/GetStationSelect',
+            type: "POST",
+            success: function (data) {
+                var obj = data.data;
+                var options = '';
+
+                $("#transaction-station").find('option').remove();
+                options += '<option value="0">ทั้งหมด</option>';
+                if (obj.length > 0) {
+                    for (var i = 0; i < obj.length; i++) {
+                        options += '<option value="' + obj[i].id + '">' + obj[i].name + '</option>';
+                    }
+                    $("#transaction-station").append(options);
+                }
+            }
+        });
+    }
+    function GetChargeTagSelect() {
+        $.ajax({
+            url: '/Transaction/GetChargeTagSelect',
+            type: "POST",
+            success: function (data) {
+                var obj = data.data;
+                var options = '';
+
+                $("#transaction-chargetag").find('option').remove();
+                options += '<option value="0">ทั้งหมด</option>';
+                if (obj.length > 0) {
+                    for (var i = 0; i < obj.length; i++) {
+                        options += '<option value="' + obj[i].tagId + '">' + obj[i].tagId + '</option>';
+                    }
+                    $("#transaction-chargetag").append(options);
+                }
+
+                $("#transaction-chargetag").change();
+            }
+        });
+    }
+    $("#transaction-chargetag").change(function () {
+        var chargetagid = $(this).val();
+        $.ajax({
+            url: '/Transaction/GetChargeTagPlateNo',
+            type: "POST",
+            data: { chargetagid: chargetagid },
+            success: function (data) {
+                if (data.data)
+                    $('#transaction-plateno').html('[' + data.data.plateNo + ']');
+                else
+                    $('#transaction-plateno').html('');
+            }
+        });
+    });
+</script>

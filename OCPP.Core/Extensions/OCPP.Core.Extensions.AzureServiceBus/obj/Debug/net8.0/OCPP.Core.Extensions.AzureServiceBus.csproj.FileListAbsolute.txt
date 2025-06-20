@@ -1,0 +1,32 @@
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\bin\Debug\net8.0\appsettings.json
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\bin\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.deps.json
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\bin\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.dll
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\bin\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.pdb
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\bin\Debug\net8.0\OCPP.Core.Server.Extensions.dll
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\bin\Debug\net8.0\OCPP.Core.Server.Extensions.pdb
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.csproj.AssemblyReference.cache
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.GeneratedMSBuildEditorConfig.editorconfig
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.AssemblyInfoInputs.cache
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.AssemblyInfo.cs
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.csproj.CoreCompileInputs.cache
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Cor.B00C4573.Up2Date
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.dll
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\refint\OCPP.Core.Extensions.AzureServiceBus.dll
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.pdb
+D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\ref\OCPP.Core.Extensions.AzureServiceBus.dll
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\bin\Debug\net8.0\appsettings.json
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\bin\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.deps.json
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\bin\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.dll
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\bin\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.pdb
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\bin\Debug\net8.0\OCPP.Core.Server.Extensions.dll
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\bin\Debug\net8.0\OCPP.Core.Server.Extensions.pdb
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.csproj.AssemblyReference.cache
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.GeneratedMSBuildEditorConfig.editorconfig
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.AssemblyInfoInputs.cache
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.AssemblyInfo.cs
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.csproj.CoreCompileInputs.cache
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Cor.B00C4573.Up2Date
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.dll
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\refint\OCPP.Core.Extensions.AzureServiceBus.dll
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\OCPP.Core.Extensions.AzureServiceBus.pdb
+C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\OCPP.Core\Extensions\OCPP.Core.Extensions.AzureServiceBus\obj\Debug\net8.0\ref\OCPP.Core.Extensions.AzureServiceBus.dll

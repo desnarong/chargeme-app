@@ -1,0 +1,106 @@
+﻿@using manager.Models
+@using Newtonsoft.Json
+@using manager.Entities
+@{
+    var user = Context.Session.GetString(Constants.SessionUserData);
+    var userInfo = JsonConvert.DeserializeObject<TblUser>(user);
+}
+
+<!-- ========== App Menu ========== -->
+<div class="app-menu navbar-menu">
+    <!-- LOGO -->
+    <div class="navbar-brand-box">
+        <!-- Dark Logo-->
+        <a href="@Url.Action("Index", "Dashboard")" class="logo logo-dark">
+            <span class="logo-sm">
+                <img src="~/assets/images/logo-sm.png" alt="" height="22">
+            </span>
+            <span class="logo-lg">
+                <img src="~/assets/images/logo-icon.png" alt="" height="72">
+            </span>
+        </a>
+        <!-- Light Logo-->
+        <a href="@Url.Action("Index", "Dashboard")" class="logo logo-light">
+            <span class="logo-sm">
+                <img src="~/assets/images/logo-sm.png" alt="" height="52">
+            </span>
+            <span class="logo-lg">
+                <img src="~/assets/images/logo-icon.png" alt="" height="72">
+            </span>
+        </a>
+        <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
+            <i class="ri-record-circle-line"></i>
+        </button>
+    </div>
+
+    <div id="scrollbar">
+        <div class="container-fluid">
+
+            <div id="two-column-menu">
+            </div>
+            <ul class="navbar-nav" id="navbar-nav">
+                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                <li class="nav-item">
+                    @if (userInfo.FCompanyId == Guid.Empty)
+                    {
+                        <a class="nav-link menu-link" href="@Url.Action("Admin", "Dashboards")">
+                            <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="nav-link menu-link" href="@Url.Action("Index", "Dashboards")">
+                            <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
+                        </a>
+                    }
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="@Url.Action("Index", "Transactions")">
+                        <i class="ri-pages-line"></i> <span data-key="t-transactions">Transactions</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="@Url.Action("Index", "Chargers")">
+                        <i class="ri-charging-pile-2-line"></i> <span data-key="t-chargers">Chargers</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="@Url.Action("Index", "Connecters")">
+                        <i class="ri-plug-2-line"></i> <span data-key="t-connectors">Connecters</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="@Url.Action("Index", "Cards")">
+                        <i class="ri-bank-card-2-line"></i> <span data-key="t-cards">Cards</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="@Url.Action("Index", "Stations")">
+                        <i class=" ri-gas-station-line"></i> <span data-key="t-stations">Stations</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="@Url.Action("Index", "Company")">
+                        <i class=" ri-earth-line"></i> <span data-key="t-offices">Company</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="@Url.Action("Index", "Users")">
+                        <i class="ri-group-line"></i> <span data-key="t-users">Users</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="@Url.Action("Logout", "Auth")">
+                        <i class="ri-logout-circle-r-line"></i> <span data-key="t-logout">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Sidebar -->
+    </div>
+    <div class="sidebar-background"></div>
+</div>
+<!-- Left Sidebar End -->
+<!-- Vertical Overlay-->
+<div class="vertical-overlay"></div>

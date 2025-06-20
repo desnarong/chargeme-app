@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "tqBuulpSnaGcGqHNBS++GWw+XWjRbLPEvgja4MBBDjs=",
+  "Source": "OCPP.Core.Server",
+  "BasePath": "_content/OCPP.Core.Server",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

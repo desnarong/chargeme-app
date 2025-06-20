@@ -1,0 +1,415 @@
+﻿@{
+    ViewBag.Title = "Cards";
+    ViewBag.pTitle = "Cards";
+    ViewBag.pageTitle = "Cards";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/assets/libs/onscan-js/onscan.min.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-sm-2 align-self-end float-end">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cardcreate-modal" data-key="addcard"><i class="ri-add-circle-line la-1-50x align-middle"></i><span class="align-middle" data-key="add-card"> Add Card</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="table--card" class="table nowrap align-middle dataTable no-footer">
+                            <thead>
+                                <tr>
+                                    <th data-key="code">Code</th>
+                                    <th data-key="plate-number">Plate Number</th>
+                                    <th data-key="owner-name">Owner's name</th>
+                                    <th data-key="owner-organization">Organization</th>
+                                    <th data-key="expireday">Expiry date</th>
+                                    <th data-key="status">Status</th>
+                                    <th data-key="edit">Edit</th>
+                                    <th data-key="delete">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="cardcreate-modal" class="modal fade" tabindex="-1" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content border-0 overflow-hidden">
+            <div class="modal-header p-3">
+                <h4 class="card-title mb-0" data-key="addcard">Add Card</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="card-id" class="form-label" data-key="code">Code:</label>
+                        <div class="row">
+                            <div class="col-md-8 ml-1"><input type="text" class="form-control" id="card-id"></div>
+                            <div class="col-md-3">
+                                <button id="btn-scanner" type="button" class="btn btn-info" data-key="scan">Scan</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="card-platenumber" class="form-label" data-key="plate-number">Plate Number:</label>
+                        <input type="text" class="form-control" id="card-platenumber">
+                    </div>
+                    <div class="mb-3">
+                        <label for="card-name" class="form-label" data-key="owner-name">Owner's name:</label>
+                        <input type="text" class="form-control" id="card-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="card-owner" class="form-label" data-key="owner-organization">Organization:</label>
+                        <input type="text" class="form-control" id="card-owner">
+                    </div>
+                    <div class="mb-3">
+                        <label for="card-expireday" class="form-label" data-key="expireday">Expiry date:</label>
+                        <input type="text" class="form-control" id="card-expireday">
+                    </div>
+
+                    <div class="text-end">
+                        <button type="button" class="btn btn-primary" onclick="CreateCardClick()" data-key="save">Save</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="cancel">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--begin::Modal-->
+<div class="modal fade" id="cardedit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" data-key="updatecard">Update Card</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3 d-none">
+                        <input type="text" class="form-control" id="cardedit-id" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cardedit-platenumber" class="form-label" data-key="plate-number">Plate Number:</label>
+                        <input type="text" class="form-control" id="cardedit-platenumber">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cardedit-name" class="form-label" data-key="owner-name">Owner's name:</label>
+                        <input type="text" class="form-control" id="cardedit-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cardedit-owner" class="form-label" data-key="owner-organization">Organization:</label>
+                        <input type="text" class="form-control" id="cardedit-owner">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cardedit-expireday" class="form-label" data-key="expireday">Expiry date:</label>
+                        <input type="text" class="form-control" id="cardedit-expireday">
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="cardedit-blocked">
+                        <label class="custom-control-label" for="cardedit-blocked" data-key="blocked">Blocked</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="EditCardClick()" data-key="save">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+@section scripts{
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+}
+<script>
+    var cardtable;
+    var initstatus = false;
+
+    $(document).ready(function () {
+        var d = new Date();
+        var toDay = d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear();
+
+        $('#cardedit-modal').appendTo("body");
+        $('#cardcreate-modal').appendTo("body");
+
+        // Datepicker
+        $("#card-expireday").datepicker({
+            format: "dd/mm/yyyy",
+            language: "th",
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $("#cardedit-expireday").datepicker({
+            format: "dd/mm/yyyy",
+            language: "th",
+            autoclose: true,
+        });
+
+        $('#card-expireday', '#cardedit-expireday').datepicker('setDate', toDay);
+
+        $('#cardcreate-modal').appendTo("body");
+
+        cardtable = $('#table--card').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pageLength": 25,
+            "destroy": true,
+            "searching": false,
+            //"dom": 'rt<"bottom"flp><"clear">',
+            "contentType": "application/json; charset=utf-8",
+            "ajax": {
+                url: '/Cards/GetCardsTable',
+                type: "POST"
+            },
+            columns: [
+                { "data": 'tagCode' },
+                { "data": 'plateNo' },
+                { "data": 'customerName' },
+                { "data": 'agencyName' },
+                { "data": 'expiryDate' },
+                { "data": 'blockedStatus' },
+                { "data": 'actionEdit' },
+                { "data": 'actionDelete' }
+            ],
+            "columnDefs": [
+                { "targets": 0, "orderable": true },
+                { "targets": 1, "orderable": true },
+                { "targets": 2, "orderable": true },
+                { "targets": 3, "orderable": true },
+                { "targets": 4, "orderable": true },
+                { "targets": 5, "orderable": true },
+                { "targets": 6, "orderable": false },
+                { "targets": 7, "orderable": false },
+            ],
+            rowId: function (a) {
+                return 'cardid_' + a.tagId;
+            },
+        });
+    });
+
+    function CreateCardsModal() {
+        $('#cardcreate-modal').modal('show');
+    }
+
+    function CreateCardsClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#card-id').val());
+        fileData.append('platenumber', $('#card-platenumber').val());
+        fileData.append('name', $('#card-name').val());
+        fileData.append('owner', $('#card-owner').val());
+        fileData.append('expireday', $('#card-expireday').val());
+
+        $.ajax({
+            url: '/Cards/CreateCard',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#cardcreate-modal').modal('hide');
+                    Swal.fire({
+                        title: 'Charger!',
+                        text: 'Create card success!',
+                        icon: 'success',
+                        showCancelButton: false,
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        buttonsStyling: false,
+                        showCloseButton: true
+                    });
+                    cardtable.ajax.reload();
+                    clear();
+                } else {
+                    SwalFunc.Error(data);
+                }
+            }
+        });
+    }
+
+    function EditCardModal(tagId) {
+        $('#cardedit-modal').modal('show');
+        var plateNo = cardtable.row('#cardid_' + tagId).data().plateNo;
+        var customerName = cardtable.row('#cardid_' + tagId).data().customerName;
+        var agencyName = cardtable.row('#cardid_' + tagId).data().agencyName;
+        var expiryDate = cardtable.row('#cardid_' + tagId).data().expiryDate;
+        var blocked = cardtable.row('#cardid_' + tagId).data().blocked;
+
+        $('#cardedit-id').val(tagId);
+        $('#cardedit-platenumber').val(plateNo);
+        $('#cardedit-name').val(customerName);
+        $('#cardedit-owner').val(agencyName);
+        $('#cardedit-expireday').val(expiryDate);
+        $('#cardedit-blocked').prop('checked', blocked);
+    }
+
+    function EditCardClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#cardedit-id').val());
+        fileData.append('platenumber', $('#cardedit-platenumber').val());
+        fileData.append('name', $('#cardedit-name').val());
+        fileData.append('owner', $('#cardedit-owner').val());
+        fileData.append('expireday', $('#cardedit-expireday').val());
+        fileData.append('blocked', $('#cardedit-blocked').is(":checked"));
+
+        $.ajax({
+            url: '/Cards/UpadateCard',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#cardedit-modal').modal('hide');
+                    Swal.fire({
+                        title: 'Charger!',
+                        text: 'Update card success!',
+                        icon: 'success',
+                        showCancelButton: false,
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        buttonsStyling: false,
+                        showCloseButton: true
+                    });
+                    cardtable.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function DeleteCardModalClick(Id) {
+        //SwalFunc.ConfirmAjaxDeleteWithReload(Id, "/Cards/DeleteCards", "POST", cardtable);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to delete it?",
+            icon: "warning",
+            showCancelButton: true,
+            customClass: {
+                confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                cancelButton: 'btn btn-danger w-xs mt-2',
+            },
+            confirmButtonText: "Yes, delete it!",
+            buttonsStyling: false,
+            showCloseButton: true
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    url: "/Cards/DeleteCard",
+                    type: "POST",
+                    data: { id: id },
+                    success: function (data) {
+                        if (data == 'success') {
+                            Swal.fire({
+                                title: 'Deleted!',
+                                text: 'Your card has been deleted.',
+                                icon: 'success',
+                                customClass: {
+                                    confirmButton: 'btn btn-primary w-xs mt-2',
+                                },
+                                buttonsStyling: false
+                            })
+                            cardtable.ajax.reload();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    $('#btn-scanner').click(function () {
+        if (initstatus) destroyOnScan();
+        initOnScanCard();
+        $('#cardcreate-modal').focus();
+    });
+
+    function initOnScanCard() {
+        initstatus = true;
+        var suffixKeyCodes = [9, 13];
+        var prefixKeyCodes = [];
+
+        var options = {
+            timeBeforeScanTest: 100,
+            avgTimeByChar: 30,
+            minLength: 6,
+            suffixKeyCodes: suffixKeyCodes,
+            prefixKeyCodes: prefixKeyCodes,
+            scanButtonLongPressTime: 500,
+            stopPropagation: false,
+            preventDefault: false,
+            reactToPaste: true,
+            reactToKeyDown: true,
+            singleScanQty: 1
+        };
+
+        options.onScan = function (barcode, qty) {
+            var card = decimalToHexString(barcode);
+            $('#card-id').val(card);
+        };
+        onScan.attachTo(this, options);
+        //console.log("onScan initOnScanCard!");
+
+    }
+    function decimalToHexString(input) {
+        var number = Number(input);
+        if (number < 0) {
+            number = 0xFFFFFFFF + Number(number) + 1;
+        }
+
+        var hexString = number.toString(16).toUpperCase();
+        var reversedString = hexString.split('').reverse().join('');
+
+        // Group the characters in pairs
+        var pairArray = [];
+        for (var i = 0; i < hexString.length; i += 2) {
+            pairArray.push(hexString.substr(i, 2));
+        }
+        pairArray.reverse();
+
+        // Join the pairs back into a single string
+        var switchedString = pairArray.join('');
+
+        return switchedString;
+    }
+
+    var destroyOnScan = function () {
+        initstatus = false;
+        //console.log("onScan destroyed!");
+        onScan.detachFrom(this);
+    }
+
+    function clear() {
+        $('#cardedit-id').val('');
+        $('#cardedit-platenumber').val('');
+        $('#cardedit-name').val('');
+        $('#cardedit-owner').val('');
+        $('#cardedit-expireday').val('');
+        $('#cardedit-blocked').prop('checked', false);
+
+        $('#card-id').val('');
+        $('#card-platenumber').val('');
+        $('#card-name').val('');
+        $('#card-owner').val('');
+        $('#card-expireday').val('');
+    }
+</script>

@@ -1,0 +1,571 @@
+﻿@model manager.Models.ConnectorStatusDataModel
+@{
+    ViewBag.Title = "Dashboards";
+    ViewBag.pTitle = "ConnecterDetail";
+    ViewBag.pageTitle = "Dashboards";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var datas = Model.connectorStatusViewDatas;
+    var data = datas.FirstOrDefault();
+    var ChargerId = data.ChargerId;
+    var IsOnline = data.IsOnline;
+    var IsHeartBeat = data.IsHeartBeat;
+    var HeartBeatlastDate = data.HeartBeatlastDate;
+    var Image = data.Image;
+    var ChargePointName = data.ChargerName;
+}
+<script src="~/assets/libs/microsoft-signalr/signalr.min.js"></script>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="row">
+            <!-- Number of Chargers -->
+            <div class="col-xl-3">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-lg flex-shrink-0">
+                                <span class="avatar-title bg-primary-subtle text-primary rounded-2 fs-2">
+                                    <i class="ri-charging-pile-2-line la-2x"></i>
+                                </span>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden ms-3">
+                                <p class="text-uppercase fw-semibold text-muted text-truncate mb-3" data-key="t-numberofchargers">Number of Chargers</p>
+                                <div class="d-flex align-items-center mb-3">
+                                    <h4 class="flex-grow-1 mb-0"><span class="counter-value" id="numberofchargers">0</span></h4>
+                                </div>
+                                <p class="text-muted fs-11 fw-light text-truncate mb-0" data-key="t-totalnumberofchargersofthecompany">Total chargers owned by the company</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number of Connectors -->
+            <div class="col-xl-3">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-lg flex-shrink-0">
+                                <span class="avatar-title bg-primary-subtle text-info rounded-2 fs-2">
+                                    <i class="ri-plug-2-line la-2x"></i>
+                                </span>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <p class="text-uppercase fw-medium text-muted mb-3" data-key="t-numberofconnectors">Number of Connectors</p>
+                                <div class="d-flex align-items-center mb-3">
+                                    <h4 class="flex-grow-1 mb-0"><span class="counter-value" id="numberofconnectors">0</span></h4>
+                                </div>
+                                <p class="text-muted fs-11 fw-light text-truncate mb-0" data-key="t-totalnumberofconnectorsofthecompany">Total connectors owned by the company</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connectors Working -->
+            <div class="col-xl-3">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-xl flex-shrink-0">
+                                <div id="chart-gauge" data-colors='["--vz-primary"]' class="e-charts"></div>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden ms-3">
+                                <p class="text-uppercase fw-medium text-muted text-truncate mb-3" data-key="t-connectorsworking">Working Connectors</p>
+                                <div class="d-flex align-items-center mb-3">
+                                    <h4 class="flex-grow-1 mb-0"><span class="counter-value" id="connectorsworking">0</span></h4>
+                                </div>
+                                <p class="text-muted fs-11 fw-light text-truncate mb-0" data-key="t-totalworkingconnectors">Connectors currently in operation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connectors Lost -->
+            <div class="col-xl-3">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1 overflow-hidden ms-3">
+                                @if (Image != null)
+                                {
+                                    <a href="javascript:LightboxModal()"><img id="charge-image_preview" src="data:image/jpg;base64,@(Convert.ToBase64String(Image))" class="rounded float-right w-80px" /></a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-12 mb-2"><span class="h6 font-600">เครื่องชาร์จ @data.ChargerName</span><span class="h6 font-600 ml-3">รหัสเครื่องชาร์จ @data.ChargerCode</span></div>
+                            </div>
+                            <div class="row align-middle">
+
+                                <div class="col-1 mt-1" id="IsOnline">
+                                    <i class='fa-sharp fa-cloud fa-2x @IsOnline'></i>
+                                </div>
+                                <div class="col-9 mt-2">
+                                    <i id="IsHeartBeat" class="fa fa-circle @IsHeartBeat" aria-hidden="true"></i>
+                                    <span class="font-weight-bold">Last heart beat </span><span id="HeartBeatlastDate"> @HeartBeatlastDate </span>
+                                </div>
+                            </div>
+                            <div class="row align-middle">
+                                <div class="col-2">
+                                    <a href="javascript:ResetChargepoint();" class="btn btn-info"><span> Restart</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="col-12 right">
+                                @if (Image != null)
+                                {
+                                    <a href="javascript:LightboxModal()"><img id="charge-image_preview" src="data:image/jpg;base64,@(Convert.ToBase64String(Image))" class="rounded float-right w-100px" /></a>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <table id="table--detail" class="table mt-3 mb-0 text-center">
+                        <thead>
+                            <tr>
+                                <th>รหัส</th>
+                                <th>หัวชาร์จ</th>
+                                <th>สถานะ</th>
+                                <th>หน่วย(kWh)</th>
+                                <th>กำลังไฟฟ้า(kW)</th>
+                                <th>SoC(%)</th>
+                                <th>เวลา</th>
+                                <th>จำนวนเงิน</th>
+                                <th>คำสั่ง</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in datas)
+                            {
+                                <tr>
+                                    <td>@item.ConnectorCode</td>
+                                    <td>@item.ConnectorName</td>
+                                    <td id="laststatus_@item.Id"></td>
+                                    <td id="lastMeter_@item.Id"></td>
+                                    <td id="currentChargeKw_@item.Id"></td>
+                                    <td id="stateOfCharge_@item.Id"></td>
+                                    <td id="curenttime_@item.Id"></td>
+                                    <td id="curentcost_@item.Id"></td>
+                                    <td class="font-weight-bold"><a href='javascript:RemoteStartTransaction("@item.ChargerId", "@item.Id");' class='color-online'>START</a> | <a href='javascript:RemoteStopTransaction("@item.ChargerId", "@item.Id");' class='color-broken'>STOP</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <span class="h6">OCPP Message Monitor:</span>
+            </div>
+            <div class="card-body">
+                <table id="table--chargelog" class="table table-striped table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>State</th>
+                            <th>Type</th>
+                            <th>#</th>
+                            <th>MessageType</th>
+                            <th>LogTime</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- The Modal/Lightbox -->
+
+<div class="modal fade" id="LightboxModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> @($"เครื่องชาร์จ {ChargePointName}")</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @if (Image != null)
+                {
+                    <img src="data:image/jpg;base64,@(Convert.ToBase64String(Image))" style="width:100%">
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="t-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var chargelog;
+    var groups, data;
+    var chargepointcount = 0, running = 0, broken = 0;
+    $(document).ready(function () {
+        $('#LightboxModal').appendTo("body");
+        //SignalR
+        var connection = new signalR.HubConnectionBuilder().withUrl("@Url.Content("/chargePointHub")").build();
+        connection.on("ChargePointDetailMessage_@ChargerId", function (message) {
+            data = JSON.parse(message);
+
+            //if (data.IsOnline =='color-online') {
+            //    //$('#IsHeartBeat').removeClass(".color-offline .color-online ");
+
+
+            //}
+
+            console.log(data);
+
+            $('#IsOnline').html(data.IsOnline);
+            $('#HeartBeatlastDate').html(data.HeartBeatlastDate);
+            //console.log($("#IsHeartBeat").find('.color-offline'));
+            //$('#IsHeartBeat').removeClass(".color-offline .color-online ");
+            //$('#IsHeartBeat').addClass(data.IsHeartBeat);
+            //$('#IsOnline').html(data.IsOnline);
+            $('#IsHeartBeat').addClass(data.IsHeartBeat);
+            $('#laststatus_' + data.Id).html(data.LastStatus);
+            //$('#transaction_' + data.Id).html(data.TransactionId);
+            $('#lastMeter_' + data.Id).html(data.LastMeter);
+            $('#currentChargeKw_' + data.Id).html(data.CurrentChargeKw);
+            if (data.StateOfCharge >= 0)
+                $('#stateOfCharge_' + data.Id).html(data.StateOfCharge);
+
+        });
+
+        connection.start().then(function () {
+
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        chargelog = $('#table--chargelog').DataTable({
+            "processing": false,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "dom": 'rt<"bottom"><"clear">',
+            "destroy": true,
+            "searching": false,
+            "contentType": "application/json; charset=utf-8",
+            "scrollY": true,
+            "ajax": {
+                url: '/Home/GetChargeLogsTable',
+                type: "POST",
+                data: function (d) {
+                    return $.extend({}, d, {
+                        "ChargePoint": '@ChargerId',
+                        "ConectorId": '@data.Id'
+                    });
+                },
+                complete: function (data) {
+                }
+            },
+            columns: [
+                { "data": 'logState' },
+                { "data": 'logType' },
+                { "data": 'connectorId' },
+                { "data": 'message' },
+                { "data": 'logTime' },
+                { "data": 'result' },
+            ],
+            order: [[4, 'desc']],
+        });
+
+        var chartGaugeColors = getChartColorsArray("chart-gauge");
+        if (chartGaugeColors) {
+
+            var chartDom = document.getElementById('chart-gauge');
+            var myChart = echarts.init(chartDom);
+
+            const gaugeData = [
+                {
+                    value: 90,
+                    name: 'SOC',
+                    title: {
+                        offsetCenter: ['0%', '10%']
+                    },
+                    detail: {
+                        valueAnimation: false,
+                        offsetCenter: ['0%', '0%']
+                    }
+                }
+            ];
+            option = {
+                series: [
+                    {
+                        type: 'gauge',
+                        startAngle: 90,
+                        endAngle: -270,
+                        pointer: {
+                            show: false
+                        },
+                        progress: {
+                            show: true,
+                            overlap: false,
+                            roundCap: true,
+                            clip: false,
+                            itemStyle: {
+                                borderWidth: 1,
+                                borderColor: '#969696',
+                                color: '#047551'
+                            }
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                width: 50
+                            }
+                        },
+                        splitLine: {
+                            show: false,
+                            distance: 0,
+                            length: 10
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        axisLabel: {
+                            show: false,
+                            distance: 50
+                        },
+                        data: gaugeData,
+                        title: {
+                            fontSize: 16
+                        },
+                        detail: {
+                            width: 10,
+                            height: 20,
+                            fontSize: 16,
+                            color: 'inherit',
+                            borderColor: 'none',
+                            borderRadius: 25,
+                            borderWidth: 0.5,
+                            formatter: '{value} %'
+                        }
+                    }
+                ]
+            };
+            option && myChart.setOption(option);
+        }
+    });
+
+    function LightboxModal() {
+        $('#LightboxModal').modal('show');
+    }
+
+    function ResetChargepoint() {
+        var dialog = new BootstrapDialog({
+            title: 'Reset',
+            message: '@string.Format("Should the charging station '{0}' really be restarted?", ChargePointName)',
+            spinicon: 'fa fa-spinner fa-fw',
+            buttons: [{
+                id: 'btnDialogReset',
+                label: 'Reset',
+                icon: 'fas fa-redo',
+                autospin: true,
+                action: function (dialogRef) {
+                    dialogRef.enableButtons(false);
+                    dialogRef.setClosable(false);
+                    dialogRef.getModalBody().html('Reset');
+
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                            if (xmlhttp.status == 200) {
+                                dialogRef.getModalBody().html(xmlhttp.responseText);
+                            }
+                            else {
+                                dialogRef.getModalBody().html('An error occured.');
+                            }
+
+                            dialogRef.setClosable(true);
+                            dialogRef.enableButtons(true);
+                            var $resetButton = dialog.getButton('btnDialogReset');
+                            $resetButton.hide();
+                            var $cancelButton = dialog.getButton('btnDialogCancel');
+                            $cancelButton.text('Close');
+
+                        }
+                    };
+                    ////xmlhttp.open("GET", "Html.Raw(Url.Content("~/manager/Home/Reset?Id=" + ChargerId))", true);
+                    //xmlhttp.open("GET", "Html.Raw(Url.ActionLink("Reset", "Home", new { Id = ChargerId }, null))", true);
+                    xmlhttp.open("GET", "/Home/Reset?id" + ChargerId, true);
+                    xmlhttp.send();
+                }
+            }, {
+                id: 'btnDialogCancel',
+                label: 'Cancel',
+                action: function (dialogRef) {
+                    dialogRef.close();
+                    //window.location.href = window.location.href; //This is a possibility
+                    //window.location.reload(); //Another possiblity
+                    chargelog.ajax.reload();
+                    //history.go(0); //And another
+                }
+            }]
+        });
+        dialog.open();
+    }
+
+    function RemoteStartTransaction(ChargerId, ConnectorId) {
+
+        var dialog = new BootstrapDialog({
+            title: 'Start',
+            message: 'Should the charging station really be Start?',
+            spinicon: 'fa fa-spinner fa-fw',
+            buttons: [{
+                id: 'btnStart',
+                label: 'Start',
+                autospin: true,
+                cssClass: 'btn btn-danger',
+                action: function (dialogRef) {
+                    dialogRef.enableButtons(false);
+                    dialogRef.setClosable(false);
+                    dialogRef.getModalBody().html('Start of the charging station is triggered...');
+
+                    const xmlhttp = new XMLHttpRequest()
+                    xmlhttp.open('GET', '/Home/RemoteStartTransaction?id=' + ChargerId + '&connectorId=' + ConnectorId)
+                    xmlhttp.setRequestHeader('Content-type', 'application/json')
+
+                    //http.send() // Make sure to stringify
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                            if (xmlhttp.status == 200) {
+                                //console.log(xmlhttp.responseText);
+                                dialogRef.getModalBody().html(xmlhttp.responseText);
+                            }
+                            else {
+                                dialogRef.getModalBody().html('An error occured.');
+                            }
+
+                            dialogRef.setClosable(true);
+                            dialogRef.enableButtons(true);
+                            var $resetButton = dialog.getButton('btnStart');
+                            $resetButton.hide();
+                            var $cancelButton = dialog.getButton('btnDialogCancel');
+                            $cancelButton.text('Close');
+
+                        }
+                    };
+
+                    xmlhttp.send() // Make sure to stringify
+                }
+            }, {
+                id: 'btnDialogCancel',
+                label: 'Cancel',
+                action: function (dialogRef) {
+                    dialogRef.close();
+                    //window.location.href = window.location.href; //This is a possibility
+                    //window.location.reload(); //Another possiblity
+                    chargelog.ajax.reload();
+                    //history.go(0); //And another
+                }
+            }]
+        });
+        dialog.open();
+    }
+
+    function RemoteStopTransaction(ChargerId, ConnectorId) {
+
+        var dialog = new BootstrapDialog({
+            title: 'Stop',
+            message: 'Should the charging station really be stop?',
+            spinicon: 'fa fa-spinner fa-fw',
+            buttons: [{
+                id: 'btnStop',
+                label: 'Stop',
+                autospin: true,
+                cssClass: 'btn btn-danger',
+                action: function (dialogRef) {
+                    dialogRef.enableButtons(false);
+                    dialogRef.setClosable(false);
+                    dialogRef.getModalBody().html('Stop of the charging station is triggered...');
+
+                    const xmlhttp = new XMLHttpRequest()
+                    xmlhttp.open('GET', '/Home/RemoteStopTransaction?id=' + ChargerId + '&connectorId=' + ConnectorId)
+                    xmlhttp.setRequestHeader('Content-type', 'application/json')
+
+                    //http.send() // Make sure to stringify
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                            if (xmlhttp.status == 200) {
+                                //console.log(xmlhttp.responseText);
+                                dialogRef.getModalBody().html(xmlhttp.responseText);
+                            }
+                            else {
+                                dialogRef.getModalBody().html('An error occured.');
+                            }
+
+                            dialogRef.setClosable(true);
+                            dialogRef.enableButtons(true);
+                            var $resetButton = dialog.getButton('btnStop');
+                            $resetButton.hide();
+                            var $cancelButton = dialog.getButton('btnDialogCancel');
+                            $cancelButton.text('Close');
+
+                        }
+                    };
+
+                    xmlhttp.send() // Make sure to stringify
+                }
+            }, {
+                id: 'btnDialogCancel',
+                label: 'Cancel',
+                action: function (dialogRef) {
+                    dialogRef.close();
+                    //window.location.href = window.location.href; //This is a possibility
+                    //window.location.reload(); //Another possiblity
+                    chargelog.ajax.reload();
+                    //  history.go(0); //And another
+                }
+            }]
+        });
+        dialog.open();
+    }
+    function getChartColorsArray(chartId) {
+        if (document.getElementById(chartId) !== null) {
+            var colors = document.getElementById(chartId).getAttribute("data-colors");
+            colors = JSON.parse(colors);
+            return colors.map(function (value) {
+                var newValue = value.replace(" ", "");
+                if (newValue.indexOf(",") === -1) {
+                    var color = getComputedStyle(document.documentElement).getPropertyValue(newValue);
+                    if (color) return color;
+                    else return newValue;;
+                } else {
+                    var val = value.split(',');
+                    if (val.length == 2) {
+                        var rgbaColor = getComputedStyle(document.documentElement).getPropertyValue(val[0]);
+                        rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
+                        return rgbaColor;
+                    } else {
+                        return newValue;
+                    }
+                }
+            });
+        }
+    }
+</script>

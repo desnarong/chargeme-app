@@ -1,0 +1,672 @@
+﻿@{
+    ViewData["Title"] = "แสดงสถานีชาร์จ";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-sm-2 align-self-end float-end">
+                            <a href="javascript:CreateStationModal();" class="btn btn-info"><i class="fa-solid fa-circle-plus"></i><span> เพิ่มสถานีชาร์จ</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive mt-4">
+                        <partial name="_StationInfo--Table" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--begin::Modal-->
+<div class="modal fade" id="stationcreate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">เพิ่มสถานีชาร์จ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="stationcreate-company" class="form-control-label">สำนักงาน:</label>
+                        <select id="stationcreate-company" class="form-control">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-chargertype" class="form-control-label">คิดค่าบริการ:</label>
+                        <select id="stationcreate-chargertype" class="form-control">
+                            <option value="1">ค่าบริการต่อ kWh</option>
+                            <option value="2">ค่าบริการต่อ ชั่วโมง</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-code" class="form-control-label">รหัสสถานีชาร์จ:</label>
+                        <input type="text" class="form-control" id="stationcreate-code">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-name" class="form-control-label">ชื่อสถานีชาร์จ:</label>
+                        <input type="text" class="form-control" id="stationcreate-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-address" class="form-control-label">ที่อยู่:</label>
+                        <textarea type="text" class="form-control" id="stationcreate-address" cols="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-city" class="form-control-label">อำเภอ:</label>
+                        <input type="text" class="form-control" id="stationcreate-city">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-country" class="form-control-label">จังหวัด:</label>
+                        <input type="text" class="form-control" id="stationcreate-country">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-postcode" class="form-control-label">รหัสไปรษณีย์:</label>
+                        <input type="text" class="form-control" id="stationcreate-postcode">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-tel" class="form-control-label">โทรศัพท์:</label>
+                        <input type="text" class="form-control" id="stationcreate-tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-rfid" class="form-control-label">RFID:</label>
+                        <input type="text" class="form-control" id="stationcreate-rfid">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-lat" class="form-control-label">Location (Lat / Long):</label>
+                        <input type="text" class="form-control" id="stationcreate-lat" value="0">
+                        <input type="text" class="form-control" id="stationcreate-long" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-logo" class="form-control-label">รูป:</label>
+                        <input id="stationcreate-logo" type="file" name="logo" accept=".png, .jpg, .jpeg" onchange="stationcreatelogopreview(event)" />
+                    </div>
+                    <div class="form-group">
+                        <img id="stationcreate-logo_preview" class="w-50" />
+                    </div>
+                    <div class="form-group">
+                        <label for="stationcreate-image" class="form-control-label">รูป:</label>
+                        <input id="stationcreate-image" type="file" name="image" accept=".png, .jpg, .jpeg" onchange="stationcreateimagepreview(event)" />
+                    </div>
+                    <div class="form-group">
+                        <img id="stationcreate-image_preview" class="w-100" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="CreateStationModalClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+<!--begin::Modal-->
+<div class="modal fade" id="stationedit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">แก้ไขสถานีชาร์จ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group d-none">
+                        <input type="text" class="form-control" id="stationedit-id" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-company" class="form-control-label">สำนักงาน:</label>
+                        <select id="stationedit-company" class="form-control">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-chargertype" class="form-control-label">คิดค่าบริการ:</label>
+                        <select id="stationedit-chargertype" class="form-control">
+                            <option value="1">ค่าบริการต่อ kWh</option>
+                            <option value="2">ค่าบริการต่อ ชั่วโมง</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-code" class="form-control-label">รหัสสถานีชาร์จ:</label>
+                        <input type="text" class="form-control" id="stationedit-code" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-name" class="form-control-label">ชื่อสถานีชาร์จ:</label>
+                        <input type="text" class="form-control" id="stationedit-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-address" class="form-control-label">ที่อยู่:</label>
+                        <textarea type="text" class="form-control" id="stationedit-address" cols="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-city" class="form-control-label">อำเภอ:</label>
+                        <input type="text" class="form-control" id="stationedit-city">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-country" class="form-control-label">จังหวัด:</label>
+                        <input type="text" class="form-control" id="stationedit-country">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-postcode" class="form-control-label">รหัสไปรษณีย์:</label>
+                        <input type="text" class="form-control" id="stationedit-postcode">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-tel" class="form-control-label">โทรศัพท์:</label>
+                        <input type="text" class="form-control" id="stationedit-tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-rfid" class="form-control-label">RFID:</label>
+                        <input type="text" class="form-control" id="stationedit-rfid">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-lat" class="form-control-label">Location (Lat / Long):</label>
+                        <input type="text" class="form-control" id="stationedit-lat" value="0">
+                        <input type="text" class="form-control" id="stationedit-long" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-logo" class="form-control-label">รูป:</label>
+                        <input id="stationedit-logo" type="file" name="logo" accept=".png, .jpg, .jpeg" onchange="stationeditlogopreview(event)" />
+                    </div>
+                    <div class="form-group">
+                        <img id="stationedit-logo_preview" class="w-50" />
+                    </div>
+                    <div class="form-group">
+                        <label for="stationedit-image" class="form-control-label">รูป:</label>
+                        <input id="stationedit-image" type="file" name="image" accept=".png, .jpg, .jpeg" onchange="stationeditimagepreview(event)" />
+                    </div>
+                    <div class="form-group">
+                        <img id="stationedit-image_preview" class="w-100" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="EditStationModalClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+<!--begin::Modal-->
+<div class="modal fade" id="electricityrate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">อัตราค่าไฟฟ้าชาร์จต่อ kWh</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group d-none">
+                        <input type="text" class="form-control" id="stationrate-id" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationrate-id" class="form-control-label">รหัสสถานีชาร์จ:</label>
+                        <input type="text" class="form-control" id="stationrate-code" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationrate-name" class="form-control-label">ชื่อสถานีชาร์จ:</label>
+                        <input type="text" class="form-control" id="stationrate-name" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">อัตราค่าชาร์จ (บาท/หน่วย)</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="stationrate-onpeak" class="form-control-label">On-Peak (9:00-22:00)</label>
+                        <input type="text" class="form-control" id="stationrate-onpeak">
+                    </div>
+                    <div class="form-group">
+                        <label for="stationrate-offpeak" class="form-control-label">Off-Peak (22:01-08:59)</label>
+                        <input type="text" class="form-control" id="stationrate-offpeak">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="ElectricityrateModalClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+<div class="modal fade" id="hourrate-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">อัตราค่าไฟฟ้าชาร์จต่อชั่วโมง</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group d-none">
+                        <input type="text" class="form-control" id="hourrate-id" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="hourrate-id" class="form-control-label">รหัสสถานีชาร์จ:</label>
+                        <input type="text" class="form-control" id="hourrate-code" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="hourrate-name" class="form-control-label">ชื่อสถานีชาร์จ:</label>
+                        <input type="text" class="form-control" id="hourrate-name" readonly>
+                    </div>
+                    <div class="form-group table-responsive mt-4">
+                        <table id="table--hourrate" class="table table-striped table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th width="40%">ระยะเวลา (ชม.)</th>
+                                    <th width="60%">ราคา (บาท)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="HourrateModalClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var tablestationinfo
+    $(document).ready(function () {
+        $('#stationcreate-modal').appendTo("body");
+        $('#stationedit-modal').appendTo("body");
+        $('#electricityrate-modal').appendTo("body");
+        clear();
+        GetCompanySelect(0);
+        tablestationinfo = $('#table--stationinfo').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pageLength": 25,
+            "destroy": true,
+            "searching": false,
+            "dom": 'rt<"bottom"flp><"clear">',
+            "contentType": "application/json; charset=utf-8",
+            "ajax": {
+                url: '/StationInfo/GetStationInfoTable',
+                type: "POST"
+            },
+            columns: [
+                { "data": 'code' },
+                { "data": 'companyName' },
+                { "data": 'name' },
+                { "data": 'electricityRate' },
+                { "data": 'actionHoliday' },
+                { "data": 'actionEdit' },
+                { "data": 'actionDelete' }
+            ],
+            rowId: function (a) {
+                return 'stationinfoid_' + a.id;
+            },
+        });
+    });
+
+    function CreateStationModal() {
+        clear();
+        $('#stationcreate-modal').modal('show');
+    }
+
+    function EditStationModal(stationid) {
+        clear();
+        $('#stationedit-modal').modal('show');
+        var code = tablestationinfo.row('#stationinfoid_' + stationid).data().code;
+        var name = tablestationinfo.row('#stationinfoid_' + stationid).data().name;
+        var office = tablestationinfo.row('#stationinfoid_' + stationid).data().office;
+        var address = tablestationinfo.row('#stationinfoid_' + stationid).data().address;
+        var city = tablestationinfo.row('#stationinfoid_' + stationid).data().city;
+        var country = tablestationinfo.row('#stationinfoid_' + stationid).data().country;
+        var postcode = tablestationinfo.row('#stationinfoid_' + stationid).data().postCode;
+        var rfid = tablestationinfo.row('#stationinfoid_' + stationid).data().rfid;
+        var images = tablestationinfo.row('#stationinfoid_' + stationid).data().image;
+        var logo = tablestationinfo.row('#stationinfoid_' + stationid).data().logo;
+        var companyid = tablestationinfo.row('#stationinfoid_' + stationid).data().companyId;
+        var charger = tablestationinfo.row('#stationinfoid_' + stationid).data().chargerType;
+        var lat = tablestationinfo.row('#stationinfoid_' + stationid).data().lat;
+        var long = tablestationinfo.row('#stationinfoid_' + stationid).data().long;
+
+        $('#stationedit-id').val(stationid);
+        $('#stationedit-code').val(code);
+        $('#stationedit-name').val(name);
+        $('#stationedit-address').val(address);
+        $('#stationedit-city').val(city);
+        $('#stationedit-country').val(country);
+        $('#stationedit-postcode').val(postcode);
+        $('#stationedit-tel').val(office);
+        $('#stationedit-rfid').val(rfid);
+        $("#stationedit-company").val(companyid);
+        $("#stationedit-charger").val(charger);
+        $("#stationedit-lat").val(lat);
+        $("#stationedit-long").val(long);
+
+        if (images.length > 0)
+            $('#stationedit-image_preview').attr('src', 'data:image/jpg;base64,' + images);
+
+        if (logo.length > 0)
+            $('#stationedit-logo_preview').attr('src', 'data:image/jpg;base64,' + logo);
+    }
+
+    function CreateStationModalClick() {
+        var fileData = new FormData();
+        fileData.append('code', $('#stationcreate-code').val());
+        fileData.append('name', $('#stationcreate-name').val());
+        fileData.append('address', $('#stationcreate-address').val());
+        fileData.append('city', $('#stationcreate-city').val());
+        fileData.append('country', $('#stationcreate-country').val());
+        fileData.append('postcode', $('#stationcreate-postcode').val());
+        fileData.append('tel', $('#stationcreate-tel').val());
+        fileData.append('rfid', $('#stationcreate-rfid').val());
+        fileData.append('company', $('#stationcreate-company').val());
+        fileData.append('chargertype', $('#stationcreate-chargertype').val());
+        fileData.append('lat', $('#stationcreate-lat').val());
+        fileData.append('long', $('#stationcreate-long').val());
+        
+        var fileUpload = $("#stationcreate-image").get(0);
+        if (fileUpload.files.length > 0) {
+            fileData.append("image", $("#stationcreate-image")[0].files[0]);
+        }
+
+        var fileUpload = $("#stationcreate-logo").get(0);
+        if (fileUpload.files.length > 0) {
+            fileData.append("logo", $("#stationcreate-logo")[0].files[0]);
+        }
+
+        $.ajax({
+            url: '/StationInfo/CreateStation',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#stationcreate-modal').modal('hide');
+                    SwalFunc.Success("Create Success");
+                    tablestationinfo.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function EditStationModalClick() {
+        var fileData = new FormData();
+        fileData.append('id', $('#stationedit-id').val());
+        fileData.append('code', $('#stationedit-code').val());
+        fileData.append('name', $('#stationedit-name').val());
+        fileData.append('address', $('#stationedit-address').val());
+        fileData.append('city', $('#stationedit-city').val());
+        fileData.append('country', $('#stationedit-country').val());
+        fileData.append('postcode', $('#stationedit-postcode').val());
+        fileData.append('tel', $('#stationedit-tel').val());
+        fileData.append('rfid', $('#stationedit-rfid').val());
+        fileData.append('company', $('#stationedit-company').val());
+        fileData.append('chargertype', $('#stationedit-chargertype').val());
+        fileData.append('lat', $('#stationedit-lat').val());
+        fileData.append('long', $('#stationedit-long').val());
+
+        var fileUpload = $("#stationedit-image").get(0);
+        if (fileUpload.files.length > 0) {
+            fileData.append("image", $("#stationedit-image")[0].files[0]);
+        }
+
+        var fileUpload = $("#stationedit-logo").get(0);
+        if (fileUpload.files.length > 0) {
+            fileData.append("logo", $("#stationedit-logo")[0].files[0]);
+        }
+
+        $.ajax({
+            url: '/StationInfo/UpadateStation',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#stationedit-modal').modal('hide');
+                    SwalFunc.Success("Update Success");
+                    tablestationinfo.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function DeleteStationModalClick(stationid) {
+        SwalFunc.ConfirmAjaxDeleteWithReload(stationid, "/StationInfo/DeleteStation", "POST", tablestationinfo);
+    }
+
+    function clear() {
+        $('#stationcreate-id').val('');
+        $('#stationcreate-code').val('');
+        $('#stationcreate-name').val('');
+        $('#stationcreate-address').val('');
+        $('#stationcreate-city').val('');
+        $('#stationcreate-country').val('');
+        $('#stationcreate-postcode').val('');
+        $('#stationcreate-tel').val('');
+        $('#stationcreate-rfid').val('');
+        $('#stationcreate-company').val('');
+        $('#stationcreate-chargertype').val()
+        $('#stationcreate-lat').val(0)
+        $('#stationcreate-long').val(0)
+
+        $('#stationedit-id').val('');
+        $('#stationedit-code').val('');
+        $('#stationedit-name').val('');
+        $('#stationedit-address').val('');
+        $('#stationedit-city').val('');
+        $('#stationedit-country').val('');
+        $('#stationedit-postcode').val('');
+        $('#stationedit-tel').val('');
+        $('#stationedit-rfid').val('');
+        $('#stationedit-company').val('');
+        $('#stationedit-chargertype').val()
+        $('#stationedit-lat').val(0)
+        $('#stationedit-long').val(0)
+
+        $('#stationrate-id').val('');
+        $('#stationrate-name').val('');
+        $('#stationrate-onpeak').val('');
+        $('#stationrate-offpeak').val('');
+
+        $('#stationcreate-image_preview').attr('src', '');
+        $('#stationcreate-image').val('');
+        $('#stationedit-image_preview').attr('src', '');
+        $('#stationedit-image').val('');
+
+        $('#stationcreate-logo_preview').attr('src', '');
+        $('#stationcreate-logo').val('');
+        $('#stationedit-logo_preview').attr('src', '');
+        $('#stationedit-logo').val('');
+    }
+
+    function HourrateModal(stationid) {
+        $('#hourrate-modal').modal('show');
+        var code = tablestationinfo.row('#stationinfoid_' + stationid).data().code;
+        var name = tablestationinfo.row('#stationinfoid_' + stationid).data().name;
+        $('#hourrate-id').val(stationid);
+        $('#hourrate-code').val(code);
+        $('#hourrate-name').val(name);
+       
+        tablehourrate = $('#table--hourrate').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": false,
+            "destroy": true,
+            "searching": false,
+            "bPaginate": false,
+            "dom": 'rt<"bottom"flp><"clear">',
+            "contentType": "application/json; charset=utf-8",
+            "ajax": {
+                url: '/StationInfo/GetHourRateTable',
+                type: "POST",
+                data: function (d) {
+                    return $.extend({}, d, {
+                        "station": stationid,
+                    });
+                },
+                
+            },
+            columns: [
+                { "data": 'text' },
+                { "data": 'actionValue' }
+            ],
+            drawCallback: function () {
+                $('#table--hourrate').css('width', '100%');
+                $("#table--hourrate td").css("padding", "1px 10px");
+            },
+            rowId: function (a) {
+                return 'hourrateid_' + a.id;
+            },
+        });
+    }
+
+    function HourrateModalClick() {
+
+        var fileData = new FormData();
+        fileData.append('id', $('#hourrate-id').val());
+
+        // ถ้าต้องการเพิ่มข้อมูลอื่นๆ เช่น ค่า inputs จากตาราง
+        $("#table--hourrate tbody td input").each(function (index) {
+            let inputId = $(this).attr("id") || `input_${index}`; // ถ้าไม่มี id ให้สร้าง id ชั่วคราว
+            let dataText = $(this).data("text") || ""; // อ่านค่า data-text
+            let value = $(this).val(); // อ่านค่าจาก input
+
+            // เพิ่มข้อมูลลงใน FormData
+            fileData.append(`inputs[${index}][id]`, inputId);
+            fileData.append(`inputs[${index}][text]`, dataText);
+            fileData.append(`inputs[${index}][value]`, value);
+        });
+
+        $.ajax({
+            url: '/StationInfo/UpadateHourRate',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#electricityrate-modal').modal('hide');
+                    SwalFunc.Success("Update Success");
+                    tablestationinfo.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function ElectricityrateModal(stationid) {
+        $('#electricityrate-modal').modal('show');
+        var code = tablestationinfo.row('#stationinfoid_' + stationid).data().code;
+        var name = tablestationinfo.row('#stationinfoid_' + stationid).data().name;
+        var onpeak = tablestationinfo.row('#stationinfoid_' + stationid).data().onPeak;
+        var offpeak = tablestationinfo.row('#stationinfoid_' + stationid).data().offPeak;
+
+        $('#stationrate-id').val(stationid);
+        $('#stationrate-code').val(code);
+        $('#stationrate-name').val(name);
+        $('#stationrate-onpeak').val(onpeak);
+        $('#stationrate-offpeak').val(offpeak);
+    }
+
+    function ElectricityrateModalClick() {
+        
+        var fileData = new FormData();
+        fileData.append('id', $('#stationrate-id').val());
+        fileData.append('onpeak', $('#stationrate-onpeak').val());
+        fileData.append('offpeak', $('#stationrate-offpeak').val());
+
+        $.ajax({
+            url: '/StationInfo/UpadateElectricityRate',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#electricityrate-modal').modal('hide');
+                    SwalFunc.Success("Update Success");
+                    tablestationinfo.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+
+    function GetCompanySelect(id) {
+        $.ajax({
+            url: '/User/GetCompanySelect',
+            type: "POST",
+            success: function (data) {
+                var obj = data.data;
+                var options = '';
+                $("#stationcreate-company").find('option').remove();
+                $("#stationedit-company").find('option').remove();
+                //options += '<option selected value="0">สำนักงานหลัก</option>';
+                if (obj.length > 0) {
+                    for (var i = 0; i < obj.length; i++) {
+                        if (id == obj[i].fId) {
+                            options += '<option selected value="' + obj[i].fId + '">' + obj[i].fName + '</option>';
+                        }
+                        else {
+                            options += '<option value="' + obj[i].fId + '">' + obj[i].fName + '</option>';
+                        }
+                    }
+                }
+                $("#stationcreate-company").append(options);
+                $("#stationedit-company").append(options);
+            }
+        });
+    }
+
+    //image preview
+    var stationcreateimagepreview = function (event) {
+        var output = document.getElementById('stationcreate-image_preview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+
+    var stationeditimagepreview = function (event) {
+        var output = document.getElementById('stationedit-image_preview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+
+    var stationcreatelogopreview = function (event) {
+        var output = document.getElementById('stationcreate-logo_preview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+
+    var stationeditlogopreview = function (event) {
+        var output = document.getElementById('stationedit-logo_preview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>

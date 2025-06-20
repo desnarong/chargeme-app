@@ -1,0 +1,81 @@
+﻿@using csms.Helpers
+@using csms.Entities
+@using Newtonsoft.Json
+@{ 
+    var userInfo = JsonConvert.DeserializeObject<TblUser>(Context.Session.GetString("UserData"));
+    var model = new List<StationInfoData>();
+}
+<div id="sidebar-menu">
+    <!-- Left Menu Start -->
+    <ul class="metismenu" id="side-menu">
+        <li>
+            <a href="@Url.Action("Index", "Home")" class="waves-effect @Html.IsActive("Home","Index")">
+                <div class="row">
+                    <div class="col-3 float-right"><i class="fas fa-home fa-2x"></i></div>
+                    <div class="col-9 mt-1"><span class="font-16"> หน้าแรก </span></div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Transaction")" class="waves-effect @Html.IsActive("Transaction","Index")">
+                <div class="row">
+                    <div class="col-3"><i class="fa-solid fa-list fa-2x"></i></div>
+                    <div class="col-9 mt-1"><span class="font-16"> แสดงรายการ </span></div>
+                </div>
+            </a>
+        </li>
+        @if (userInfo.FCompanyId == Guid.Empty)
+        {
+            <li>
+                <a href="@Url.Action("Index", "ChargePoint")" class="waves-effect @Html.IsActive("ChargePoint","Index")">
+                    <div class="row">
+                        <div class="col-3"><i class="fas fa-charging-station fa-2x"></i></div>
+                        <div class="col-9 mt-1"><span class="font-16">จัดการเครื่องชาร์จ </span></div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Conector")" class="waves-effect @Html.IsActive("Conector","Index")">
+                    <div class="row">
+                        <div class="col-3"><i class="fa-solid fa-plug fa-2x"></i></div>
+                        <div class="col-9 mt-1"><span class="font-16">จัดการหัวชาร์จ </span></div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "ChargeTag")" class="waves-effect @Html.IsActive("ChargeTag","Index")">
+                    <div class="row">
+                        <div class="col-3"><i class="mdi mdi-credit-card-multiple" style="font-size:34px"></i></div>
+                        <div class="col-9 mt-1"><span class="font-16">จัดการบัตร RFID </span></div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "StationInfo")" class="waves-effect @Html.IsActive("StationInfo","Index")">
+                    <div class="row">
+                        <div class="col-3"><i class="mdi mdi-web" style="font-size:34px"></i></div>
+                        <div class="col-9 mt-1"><span class="font-16">ข้อมูลสถานีชาร์จ </span></div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "CompanyInfo")" class="waves-effect @Html.IsActive("CompanyInfo","Index")">
+                    <div class="row">
+                        <div class="col-3"><i class="mdi mdi-ev-station" style="font-size:34px"></i></div>
+                        <div class="col-9 mt-1"><span class="font-16">ข้อมูลสำนักงาน </span></div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "User")" class="waves-effect @Html.IsActive("User","Index")">
+                    <div class="row">
+                        <div class="col-3"><i class="fa-solid fa-gauge-high fa-2x"></i></div>
+                        <div class="col-9 mt-1"><span class="font-16">รหัสผู้ใช้งาน </span></div>
+                    </div>
+                </a>
+            </li>
+        }
+
+    </ul>
+
+</div>

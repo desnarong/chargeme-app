@@ -1,0 +1,144 @@
+﻿@{
+    ViewData["Title"] = "แสดงหัวชาร์จ";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="shadow p-3 rounded">
+                <div class="card-body">
+                    <div class="table-responsive mt-4">
+                        <partial name="_Conector--Table" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--begin:EDIT:Modal-->
+<div class="modal fade" id="conector-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลหัวชาร์จ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group d-none">
+                        <input type="text" class="form-control" id="conectorid" readonly>
+                        <input type="text" class="form-control" id="chargeid" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="conector-chargeid" class="form-control-label">รหัสเครื่องชาร์จ:</label>
+                        <input type="text" class="form-control" id="conector-chargeid" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="conector-id" class="form-control-label">รหัสหัวชาร์จ:</label>
+                        <input type="text" class="form-control" id="conector-id" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="conector-name" class="form-control-label">ชื่อ:</label>
+                        <input type="text" class="form-control" id="conector-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="conector-code" class="form-control-label">Code:</label>
+                        <input type="text" class="form-control" id="conector-code" maxlength="10">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="EditConectorClick()">บันทึก</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end:EDIT:Modal-->
+<script>
+    var tableconector;
+    $(document).ready(function () {
+
+        tableconector = $('#table--conector').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": false,
+            "orderMulti": false,
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pageLength": 25,
+            "destroy": true,
+            "searching": false,
+            "dom": 'rt<"bottom"flp><"clear">',
+            "contentType": "application/json; charset=utf-8",
+            "ajax": {
+                url: '/Conector/GetConectorTable',
+                type: "POST"
+            },
+            columns: [
+                { "data": 'shortName' },
+                { "data": 'code' },
+                { "data": 'connectorId' },
+                { "data": 'connectorName' },
+                { "data": 'actionEdit' },
+            ],
+            "columnDefs": [
+                { "targets": 0, "orderable": true },
+                { "targets": 1, "orderable": true },
+                { "targets": 2, "orderable": true },
+                { "targets": 3, "orderable": false },
+                { "targets": 4, "orderable": false },
+            ],
+            rowId: function (a) {
+                return 'conectorid_' + a.chargerId + '_' + a.fId;
+            },
+        });
+    });
+    function EditConectorModal(chargePointId, connectorId) {
+        $('#conector-modal').modal('show');
+
+        console.log(tableconector.row('#conectorid_' + chargePointId + '_' + connectorId).data());
+
+        var connectorName = tableconector.row('#conectorid_' + chargePointId + '_' + connectorId).data().connectorName;
+        var shortName = tableconector.row('#conectorid_' + chargePointId + '_' + connectorId).data().shortName;
+        var conId = tableconector.row('#conectorid_' + chargePointId + '_' + connectorId).data().connectorId;
+        var code = tableconector.row('#conectorid_' + chargePointId + '_' + connectorId).data().code;
+
+        $('#chargeid').val(chargePointId);
+        $('#conector-code').val(code);
+        $('#conectorid').val(connectorId);
+        $('#conector-chargeid').val(shortName);
+        $('#conector-id').val(conId);
+        $('#conector-name').val(connectorName);
+    }
+
+    function EditConectorClick() {
+        var fileData = new FormData();
+        fileData.append('chargeid', $('#chargeid').val());
+        fileData.append('id', $('#conectorid').val());
+        fileData.append('name', $('#conector-name').val());
+        fileData.append('code', $('#conector-code').val());
+
+        $.ajax({
+            url: '/Conector/UpadateConector',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            success: function (data) {
+                if (data == 'success') {
+                    $('#conector-modal').modal('hide');
+                    SwalFunc.Success("Update Success");
+                    tableconector.ajax.reload();
+                    clear();
+                }
+            }
+        });
+    }
+    function clear() {
+        $('#conector-chargeid').val('');
+        $('#conector-id').val('');
+        $('#conector-name').val('');
+    }
+</script>
