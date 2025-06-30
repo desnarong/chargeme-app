@@ -188,6 +188,7 @@ namespace manager.Controllers
             _logger.LogTrace("RemoteStartTransaction: Request to unlock chargepoint '{0}'", id);
             var chargePoint = ChargerModel.GetCharger(Guid.Parse(id));
             var station = StationInfoModel.GetStationInfo(chargePoint.FStationId);
+
             if (chargePoint != null)
             {
                 string serverApiUrl = _config.GetValue<string>("ServerApiUrl");
@@ -203,7 +204,7 @@ namespace manager.Controllers
                                 serverApiUrl += "/";
                             }
                             Uri uri = new Uri(serverApiUrl);
-                            uri = new Uri(uri, $"RemoteStartTransaction/{Uri.EscapeUriString(id)}/{Uri.EscapeUriString(connectorId)}/{Uri.EscapeUriString(station.FRfid)}");
+                            uri = new Uri(uri, $"RemoteStartTransaction/{Uri.EscapeUriString(chargePoint.FCode)}/{Uri.EscapeUriString(connectorId)}/{Uri.EscapeUriString(station.FRfid)}");
                             httpClient.Timeout = new TimeSpan(0, 0, 4); // use short timeout
 
                             // API-Key authentication?
@@ -308,7 +309,7 @@ namespace manager.Controllers
                                 serverApiUrl += "/";
                             }
                             Uri uri = new Uri(serverApiUrl);
-                            uri = new Uri(uri, $"RemoteStopTransaction/{Uri.EscapeUriString(id)}/{Uri.EscapeUriString(connectorId)}");
+                            uri = new Uri(uri, $"RemoteStopTransaction/{Uri.EscapeUriString(chargePoint.FCode)}/{Uri.EscapeUriString(connectorId)}");
                             httpClient.Timeout = new TimeSpan(0, 0, 4); // use short timeout
 
                             // API-Key authentication?

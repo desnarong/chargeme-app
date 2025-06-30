@@ -29,11 +29,41 @@ namespace manager.Models
                 return data;
             }
         }
+        public static List<TblConnectorStatus> GetConnectorStatuses(string ChargerCode, string ConnectorCode)
+        {
+            using (var context = new NpgsqlDbContext())
+            {
+                var data = (from item in context.TblConnectorStatuses
+                            join chargepoint in context.TblChargers on item.FChargerId equals chargepoint.FId
+                            where chargepoint.FCode == ChargerCode && item.FCode == ConnectorCode
+                            select item).ToList();
+                return data;
+            }
+        }
+        public static List<TblConnectorStatus> GetConnectorStatuses(Guid ChargerId)
+        {
+            using (var context = new NpgsqlDbContext())
+            {
+                var data = (from item in context.TblConnectorStatuses
+                            join chargepoint in context.TblChargers on item.FChargerId equals chargepoint.FId
+                            where chargepoint.FId == ChargerId
+                            select item).ToList();
+                return data;
+            }
+        }
         public static TblConnectorStatus GetConnectorStatus(Guid ChargerId, Guid ConnectorId)
         {
             using (var context = new NpgsqlDbContext())
             {
                 var data = context.TblConnectorStatuses.Where(x => x.FChargerId == ChargerId && x.FId == ConnectorId).FirstOrDefault();
+                return data;
+            }
+        }
+        public static TblConnectorStatus GetConnectorStatus(Guid ChargerId)
+        {
+            using (var context = new NpgsqlDbContext())
+            {
+                var data = context.TblConnectorStatuses.Where(x => x.FChargerId == ChargerId).FirstOrDefault();
                 return data;
             }
         }
@@ -248,7 +278,9 @@ namespace manager.Models
             using (var context = new NpgsqlDbContext())
             {
                 var data = (from item in context.TblChargers
-                            join tmp_company in context.TblStations on item.FStationId equals tmp_company.FId into companytable
+                            join tmp_station in context.TblStations on item.FStationId equals tmp_station.FId into stationtable
+                            from station in stationtable.DefaultIfEmpty()
+                            join tmp_company in context.TblCompanies on station.FCompanyId equals tmp_company.FId into companytable
                             from company in companytable.DefaultIfEmpty()
                             select new ChargerData
                             {
@@ -261,7 +293,9 @@ namespace manager.Models
                                 Password = item.FPassword,
                                 ClientCertThumb = item.FClientCertThumb,
                                 StationId = item.FStationId,
-                                StationName = company.FName,
+                                StationName = station.FName,
+                                CompanyId = company.FId,
+                                CompanyName = company.FName,
                                 Image = item.FImage,
                                 ActionEdit = $"<a href='JavaScript:EditChargerModal(\"{item.FId}\")' class='btn btn-soft-secondary btn-sm' title='edit'><i class='ri-edit-box-line la-1-50x'></i></a>",
                                 ActionDelete = $"<a href='JavaScript:DeleteChargerModalClick(\"{item.FId}\")' class='btn btn-soft-secondary btn-sm' title='delete'><i class='ri-delete-bin-line la-1-50x'></i></a>"
@@ -411,6 +445,8 @@ namespace manager.Models
         public string? ClientCertThumb { get; set; }
         public Guid? StationId { get; set; }
         public string? StationName { get; set; }
+        public Guid? CompanyId { get; set; }
+        public string? CompanyName { get; set; }
         public byte[]? Image { get; set; }
         public string ActionEdit { get; set; }
         public string ActionDelete { get; set; }

@@ -235,7 +235,18 @@
             success: function (data) {
                 if (data == 'success') {
                     $('#companycreate-modal').modal('hide');
-                    SwalFunc.Success("Create Success");
+                    Swal.fire({
+                        title: 'Company!',
+                        text: 'Create success!',
+                        icon: 'success',
+                        showCancelButton: false,
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        buttonsStyling: false,
+                        showCloseButton: true
+                    });
                     tablecompanyinfo.ajax.reload();
                     clear();
                 }
@@ -269,7 +280,18 @@
             success: function (data) {
                 if (data == 'success') {
                     $('#companyedit-modal').modal('hide');
-                    SwalFunc.Success("Update Success");
+                    Swal.fire({
+                        title: 'Company!',
+                        text: 'Update success!',
+                        icon: 'success',
+                        showCancelButton: false,
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        buttonsStyling: false,
+                        showCloseButton: true
+                    });
                     tablecompanyinfo.ajax.reload();
                     clear();
                 }
@@ -278,7 +300,41 @@
     }
 
     function DeleteCompanyModalClick(companyid) {
-        SwalFunc.ConfirmAjaxDeleteWithReload(companyid, "/Company/DeleteCompany", "POST", tablecompanyinfo);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to delete it?",
+            icon: "warning",
+            showCancelButton: true,
+            customClass: {
+                confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                cancelButton: 'btn btn-danger w-xs mt-2',
+            },
+            confirmButtonText: "Yes, delete it!",
+            buttonsStyling: false,
+            showCloseButton: true
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    url: "/Company/DeleteCompany",
+                    type: "POST",
+                    data: { id: companyid },
+                    success: function (data) {
+                        if (data == 'success') {
+                            Swal.fire({
+                                title: 'Deleted!',
+                                text: 'Your แompany has been deleted.',
+                                icon: 'success',
+                                customClass: {
+                                    confirmButton: 'btn btn-primary w-xs mt-2',
+                                },
+                                buttonsStyling: false
+                            })
+                            tablecompanyinfo.ajax.reload();
+                        }
+                    }
+                });
+            }
+        });
     }
 
     function clear() {

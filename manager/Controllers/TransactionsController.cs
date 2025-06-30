@@ -122,7 +122,7 @@ namespace manager.Controllers
 
             return new JsonResult(new { draw = draw, iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords, data = data });
         }
-        public IActionResult GetStationSelect()
+        public IActionResult GetStationsSelect()
         {
             var userInfo = GetUserInfo();
             if (userInfo.FCompanyId == Guid.Empty)
@@ -138,7 +138,7 @@ namespace manager.Controllers
                 return new JsonResult(new { data = data });
             }
         }
-        public IActionResult GetChargePointSelect()
+        public IActionResult GetChargersSelect()
         {
             var userInfo = GetUserInfo();
             if (userInfo.FCompanyId == Guid.Empty)
@@ -154,7 +154,7 @@ namespace manager.Controllers
                 return new JsonResult(new { data = data });
             }
         }
-        public IActionResult GetChargeTagSelect()
+        public IActionResult GetCardsSelect()
         {
             var data = CardModel.GetChargeTags();
             data = data.OrderBy(x => x.FName).ToList();

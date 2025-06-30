@@ -2,6 +2,7 @@
 using manager.Entities;
 using Microsoft.Extensions.Hosting;
 using System.Runtime.InteropServices;
+using static System.Collections.Specialized.BitVector32;
 
 namespace manager.Models
 {
@@ -88,6 +89,32 @@ namespace manager.Models
                 return data;
             }
             return new List<TransactionData>();
+        }
+        public static List<TblTransaction> GetTransactions(string chargerid, string connectorid)
+        {
+            using (var context = new NpgsqlDbContext())
+            {
+                var data = (from trans in context.TblTransactions
+                            join charger in context.TblChargers on trans.FChargerId equals charger.FId
+                            join connector in context.TblConnectorStatuses on trans.FConnectorId equals connector.FId
+                            where charger.FCode == chargerid && connector.FCode == connectorid
+                            select trans).ToList();
+                return data;
+            }
+            return new List<TblTransaction>();
+        }
+        public static List<TblTransaction> GetTransactions(Guid chargerid, int connectorid)
+        {
+            using (var context = new NpgsqlDbContext())
+            {
+                var data = (from trans in context.TblTransactions
+                            join charger in context.TblChargers on trans.FChargerId equals charger.FId
+                            join connector in context.TblConnectorStatuses on trans.FConnectorId equals connector.FId
+                            where charger.FId == chargerid && connector.FConnectorId == connectorid
+                            select trans).ToList();
+                return data;
+            }
+            return new List<TblTransaction>();
         }
     }
     public class TransactionData

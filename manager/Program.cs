@@ -101,7 +101,7 @@ app.Use(async (context, next) =>
     var path = context.Request.Path;
 
     // ข้ามหน้า Login และ Static Files
-    if (path.Value == "/" || path.StartsWithSegments("/Auth/Login") || path.StartsWithSegments("/css") || path.StartsWithSegments("/js") || path.StartsWithSegments("/images"))
+    if (path.Value == "/" || path.StartsWithSegments("/OCPP") || path.StartsWithSegments("/Auth/Login") || path.StartsWithSegments("/css") || path.StartsWithSegments("/js") || path.StartsWithSegments("/images"))
     {
         await next();
         return;

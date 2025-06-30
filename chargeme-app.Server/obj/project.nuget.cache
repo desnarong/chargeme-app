@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "A51LmJR39Hg=",
+  "dgSpecHash": "VUrhnEnmNLQ=",
   "success": true,
   "projectFilePath": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\chargeme-app.Server\\chargeme-app.Server.csproj",
   "expectedPackageFiles": [
@@ -144,8 +144,10 @@
     {
       "code": "NU1701",
       "level": "Warning",
-      "warningLevel": 1,
       "message": "Package 'BCrypt.Net 0.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "projectPath": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\chargeme-app.Server\\chargeme-app.Server.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\chargeme-app.Server\\chargeme-app.Server.csproj",
       "libraryId": "BCrypt.Net",
       "targetGraphs": [
         "net8.0"

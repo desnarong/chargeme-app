@@ -12,16 +12,16 @@ namespace manager.Models
                 var groups = new List<Guid>() {
                     Guid.Parse("f63caefd-2a43-49da-a6cd-6aa40ce90dd4") ,
                     Guid.Parse("365e6dd9-bfa1-4151-8c7f-42d9139ab73b"), 
-                    Guid.Empty
                 };
                 var data = (from user in context.TblUsers.Where(x => x.FStatus == 'Y' && !groups.Contains(x.FUserGroupId))
+                            join gr in context.TblUserGroups on user.FUserGroupId equals gr.FId
                             select new UserInfo
                             {
                                 Id = user.FId,
                                 Address = user.FAddress,
                                 City = user.FCity,
                                 Email = user.FEmail,
-                                GroupName = user.FName,
+                                GroupName = gr.FName,
                                 Language = user.FLanguage,
                                 Lastlogin = user.FLastlogin,
                                 Lastname = user.FLastname,

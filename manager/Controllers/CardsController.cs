@@ -1,5 +1,6 @@
 ﻿using manager.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace manager.Controllers
 {
@@ -70,7 +71,10 @@ namespace manager.Controllers
             tag.FBlocked = 'N';
             tag.FName = name;
             if (!string.IsNullOrEmpty(expireday))
-                tag.FExpiryDate = DateTime.ParseExact(expireday, "dd/MM/yyyy", new System.Globalization.CultureInfo("en-US"));
+            {
+                var parsed = DateTime.ParseExact(expireday, "dd/MM/yyyy", new CultureInfo("en-US"));
+                tag.FExpiryDate = DateTime.SpecifyKind(parsed, DateTimeKind.Local).ToUniversalTime();
+            }
             tag.FPlateNo = platenumber;
 
             CardModel.CreateChargeTag(tag);

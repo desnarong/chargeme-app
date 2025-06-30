@@ -207,7 +207,7 @@
     }
     function GetChargePointSelect() {
         $.ajax({
-            url: '/Transactions/GetChargePointSelect',
+            url: '/Transactions/GetChargersSelect',
             type: "POST",
             success: function (data) {
                 var obj = data.data;
@@ -226,7 +226,7 @@
     }//
     function GetStationSelect() {
         $.ajax({
-            url: '/Transactions/GetStationSelect',
+            url: '/Transactions/GetStationsSelect',
             type: "POST",
             success: function (data) {
                 var obj = data.data;
@@ -245,7 +245,7 @@
     }
     function GetChargeTagSelect() {
         $.ajax({
-            url: '/Transactions/GetChargeTagSelect',
+            url: '/Transactions/GetCardsSelect',
             type: "POST",
             success: function (data) {
                 var obj = data.data;
