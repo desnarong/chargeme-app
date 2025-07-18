@@ -833,7 +833,7 @@ public partial class NpgsqlDbContext : DbContext
             entity.Property(e => e.FTransactionStatus)
                 .IsRequired()
                 .HasMaxLength(50)
-                .HasDefaultValueSql("'Wating'::character varying")
+                .HasDefaultValueSql("'Waiting'::character varying")
                 .HasColumnName("f_transaction_status");
             entity.Property(e => e.FUpdated).HasColumnName("f_updated");
             entity.Property(e => e.FUserId).HasColumnName("f_user_id");

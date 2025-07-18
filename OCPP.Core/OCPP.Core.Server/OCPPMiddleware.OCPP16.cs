@@ -97,7 +97,7 @@ namespace OCPP.Core.Server
                                 _ = Task.Run(() =>
                                 {
                                     DumpMessage("ocpp16-in", ocppMessage);
-                                });
+                                });   
 
                                 Match match = Regex.Match(ocppMessage, MessageRegExp);
                                 if (match != null && match.Groups != null && match.Groups.Count >= 3)
@@ -112,9 +112,14 @@ namespace OCPP.Core.Server
                                     string urlConnectorId = (urlParts.Length >= 5) ? urlParts[4] : null;
                                     string urlChargeTagId = (urlParts.Length >= 6) ? urlParts[5] : null;
 
+                                    for (int i = 0; i< match.Groups.Count;i++) {
+                                        Console.WriteLine($"match.Groups[{i}] : " + match.Groups[i].Value);
+                                    }
+                           
                                     //OCPPMessage msgIn = new OCPPMessage(messageTypeId, uniqueId, action, jsonPaylod);
                                     OCPPMessage msgIn = new OCPPMessage(chargePointStatus.Id, urlConnectorId, urlChargeTagId, messageTypeId, uniqueId, action, jsonPaylod);
                                     // Send raw incoming messages to extensions
+
                                     _ = Task.Run(() =>
                                     {
                                         ProcessRawIncomingMessageSinks(chargePointStatus.Protocol, chargePointStatus.Id, msgIn);
@@ -211,13 +216,17 @@ namespace OCPP.Core.Server
                                                 _chargePointStatusDict[msgIn.ChargePointId].OnlineConnectors[meterValueRequest.ConnectorId].MeterKWH = Convert.ToDouble(connector.FCurrentMeter);
                                                 _chargePointStatusDict[msgIn.ChargePointId].OnlineConnectors[meterValueRequest.ConnectorId].SoC = Convert.ToDouble(connector.FStateOfCharge);
                                             }
-
+                                            else
+                                            {
+                                                logger.LogError("MeterValues Transaction RemoteStopTransaction => Exception writing connector not found : {0}", msgIn.JsonPayload);
+                                            }
+                                            
                                             try
                                             {
-                                                var trans = dbContext.TblTransactions.FirstOrDefault(x => x.FChargerId == chargePoint.FId && x.FConnectorId == connector.FId && x.FTransactionStatus == "");
-                                                if(trans != null)
+                                                var trans = dbContext.TblTransactions.FirstOrDefault(x => x.FId == connector.FTransactionId);
+                                                if (trans != null)
                                                 {
-                                                    if (trans.FTransactionStatus == "Charging")
+                                                    if (trans.FTransactionStatus == "Charging" || trans.FTransactionStatus == "Finishing")
                                                     {
                                                         double? MeterStart = 0;
                                                         var connectorStatusView = dbContext.ConnectorStatusViews.FirstOrDefault(x => x.FChargerId == chargePoint.FId && x.FConnectorId == meterValueRequest.ConnectorId);
@@ -233,6 +242,8 @@ namespace OCPP.Core.Server
                                                             trans.FMeterEnd = Convert.ToDecimal(MeterStart);
                                                             trans.FTransactionStatus = "Finishing";
                                                             trans.FUpdated = DateTime.UtcNow;
+                                                            trans.FEndTime = DateTime.UtcNow;
+                                                            trans.FEndResult = "";
                                                             dbContext.TblTransactions.Update(trans);
                                                             _ = await dbContext.SaveChangesAsync();
 
@@ -241,15 +252,15 @@ namespace OCPP.Core.Server
                                                             {
                                                                 _status.FStateOfCharge = 0;
                                                                 _status.FCurrentChargeKw = 0;
-                                                                _status.FStateOfCharge = 0;
-                                                                _status.FCurrentMeterTime = null;
+                                                                _status.FCurrentMeter = 0;
+                                                                _status.FCurrentMeterTime = DateTime.UtcNow;
 
                                                                 dbContext.TblConnectorStatuses.Update(_status);
                                                                 _ = await dbContext.SaveChangesAsync();
                                                             }
 
                                                             RemoteStopTransactionRequest request = new RemoteStopTransactionRequest();
-                                                            request.TransactionId = trans.FId;
+                                                            request.TransactionId = trans.FTransactionNo ?? 0;
                                                             OCPPMessage msgStoptrans = new OCPPMessage();
                                                             msgStoptrans.MessageType = "2";
                                                             msgStoptrans.Action = "RemoteStopTransaction";
@@ -591,7 +602,7 @@ namespace OCPP.Core.Server
                 Console.WriteLine("Can't rewind body stream. " + ex.Message);
             }
 
-            if (remoteStartTransactionRequest == null)
+            if (remoteStartTransactionRequest == null || string.IsNullOrEmpty(remoteStartTransactionRequest.IdTag))
             {
                 string[] urlParts = apiCallerContext.Request.Path.Value.Split('/');
                 string urlConnectorId = (urlParts.Length >= 5) ? urlParts[4] : "0";
@@ -605,6 +616,9 @@ namespace OCPP.Core.Server
             string jsonResetRequest = JsonConvert.SerializeObject(remoteStartTransactionRequest);
 
             OCPPMessage msgOut = new OCPPMessage();
+            msgOut.ChargePointId = chargePointStatus.Id;
+            msgOut.ConnectorId = remoteStartTransactionRequest.ConnectorId.ToString();
+            msgOut.ChargeTagId = remoteStartTransactionRequest.IdTag;
             msgOut.MessageType = "2";
             msgOut.Action = "RemoteStartTransaction";
             msgOut.UniqueId = Guid.NewGuid().ToString("N");
@@ -654,7 +668,8 @@ namespace OCPP.Core.Server
             {
                 Console.WriteLine("Can't rewind body stream. " + ex.Message);
             }
-            if (remoteStopTransactionRequest == null)
+
+            if (remoteStopTransactionRequest == null || remoteStopTransactionRequest.TransactionId <= 0)
             {
                 string[] urlParts = apiCallerContext.Request.Path.Value.Split('/');
                 string urlConnectorId = (urlParts.Length >= 5) ? urlParts[4] : "0";
@@ -662,7 +677,7 @@ namespace OCPP.Core.Server
                 remoteStopTransactionRequest = new RemoteStopTransactionRequest();
 
                 var chargeTags = dbContext.TblTransactions.Where(x => x.FChargerId == Guid.Parse(chargePointStatus.Id) && x.FConnectorId == Guid.Parse(urlConnectorId) && x.FEndTime == null).FirstOrDefault();
-                remoteStopTransactionRequest.TransactionId = chargeTags.FId;
+                remoteStopTransactionRequest.TransactionId = chargeTags.FTransactionNo ?? 0;
             }
             string jsonResetRequest = JsonConvert.SerializeObject(remoteStopTransactionRequest);
 

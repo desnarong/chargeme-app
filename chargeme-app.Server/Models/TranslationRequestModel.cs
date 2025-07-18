@@ -38,4 +38,21 @@
     {
         public required string Fid { get; set; }
     }
+
+    public class StartTransactionRequest
+    {
+        public string RefNo { get; set; }
+    }
+
+    public class StopTransactionRequest
+    {
+        public string RefNo { get; set; }
+        public decimal MeterEnd { get; set; }
+    }
+
+    public class CheckConnectorRequest
+    {
+        public string ConnectorCode { get; set; }
+        public bool IgnoreCharging { get; set; }
+    }
 }

@@ -16,7 +16,7 @@
         <!-- Balance Display -->
         <div class="w-[90%] mt-4 text-center">
             <label class="block text-lg font-semibold text-gray-700">{{ translations.USERPROFILE_BALANCE_TEXT || 'ยอดคงเหลือ' }}:</label>
-            <p class="text-xl font-bold text-green-600">{{ formatBalance(user.fBalance) }} kWh</p>
+            <p class="text-xl font-bold text-green-600">{{ formatBalance(user.fBalanceKwh) }} kWh</p>
         </div>
 
         <!-- User Details Form -->
@@ -40,8 +40,8 @@
 
             <label class="block text-left w-full">{{ translations.USERPROFILE_LANGUAGE_TEXT }}:</label>
             <select v-model="user.fLanguage" @change="changeLanguage"
-                    class="p-2 mt-2 mb-4 text-[14px] block w-[100%] rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                <option v-for="(language, key) in languages" :key="key" :value="key">{{ language }}</option>
+                    class="p-2 mt-2 mb-4 text-[14px] block w-[100%] rounded-md text-gray-600 border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                <option v-for="(language, key) in languages" :key="key" :value="key" class=" text-gray-600">{{ language }}</option>
             </select>
 
             <div class="text-center mt-3">

@@ -9,6 +9,6 @@ namespace OCPP.Core.Server.Messages_OCPP16
     public partial class RemoteStopTransactionRequest
     {
         [Newtonsoft.Json.JsonProperty("transactionId", Required = Newtonsoft.Json.Required.Always)]
-        public Guid TransactionId { get; set; }
+        public long TransactionId { get; set; }
     }
 }

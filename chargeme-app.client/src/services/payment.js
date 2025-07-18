@@ -4,7 +4,7 @@ export const processPayment = (total, detail, email, name, reference) => {
     let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `${import.meta.env.VITE_APP_PAYMENT_API_URL}?merchantID=${import.meta.env.VITE_APP_PAYMENT_MERCHANT_ID}&productDetail=ChargeMe&customerEmail=${email}&customerName=${name}&total=${total}&referenceNo=${reference}`,
+        url: `${import.meta.env.VITE_APP_PAYMENT_API_URL}?merchantID=${import.meta.env.VITE_APP_PAYMENT_MERCHANT_ID}&productDetail=ChargeMe&customerEmail=${email}&customerName=${name}&total=${total}&refno=${reference}&cardtype=PP&chargetype=PP`,
         headers: {
             'Authorization': `Bearer ${import.meta.env.VITE_APP_PAYMENT_AUTH_TOKEN}`
         }
@@ -13,10 +13,10 @@ export const processPayment = (total, detail, email, name, reference) => {
     return axios.request(config)
         .then(response => {
             //console.log(JSON.stringify(response.data));
-            return response; // Êè§¼ÅÅÑ¾¸ì¡ÅÑºä»ãËé component ãªéµèÍ
+            return response; // ï¿½è§¼ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Ñºï¿½ï¿½ï¿½ï¿½ component ï¿½ï¿½ï¿½ï¿½
         })
         .catch(error => {
             console.error('Error:', error);
-            throw error; // Êè§ error ¡ÅÑºä»ãËé component ãªé¨Ñ´¡ÒÃ
+            throw error; // ï¿½ï¿½ error ï¿½ï¿½Ñºï¿½ï¿½ï¿½ï¿½ component ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½
         });
 };

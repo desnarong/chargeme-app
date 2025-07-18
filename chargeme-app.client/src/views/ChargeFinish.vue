@@ -45,12 +45,20 @@
         </div>
         <div class="col-span-1 m-2">
             <p class="text-[18px] text-blue-600 font-semibold m-2">{{ translations.CHARGE_FINISH_TOTAL_TEXT }}</p>
+            <p v-show="transdata.fPreMeter > transdata.fMeterEnd" class="text-[18px] text-blue-600 font-semibold m-2">มีหน่วยคงเหลือ</p>
         </div>
         <div class="col-span-1 m-2 text-right">
             <p class="text-[18px] text-blue-600 font-semibold m-2">{{ paydata.data.total }} {{ translations.CHARGE_FINISH_BAHT_TEXT }}</p>
+            <p v-show="transdata.fPreMeter > transdata.fMeterEnd" class="text-[18px] text-blue-600 font-semibold m-2">{{ (transdata.fPreMeter - transdata.fMeterEnd).toFixed(2) }} kWh</p>
         </div>
     </div>
     <p class="text-[18px] text-blue-300 font-semibold mt-10 text-center">{{ translations.CHARGE_FINISH_MESSAGE_TEXT }}</p>
+    <div class="mt-5 text-center">
+         <button @click="goBack"
+                class="w-[35%] p-5 bg-blue-500 text-white text-[16px] py-2 px-4 rounded hover:bg-blue-700 hover:text-white duration-300">
+                กลับสู่หน้าหลัก
+            </button>
+    </div>
 </template>
 
 <script>
@@ -113,7 +121,6 @@
                     const { data } = response.data;
                     this.chargestatusdata = data;
                     this.transdata = response.data.transdata;
-                    console.log(data);
                 } catch (error) {
                     console.error('Error checking transaction status:', error);
                 }
@@ -144,7 +151,7 @@
                 } else {
                     const hours = Math.floor(diffMinutes / 60); // ชั่วโมง
                     const minutes = diffMinutes % 60; // นาทีที่เหลือ
-                    return `${hours} ชั่วโมง ${minutes} ${this.translations.CHARGE_FINISH_MINUTE_TEXT}`;
+                    return `${hours || 0} ชั่วโมง ${minutes || 0} ${this.translations.CHARGE_FINISH_MINUTE_TEXT}`;
                 }
             },
         },

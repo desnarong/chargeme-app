@@ -29,16 +29,20 @@ namespace chargeme_app.Server.Controllers
     {
         private readonly NpgsqlDbContext _context;
         private readonly MemoryCacheService _cachService;
-        
+        private readonly OCPPService _ocppService;
+        private readonly IConfiguration _configuration;
+
         /// <summary>
         /// Initializes a new instance of the TransactionController.
         /// </summary>
         /// <param name="context">The database context for data access</param>
         /// <param name="cachService">The memory cache service for temporary data storage</param>
-        public TransactionController(NpgsqlDbContext context, MemoryCacheService cachService)
+        public TransactionController(NpgsqlDbContext context, MemoryCacheService cachService, OCPPService ocppService, IConfiguration configuration)
         {
             _context = context;
             _cachService = cachService;
+            _ocppService = ocppService;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -209,7 +213,7 @@ namespace chargeme_app.Server.Controllers
 
             return Ok(new TransactionResponseModel());
         }
-        
+
         /// <summary>
         /// Checks the status of a pending payment transaction.
         /// Retrieves cached data for real-time payment status updates.
@@ -223,5 +227,168 @@ namespace chargeme_app.Server.Controllers
 
             return Ok(new { data = cachdata.data, transdata = cachdata.transdata });
         }
+
+        [HttpPost("start")]
+        public async Task<IActionResult> StartTransaction([FromBody] StartTransactionRequest request)
+        {
+            try
+            {
+                var payment = await _context.TblPayments.FirstOrDefaultAsync(x => x.FPaymentCode == request.RefNo);
+                var trans = await _context.TblTransactions.FirstOrDefaultAsync(x => x.FId == payment.FTransactionId);
+                var charger = await _context.TblChargers.FirstOrDefaultAsync(x => x.FId == trans.FChargerId);
+                var station = await _context.TblStations.FirstOrDefaultAsync(x => x.FId == trans.FStationId);
+                var connector = await _context.TblConnectorStatuses.FirstOrDefaultAsync(x => x.FId == trans.FConnectorId);
+                if (charger != null && station != null)
+                {
+                    await _ocppService.StartChargingSession(trans.FChargerId, charger.FCode, (int)connector.FConnectorId, station.FRfid);
+                }
+
+                return Ok(new { message = "Transaction start successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.ToString() });
+            }
+        }
+
+        [HttpPost("connector-status")]
+        public async Task<IActionResult> CheckConnectorStatus([FromBody] CheckConnectorRequest request)
+        {
+            try
+            {
+                var connector = await _context.TblConnectorStatuses.FirstOrDefaultAsync(x => x.FCode == request.ConnectorCode);
+                if (connector != null && connector != null)
+                {
+                    var charger = await _context.TblChargers.FirstOrDefaultAsync(x => x.FId == connector.FChargerId);
+
+                    var responseBody = await _ocppService.CheckStatus();
+
+                    var chargePoints = JsonConvert.DeserializeObject<List<ChargePoint>>(responseBody);
+                    if (chargePoints != null && charger != null)
+                    {
+                        var chargePoint = chargePoints.FirstOrDefault(cp => cp.Id == charger.FCode);
+
+                        if (chargePoint == null)
+                            return StatusCode(500, new { message = "หัวชาร์จไม่พร้อมทำงาน" });
+
+                        string connectorKey = connector.FConnectorId.ToString();
+                        if (chargePoint.OnlineConnectors != null &&
+                            chargePoint.OnlineConnectors.TryGetValue(connectorKey, out var connectorCheck))
+                        {
+                            if (connectorCheck.Status == 1)
+                                return Ok(new { message = "Available" });
+                            else if (connectorCheck.Status == 5)
+                                return Ok(new { message = "Preparing" });
+                            else if (connectorCheck.Status == 6)
+                            {
+                                if (request.IgnoreCharging)
+                                    return Ok(new { message = "Charging" });
+                                else
+                                    return StatusCode(500, new { message = "หัวชาร์จนี้กำลังใช้งานอยู่" });
+                            }
+                        }
+                    }
+                    return StatusCode(500, new { message = "หัวชาร์จไม่พร้อมทำงาน" });
+                }
+                else
+                    return StatusCode(500, new { message = "ไม่พบหัวชาร์จนี้ กรูณาระบุใหม่อีกครั้ง" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.ToString() });
+            }
+        }
+
+        [HttpPost("stop")]
+        public async Task<IActionResult> StopTransaction([FromBody] StopTransactionRequest request)
+        {
+            try
+            {
+                var payment = await _context.TblPayments.FirstOrDefaultAsync(x => x.FPaymentCode == request.RefNo);
+                if (payment == null)
+                    return StatusCode(500, new { message = "RefNo not found" });
+
+                var trans = await _context.TblTransactions.FirstOrDefaultAsync(x => x.FId == payment.FTransactionId);
+                if (trans == null)
+                    return StatusCode(500, new { message = "TransactionId not found" });
+
+                var connector = await _context.TblConnectorStatuses.FirstOrDefaultAsync(x => x.FId == trans.FConnectorId);
+                if (connector == null)
+                    return StatusCode(500, new { message = "Connector not found" });
+
+                var charger = await _context.TblChargers.FirstOrDefaultAsync(x => x.FId == trans.FChargerId);
+                var station = await _context.TblStations.FirstOrDefaultAsync(x => x.FId == trans.FStationId);
+
+                // trans.FMeterStart = Convert.ToDecimal(meterStart);
+                trans.FMeterEnd = Convert.ToDecimal(request.MeterEnd);
+                trans.FTransactionStatus = "Finishing";
+                trans.FUpdated = DateTime.UtcNow;
+                trans.FEndTime = DateTime.UtcNow;
+                trans.FEndResult = "EmergencyStop";
+                _context.TblTransactions.Update(trans);
+                _ = await _context.SaveChangesAsync();
+
+                connector.FStateOfCharge = 0;
+                connector.FCurrentChargeKw = 0;
+                connector.FCurrentMeter = 0;
+                connector.FCurrentMeterTime = DateTime.UtcNow;
+
+                _context.TblConnectorStatuses.Update(connector);
+                _ = await _context.SaveChangesAsync();
+
+                if (trans.FPreMeter > request.MeterEnd)
+                {
+                    try
+                    {
+                        var userID = User?.FindFirstValue(JwtRegisteredClaimNames.Sid);
+                        if (userID != null)
+                        {
+                            var user = await _context.TblUsers.FirstOrDefaultAsync(x => x.FId == Guid.Parse(userID));
+                            if (user != null)
+                            {
+                                user.FBalanceKwh += (trans.FPreMeter - request.MeterEnd);
+                                _context.TblUsers.Update(user);
+                                _ = await _context.SaveChangesAsync();
+                            }
+                        }
+                    }
+                    catch
+                    {
+
+                    }
+                }
+
+                _cachService.ClearData(trans.FId);
+
+                if (charger != null && station != null)
+                {
+                    await _ocppService.StopTransaction(trans.FChargerId, charger.FCode, (int)connector.FConnectorId, station.FRfid);
+                }
+
+                return Ok(new { message = "Transaction stop successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.ToString() });
+            }
+        }
+    }
+
+    public class ConnectorInfo
+    {
+        public int Status { get; set; }
+        public decimal? ChargeRateKW { get; set; }
+        public decimal? MeterKWH { get; set; }
+        public decimal? SoC { get; set; }
+    }
+
+    public class ChargePoint
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Protocol { get; set; }
+        public int? Heartbeat { get; set; }
+        public Dictionary<string, ConnectorInfo> OnlineConnectors { get; set; }
+        public string WebSocketStatus { get; set; }
     }
 }

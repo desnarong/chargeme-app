@@ -84,9 +84,9 @@ builder.Services.AddAuthentication(opt => {
 builder.Services.AddTransient<LogService>();
 builder.Services.AddTransient<TokenService>();
 builder.Services.AddTransient<UserService>();
-builder.Services.AddMemoryCache(); // à¾ÔèÁºÃÔ¡ÒÃ Memory Cache
-builder.Services.AddTransient<MemoryCacheService>(); // Å§·ÐàºÕÂ¹ MyDataService
-
+builder.Services.AddMemoryCache(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¡ï¿½ï¿½ Memory Cache
+builder.Services.AddTransient<MemoryCacheService>(); // Å§ï¿½ï¿½ï¿½ï¿½Â¹ MyDataService
+builder.Services.AddTransient<OCPPService>();
 //builder.Services.AddHostedService<SessionCleanupService>();
 
 var app = builder.Build();

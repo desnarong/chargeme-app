@@ -1,0 +1,1342 @@
+﻿warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T17:00:02.0519357+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T17:00:03.8841093+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T17:00:05.2458797+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T17:00:05.2460047+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T17:00:05.2472611+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T17:00:05.2473134+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T17:00:05.2505605+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:00:05.3081379+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:00:05.3131121+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=07df70fba37e427d920bcc172d6af23c / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:00:05.3217514+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:00:05.3678863+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:00:05.3679279+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:00:05.3742891+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:00:05.6009707+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"07df70fba37e427d920bcc172d6af23c",{"status":"Accepted","currentTime":"2025-06-26T17:00:05.3679315+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:00:09.0396367+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:00:09.0402857+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:00:09.0406576+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"6f69281e990441aa824f5d4273049444","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:00:09.0444283+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:00:09.0450456+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=6f69281e990441aa824f5d4273049444 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:00:09.0561901+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:00:09.0591329+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:00:09.0593779+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=6f69281e990441aa824f5d4273049444 / Action=StartTransaction)
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:00:09.0742667+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T17:02:00.8030108+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T17:02:03.0241917+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T17:02:04.3292507+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T17:02:04.3295001+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T17:02:04.3316916+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T17:02:04.3317858+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T17:02:04.3354500+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:02:04.3958002+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:02:04.3989268+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=6f69281e990441aa824f5d4273049444 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:02:04.4080419+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:02:04.4603150+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:02:04.4604170+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:02:04.4668184+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:02:04.7041523+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"6f69281e990441aa824f5d4273049444",{"status":"Accepted","currentTime":"2025-06-26T17:02:04.4604256+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:02:07.1582863+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:02:07.1583658+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:02:07.1584998+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"0d2ccf463083461398db13e4d8dd1a07","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:02:07.1620050+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:02:07.1622420+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=0d2ccf463083461398db13e4d8dd1a07 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:02:07.1745648+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:02:07.1786392+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:02:07.1788421+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=0d2ccf463083461398db13e4d8dd1a07 / Action=StartTransaction)
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:02:07.1945133+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Invalid cast from 'System.DateTime' to 'System.DateTimeOffset'.
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T17:03:55.4240617+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T17:03:56.7630236+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T17:03:58.1102808+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T17:03:58.1106318+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T17:03:58.1123652+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T17:03:58.1124294+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T17:03:58.1160306+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:03:58.1751676+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:03:58.1780007+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=0d2ccf463083461398db13e4d8dd1a07 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:03:58.1863885+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:03:58.2341588+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:03:58.2342037+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:03:58.2391650+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:03:58.4740591+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"0d2ccf463083461398db13e4d8dd1a07",{"status":"Accepted","currentTime":"2025-06-26T17:03:58.2342083+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:03.0989340+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:03.0990430+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:03.0992361+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"2922bb1452024fef8e828abcb0dd8f86","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:03.1037655+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:03.1039692+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=2922bb1452024fef8e828abcb0dd8f86 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:03.1170995+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:03.1203397+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:03.1210793+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=2922bb1452024fef8e828abcb0dd8f86 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:03.1436284+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:03.1588682+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T17:04:46.8252529+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T17:04:46.9964631+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T17:04:47.8654948+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T17:04:49.1862741+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T17:04:49.1864350+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T17:04:49.1876149+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T17:04:49.1876713+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T17:04:49.1931869+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:49.2566540+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:49.2608823+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=2922bb1452024fef8e828abcb0dd8f86 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:49.2710398+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:49.3272768+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:49.3273234+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:49.3350176+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:49.5768686+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"2922bb1452024fef8e828abcb0dd8f86",{"status":"Accepted","currentTime":"2025-06-26T17:04:49.3273292+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:52.6152067+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:52.6152930+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:52.6154506+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"628f43521e6a479bab81a66c056ee52e","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:52.6179083+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:52.6181037+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=628f43521e6a479bab81a66c056ee52e / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:52.6308407+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:52.6344402+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:52.6346220+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=628f43521e6a479bab81a66c056ee52e / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:52.6525730+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:52.6586043+07:00
+      Processing startTransaction request...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:52.6587134+07:00
+      StartTransaction => Message deserialized
+info: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:52.7504588+07:00
+      StartTransaction => Charge tag='B4A63CDF' => Status: Accepted
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:53.1283592+07:00
+      StartTransaction => Response serialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:53.2643581+07:00
+      MessageLog => Writing entry 'StartTransaction'
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:04:53.4421293+07:00
+      MessageLog => Writing entry 'StartTransaction'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:04:53.4858158+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"628f43521e6a479bab81a66c056ee52e",{"idTagInfo":{"expiryDate":"2026-06-26T00:00:00+00:00","parentIdTag":"","status":"Accepted"},"transactionId":250626000004}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:05:14.1277890+07:00
+      OCPPMiddleware.Receive16 => Websocket disconnected: State=Closed / CloseStatus=3001
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T17:15:05.7118868+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T17:15:05.8760313+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T17:15:09.6788189+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T17:15:10.8939290+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T17:15:10.8940598+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T17:15:10.8953761+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T17:15:10.8954552+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T17:15:10.9039940+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:15:11.0010726+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:15:11.0049306+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=628f43521e6a479bab81a66c056ee52e / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:15:11.0107276+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:15:11.0810503+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:15:11.0811269+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:15:11.0887000+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:15:11.3169672+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"628f43521e6a479bab81a66c056ee52e",{"status":"Accepted","currentTime":"2025-06-26T17:15:11.0811353+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:15:15.1610008+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:15:15.1610627+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:15:15.1611632+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"52d4cccfb2f0450f9be201f2f5ca93b3","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:15:15.1639877+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:15:15.1641679+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=52d4cccfb2f0450f9be201f2f5ca93b3 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:15:15.1739121+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:15:15.1773472+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:15:15.1775076+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=52d4cccfb2f0450f9be201f2f5ca93b3 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:15:15.1962986+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:15:15.2039594+07:00
+      Processing startTransaction request...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:15:15.2040167+07:00
+      StartTransaction => Message deserialized
+info: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:15:15.3034996+07:00
+      StartTransaction => Charge tag='B4A63CDF' => Status: Accepted
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:15:15.7572837+07:00
+      StartTransaction => Response serialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:15:15.9768222+07:00
+      MessageLog => Writing entry 'StartTransaction'
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:15:16.1749756+07:00
+      MessageLog => Writing entry 'StartTransaction'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:15:16.2171870+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"52d4cccfb2f0450f9be201f2f5ca93b3",{"idTagInfo":{"expiryDate":"2026-06-26T00:00:00+00:00","parentIdTag":"","status":"Accepted"},"transactionId":250626000004}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:31:23.8891033+07:00
+      OCPPMiddleware.Receive16 => Websocket disconnected: State=Closed / CloseStatus=3001
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T17:59:31.6333585+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T17:59:31.7991788+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T17:59:53.4891657+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T17:59:54.7387319+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T17:59:54.7388835+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T17:59:54.7399744+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T17:59:54.7400143+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T17:59:54.7441929+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:59:54.8005109+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:59:54.8038676+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=996c51ad0aa74c2d85c348910149d068 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:59:54.8084962+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:59:54.8519888+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:59:54.8520409+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T17:59:54.8584419+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T17:59:55.0448391+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"996c51ad0aa74c2d85c348910149d068",{"status":"Accepted","currentTime":"2025-06-26T17:59:54.8520463+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:00:40.2674664+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:00:40.2675386+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:00:40.2676319+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"0680a3ced94a4a6caf1368582d686624","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:00:40.2700655+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:00:40.2703494+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=0680a3ced94a4a6caf1368582d686624 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:00:40.2824771+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:00:40.2869099+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:00:40.2870279+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=0680a3ced94a4a6caf1368582d686624 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:00:40.2915026+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:00:40.3069888+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T18:02:41.2038726+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T18:02:41.4857641+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T18:02:43.5919664+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T18:02:44.9340047+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T18:02:44.9341994+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T18:02:44.9357263+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T18:02:44.9357918+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T18:02:44.9398418+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:02:45.0064252+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:02:45.0097945+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=0680a3ced94a4a6caf1368582d686624 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:02:45.0152448+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:02:45.0773137+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:02:45.0773871+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:02:45.0851121+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:02:45.3195319+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"0680a3ced94a4a6caf1368582d686624",{"status":"Accepted","currentTime":"2025-06-26T18:02:45.0773926+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:02:49.5503688+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:02:49.5504132+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:02:49.5504881+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"5d853bf3d4104e8e8e6dde454e476331","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:02:49.5532899+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:02:49.5536562+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=5d853bf3d4104e8e8e6dde454e476331 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:02:49.5664403+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:02:49.5694464+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:02:49.5695992+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=5d853bf3d4104e8e8e6dde454e476331 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:02:49.5734129+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:02:49.5860360+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T18:03:18.0082358+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T18:03:18.2019615+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T18:03:24.0632504+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T18:03:25.3369168+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T18:03:25.3371186+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T18:03:25.3384326+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T18:03:25.3384922+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T18:03:25.3453435+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:03:25.4107239+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:03:25.4152843+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=5d853bf3d4104e8e8e6dde454e476331 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:03:25.4212335+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:03:25.4756958+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:03:25.4757430+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:03:25.4831606+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:03:25.7231605+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"5d853bf3d4104e8e8e6dde454e476331",{"status":"Accepted","currentTime":"2025-06-26T18:03:25.4757553+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:03:28.1114424+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:03:28.1114939+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:03:28.1115882+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"6657e89494a8408daca4ad79e0d4a94e","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:03:28.1145866+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:03:28.1148222+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=6657e89494a8408daca4ad79e0d4a94e / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:03:28.1288315+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:03:28.1354060+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:03:28.1355465+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=6657e89494a8408daca4ad79e0d4a94e / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:03:28.1415555+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:03:28.1559674+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+info: OCPPMiddleware[0] @ 2025-06-26T18:04:36.4172970+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T18:04:36.5101484+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T18:04:36.5101730+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T18:04:36.5102949+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T18:04:36.5103038+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T18:04:36.5104816+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:04:36.5122512+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:04:36.5123650+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=6657e89494a8408daca4ad79e0d4a94e / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:04:36.5131210+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:04:36.5136591+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:04:36.5136841+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:04:36.5142534+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:04:36.6918637+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"6657e89494a8408daca4ad79e0d4a94e",{"status":"Accepted","currentTime":"2025-06-26T18:04:36.5136863+07:00","interval":300}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:04:38.6277816+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 162 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:04:38.6279036+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=6657e89494a8408daca4ad79e0d4a94e / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:04:38.6289084+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:04:38.6300748+07:00
+      Processing startTransaction request...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:04:38.6301077+07:00
+      StartTransaction => Message deserialized
+info: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:04:38.7061700+07:00
+      StartTransaction => Charge tag='B4A63CDF' => Status: Accepted
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:04:39.0637593+07:00
+      StartTransaction => Response serialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:04:39.1956449+07:00
+      MessageLog => Writing entry 'StartTransaction'
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:04:39.3729404+07:00
+      MessageLog => Writing entry 'StartTransaction'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:04:39.4152759+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"6657e89494a8408daca4ad79e0d4a94e",{"idTagInfo":{"expiryDate":"2026-06-26T00:00:00+00:00","parentIdTag":"","status":"Accepted"},"transactionId":250626000005}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:15:21.7248099+07:00
+      OCPPMiddleware.Receive16 => Websocket disconnected: State=Closed / CloseStatus=3001
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T18:15:39.2250830+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T18:15:39.4193256+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T18:15:40.8279089+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T18:15:42.1267990+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T18:15:42.1270316+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T18:15:42.1291401+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T18:15:42.1292240+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T18:15:42.1332508+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:15:42.1950778+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:15:42.1984640+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=6657e89494a8408daca4ad79e0d4a94e / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:15:42.2042574+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:15:42.2519824+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:15:42.2520250+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:15:42.2576621+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:15:42.4918685+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"6657e89494a8408daca4ad79e0d4a94e",{"status":"Accepted","currentTime":"2025-06-26T18:15:42.2520376+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:16:02.0013280+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:16:02.0013860+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:16:02.0014900+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"6f04c477772d41de953c6c68c8bc637f","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:16:02.0042554+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:16:02.0044817+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=6f04c477772d41de953c6c68c8bc637f / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:16:02.0183296+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:16:02.0219050+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:16:02.0220974+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=6f04c477772d41de953c6c68c8bc637f / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:16:02.0272250+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:16:02.0399561+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T18:20:49.7642763+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T18:20:49.9433221+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T18:20:52.0189806+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T18:20:53.2152816+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T18:20:53.2154525+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T18:20:53.2167221+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T18:20:53.2167696+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T18:20:53.2201832+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:20:53.2784798+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:20:53.2819800+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=6f04c477772d41de953c6c68c8bc637f / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:20:53.2867814+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:20:53.3364011+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:20:53.3364475+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:20:53.3424258+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:20:53.5158898+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"6f04c477772d41de953c6c68c8bc637f",{"status":"Accepted","currentTime":"2025-06-26T18:20:53.3364514+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:20:57.6423930+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:20:57.6424737+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:20:57.6426172+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"a550c8e4cd2e458789236a98a52ace50","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:20:57.6457478+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:20:57.6460152+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=a550c8e4cd2e458789236a98a52ace50 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:20:57.6565190+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:20:57.6593508+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:20:57.6594836+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=a550c8e4cd2e458789236a98a52ace50 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:20:57.6634112+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:20:57.6784245+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T18:40:10.6900401+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T18:40:10.8649956+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T18:48:35.1570499+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T18:48:37.4358306+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T18:48:37.4360341+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T18:48:37.4372995+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T18:48:37.4373679+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T18:48:37.4414985+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:48:37.5051972+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:48:37.5080935+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=a550c8e4cd2e458789236a98a52ace50 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:48:37.5131295+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:48:37.5654389+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:48:37.5654817+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:48:37.5729916+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:48:37.8293999+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"a550c8e4cd2e458789236a98a52ace50",{"status":"Accepted","currentTime":"2025-06-26T18:48:37.5654864+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:48:55.0918954+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:48:55.0919891+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:48:55.0921819+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"b4fd7fa7fd1a45a0a65d32e32d8afa54","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:48:55.0967870+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:48:55.0970770+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=b4fd7fa7fd1a45a0a65d32e32d8afa54 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:48:55.1190720+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:48:55.1272931+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:48:55.1274620+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=b4fd7fa7fd1a45a0a65d32e32d8afa54 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:48:55.1359148+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:48:55.1603182+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T18:52:45.4977150+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T18:52:45.6604178+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T18:52:46.9639178+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T18:52:48.3202157+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T18:52:48.3203369+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T18:52:48.3217715+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T18:52:48.3218523+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T18:52:48.3269351+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:52:48.4112419+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:52:48.4148015+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=b4fd7fa7fd1a45a0a65d32e32d8afa54 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:52:48.4198090+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:52:48.4895100+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:52:48.4895578+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:52:48.4959225+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:52:48.7265118+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"b4fd7fa7fd1a45a0a65d32e32d8afa54",{"status":"Accepted","currentTime":"2025-06-26T18:52:48.4895632+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:52:52.8897364+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:52:52.8898831+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:52:52.8900756+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"9b714d15a3c4400eb880257e4f09f920","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:52:52.8941018+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:52:52.8952008+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=9b714d15a3c4400eb880257e4f09f920 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:52:52.9099185+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:52:52.9135735+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:52:52.9137479+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=9b714d15a3c4400eb880257e4f09f920 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T18:52:52.9196922+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T18:52:52.9347826+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T19:04:50.7069065+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T19:04:50.8748721+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T19:04:54.6038924+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T19:04:55.8974065+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T19:04:55.8975587+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T19:04:55.8987801+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T19:04:55.8988258+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T19:04:55.9044883+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:04:55.9614712+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:04:55.9650579+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=9b714d15a3c4400eb880257e4f09f920 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T19:04:55.9711855+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T19:04:56.0214747+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T19:04:56.0215216+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T19:04:56.0287701+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:04:56.2503305+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"9b714d15a3c4400eb880257e4f09f920",{"status":"Accepted","currentTime":"2025-06-26T19:04:56.0215341+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:05:04.3620214+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:05:04.3620826+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:05:04.3621702+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"956b96fe21c144dbb5d09f1b0888260d","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:05:04.3652898+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:05:04.3656220+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=956b96fe21c144dbb5d09f1b0888260d / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T19:05:04.3837972+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:05:04.3900227+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:05:04.3901604+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=956b96fe21c144dbb5d09f1b0888260d / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T19:05:04.3950674+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:05:04.4098737+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T19:18:34.2979757+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T19:18:34.4609152+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T19:47:36.6708061+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T19:47:36.8429318+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T19:48:09.5514769+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T19:48:10.9355484+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T19:48:10.9356852+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T19:48:10.9368284+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T19:48:10.9368754+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T19:48:10.9400579+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:48:10.9926845+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 326 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:48:10.9964110+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=z316CGJ28IlwjDbyuETs3x4rPWTT5H0LEjDE / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T19:48:11.0011957+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T19:48:11.0518286+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T19:48:11.0519050+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T19:48:11.0579875+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:48:11.4159652+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"z316CGJ28IlwjDbyuETs3x4rPWTT5H0LEjDE",{"status":"Accepted","currentTime":"2025-06-26T19:48:11.0519093+07:00","interval":300}]
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T19:48:44.9976278+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : The connection was aborted because the server is shutting down and request processing didn't complete within the time specified by HostOptions.ShutdownTimeout.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T19:48:50.3166575+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T19:48:50.4795844+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T20:38:45.7813331+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T20:38:45.9572593+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T20:39:05.1510688+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T20:39:06.4182807+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T20:39:06.4185406+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T20:39:06.4198999+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T20:39:06.4199626+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T20:39:06.4233921+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:39:06.4835541+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 326 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:39:06.4875667+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=ZVq1TPuQwA3Ydyb8A3euAnn4WQVfHZEQSM4D / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:39:06.4932274+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:39:06.5486834+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:39:06.5488053+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:39:06.5560119+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:39:06.7846865+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"ZVq1TPuQwA3Ydyb8A3euAnn4WQVfHZEQSM4D",{"status":"Accepted","currentTime":"2025-06-26T20:39:06.5488126+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:39:08.7088038+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:39:08.7092895+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:39:08.7094379+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"d29bfff4a9c1415d92a724f154cea3a4","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:39:08.7124585+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:39:08.7127361+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=d29bfff4a9c1415d92a724f154cea3a4 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:39:08.7230585+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:39:08.7286868+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:39:08.7289024+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=d29bfff4a9c1415d92a724f154cea3a4 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:39:08.7336844+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:39:08.7535770+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T20:43:24.7958887+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T20:43:24.9829996+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T20:43:26.5429261+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T20:43:27.8459256+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T20:43:27.8460578+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T20:43:27.8473382+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T20:43:27.8474224+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T20:43:27.8524124+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:43:27.9122766+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:43:27.9154322+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=d29bfff4a9c1415d92a724f154cea3a4 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:43:27.9220728+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:43:27.9750743+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:43:27.9751150+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:43:27.9812874+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:43:28.2159347+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"d29bfff4a9c1415d92a724f154cea3a4",{"status":"Accepted","currentTime":"2025-06-26T20:43:27.9751189+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:43:30.4770340+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:43:30.4771301+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:43:30.4773154+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"b52fb4096ecf47e0b8b0a64fc899c682","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:43:30.4810298+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:43:30.4816452+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=b52fb4096ecf47e0b8b0a64fc899c682 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:43:30.4965403+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:43:30.5025576+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:43:30.5029335+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=b52fb4096ecf47e0b8b0a64fc899c682 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:43:30.5097423+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:43:30.5255284+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T20:44:55.4427838+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T20:44:55.6082773+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T20:44:56.7396196+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T20:44:58.1619111+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T20:44:58.1620669+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T20:44:58.1633477+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T20:44:58.1633950+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T20:44:58.1670045+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:44:58.2381767+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:44:58.2423061+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=b52fb4096ecf47e0b8b0a64fc899c682 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:44:58.2483425+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:44:58.3022779+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:44:58.3023349+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:44:58.3096714+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:44:58.5508542+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"b52fb4096ecf47e0b8b0a64fc899c682",{"status":"Accepted","currentTime":"2025-06-26T20:44:58.3023399+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:44:59.9792622+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:44:59.9793600+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:44:59.9795206+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"05c1b3861d874767b495b35d7edf51e5","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:44:59.9831966+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:44:59.9837003+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=05c1b3861d874767b495b35d7edf51e5 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:44:59.9945443+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:44:59.9983339+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:44:59.9986526+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=05c1b3861d874767b495b35d7edf51e5 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T20:45:00.0044760+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T20:45:00.0286823+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T21:08:17.2339195+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T21:08:17.4408484+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T21:08:34.8832524+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T21:08:36.1362810+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T21:08:36.1364230+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T21:08:36.1376539+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T21:08:36.1377112+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T21:08:36.1419278+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:36.1928998+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 326 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:36.1959066+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=SShagBIYs1mYkvAeJfSHAs9u2jsLy4uIPT2B / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:08:36.2018537+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:08:36.2452586+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:08:36.2452996+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:08:36.2507962+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:36.4462981+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"SShagBIYs1mYkvAeJfSHAs9u2jsLy4uIPT2B",{"status":"Accepted","currentTime":"2025-06-26T21:08:36.2453045+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:39.9287339+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:39.9288418+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:39.9290660+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"19cb185dd7b34c03b3926c7129c8abf1","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:39.9329926+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:39.9334776+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=19cb185dd7b34c03b3926c7129c8abf1 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:08:39.9443335+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:39.9475493+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:39.9479178+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=19cb185dd7b34c03b3926c7129c8abf1 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:08:39.9521360+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:39.9643996+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+info: OCPPMiddleware[0] @ 2025-06-26T21:08:48.0130616+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T21:08:48.1123767+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T21:08:48.1124022+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T21:08:48.1125341+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T21:08:48.1125429+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T21:08:48.1127532+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:48.1150976+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:48.1154398+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=19cb185dd7b34c03b3926c7129c8abf1 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:08:48.1162597+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:08:48.1168861+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:08:48.1169300+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:08:48.1178396+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:48.2958453+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"19cb185dd7b34c03b3926c7129c8abf1",{"status":"Accepted","currentTime":"2025-06-26T21:08:48.1169346+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:53.5940416+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:53.5940779+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:53.5941032+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"2d5964f509f94a298d59ec2dfa41c278","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:53.5954167+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:53.5956511+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=2d5964f509f94a298d59ec2dfa41c278 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:08:53.5968781+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:53.5983122+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:53.5988220+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=2d5964f509f94a298d59ec2dfa41c278 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:08:53.5997226+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:08:53.6030876+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T21:14:06.2890061+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T21:14:06.4620034+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T21:14:35.7312198+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T21:14:36.9522163+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T21:14:36.9524522+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T21:14:36.9537097+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T21:14:36.9537685+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T21:14:36.9572087+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:14:37.0192226+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:14:37.0233321+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=2d5964f509f94a298d59ec2dfa41c278 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:14:37.0284501+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:14:37.0765776+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:14:37.0766178+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:14:37.0826443+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:14:37.3386769+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"2d5964f509f94a298d59ec2dfa41c278",{"status":"Accepted","currentTime":"2025-06-26T21:14:37.076629+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:16:26.3112738+07:00
+      OCPPMiddleware.Receive16 => Websocket disconnected: State=Closed / CloseStatus=EndpointUnavailable
+info: OCPPMiddleware[0] @ 2025-06-26T21:16:28.9376163+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T21:16:29.0328340+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T21:16:29.0328706+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T21:16:29.0330491+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T21:16:29.0330691+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T21:16:29.0332860+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:16:29.0360752+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 326 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:16:29.0365505+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=6EpQyMXa9wQh82OUKHYzqCDPnQdzv3Xfep6P / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:16:29.0374234+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:16:29.0380740+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:16:29.0381123+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:16:29.0387981+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:16:29.2214373+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"6EpQyMXa9wQh82OUKHYzqCDPnQdzv3Xfep6P",{"status":"Accepted","currentTime":"2025-06-26T21:16:29.0381145+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:16:37.5482938+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:16:37.5483255+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:16:37.5483707+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"c18cc495b9fa4b7aa75d631077a88d03","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:17:22.6177766+07:00
+      OCPPMiddleware.Receive16 => Websocket disconnected: State=Closed / CloseStatus=3001
+trce: OCPP.Core.Server.Startup[0] @ 2025-06-26T21:17:56.5989381+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-06-26T21:17:56.7817456+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+info: OCPPMiddleware[0] @ 2025-06-26T21:18:06.4480078+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T21:18:07.8188065+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T21:18:07.8189527+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T21:18:07.8203794+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T21:18:07.8204336+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T21:18:07.8243704+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:07.9025545+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 326 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:07.9115752+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=nEuqPRBg2OpUEbBh3JVPXVZ7gtEUr5VBOnQh / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:18:07.9198091+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:18:08.0102518+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:18:08.0103367+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:18:08.0222841+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:08.2599591+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"nEuqPRBg2OpUEbBh3JVPXVZ7gtEUr5VBOnQh",{"status":"Accepted","currentTime":"2025-06-26T21:18:08.0103456+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:14.4062327+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:14.4063304+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:14.4064979+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"375fdf161f0943ac9728ed78ab1d295e","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:14.4143835+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:14.4152329+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=375fdf161f0943ac9728ed78ab1d295e / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:18:14.4307063+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:16.3650971+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:16.3654849+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=375fdf161f0943ac9728ed78ab1d295e / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:18:16.3714591+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:16.3931009+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+info: OCPPMiddleware[0] @ 2025-06-26T21:18:27.4479771+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T21:18:27.5394520+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T21:18:27.5395097+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T21:18:27.5397488+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T21:18:27.5398198+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T21:18:27.5401383+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:27.5439202+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:27.5445628+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=375fdf161f0943ac9728ed78ab1d295e / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:18:27.5457187+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:18:27.5473125+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:18:27.5474980+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:18:27.5499481+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:27.7427474+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"375fdf161f0943ac9728ed78ab1d295e",{"status":"Accepted","currentTime":"2025-06-26T21:18:27.5475305+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:30.0556416+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:30.0557445+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:30.0558015+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"2d10564bf0364720b46b33e023d0bcc5","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:30.0589206+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:30.0593726+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=2d10564bf0364720b46b33e023d0bcc5 / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:18:30.0605378+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:34.3344006+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:34.3346764+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=2d10564bf0364720b46b33e023d0bcc5 / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:18:34.3352997+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:18:34.3376349+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+info: OCPPMiddleware[0] @ 2025-06-26T21:19:41.2963851+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T21:19:41.4278368+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T21:19:41.4278627+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T21:19:41.4279229+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T21:19:41.4279276+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T21:19:41.4281062+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:19:41.4307141+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:19:41.4311515+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=2d10564bf0364720b46b33e023d0bcc5 / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:19:41.4317922+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:19:41.4324403+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:19:41.4324710+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:19:41.4325607+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:19:41.6086435+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"2d10564bf0364720b46b33e023d0bcc5",{"status":"Accepted","currentTime":"2025-06-26T21:19:41.4324725+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:19:43.0658532+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:19:43.0659579+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:19:43.0661376+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"685b3f86c76b47a282818b893e77fa2f","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:19:43.0691440+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:19:43.0695091+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=685b3f86c76b47a282818b893e77fa2f / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:19:43.0705148+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:19:44.3124132+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 146 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:19:44.3127406+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=685b3f86c76b47a282818b893e77fa2f / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:19:44.3134455+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+fail: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:19:44.3150140+07:00
+      OCPPMiddleware.Receive16 Error => Websocket disconnect: State=Open / CloseStatus=(null) : Required property 'connectorId' not found in JSON. Path '', line 1, position 88.
+info: OCPPMiddleware[0] @ 2025-06-26T21:20:08.6298378+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T21:20:08.7174429+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T21:20:08.7174584+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T21:20:08.7175021+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T21:20:08.7175059+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T21:20:08.7176071+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:20:08.7225449+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 326 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:20:08.7231133+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=SZP2V1cxbEPRqneC04HZ9wRdueOZr7YqPyYt / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:20:08.7241464+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:20:08.7248330+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:20:08.7248518+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:20:08.7249447+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:20:08.8909326+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"SZP2V1cxbEPRqneC04HZ9wRdueOZr7YqPyYt",{"status":"Accepted","currentTime":"2025-06-26T21:20:08.7248533+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:20:27.7800079+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:20:27.7800585+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:20:27.7800784+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"aaa559aeeecf423f95007337d14423da","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:20:27.7812071+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:20:27.7814767+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=aaa559aeeecf423f95007337d14423da / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:20:27.7825069+07:00
+      HandleReset => API response: {"status": "Accepted"}
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:42.8847292+07:00
+      OCPPMiddleware.Receive16 => Websocket disconnected: State=Closed / CloseStatus=3001
+info: OCPPMiddleware[0] @ 2025-06-26T21:21:43.9174323+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T21:21:44.0011370+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T21:21:44.0011553+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T21:21:44.0012228+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T21:21:44.0012288+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T21:21:44.0014117+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:44.0044533+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 322 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:44.0050947+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=aaa559aeeecf423f95007337d14423da / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:44.0059554+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:44.0064512+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:44.0064643+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:44.0065809+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:44.1724727+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"aaa559aeeecf423f95007337d14423da",{"status":"Accepted","currentTime":"2025-06-26T21:21:44.0064655+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:46.5468467+07:00
+      OCPPMiddleware.Receive16 => Websocket disconnected: State=Closed / CloseStatus=EndpointUnavailable
+info: OCPPMiddleware[0] @ 2025-06-26T21:21:48.6036277+07:00
+      OCPPMiddleware => Connection request with chargepoint identifier = 'Test1234'
+info: OCPPMiddleware[0] @ 2025-06-26T21:21:48.6886441+07:00
+      OCPPMiddleware => SUCCESS: Found chargepoint with identifier=473d9003-023b-474b-b37e-71d64b978474
+info: OCPPMiddleware[0] @ 2025-06-26T21:21:48.6886725+07:00
+      OCPPMiddleware => No authentication for chargepoint '473d9003-023b-474b-b37e-71d64b978474' configured
+trce: OCPPMiddleware[0] @ 2025-06-26T21:21:48.6887315+07:00
+      OCPPMiddleware => Store/Update status object
+trce: OCPPMiddleware[0] @ 2025-06-26T21:21:48.6887377+07:00
+      OCPPMiddleware => Waiting for message...
+trce: OCPPMiddleware[0] @ 2025-06-26T21:21:48.6889334+07:00
+      OCPPMiddleware => WebSocket connection with charge point 'Test1234'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:48.6934646+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 326 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:48.6938069+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=0SMdsXdmEJX5fWKt18w0ns1gYUgMTr1MFK0L / Action=BootNotification)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:48.6948155+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\BootNotificationRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:48.6955686+07:00
+      Processing boot notification...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:48.6955912+07:00
+      BootNotification => Message deserialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:48.6956844+07:00
+      BootNotification => Response serialized
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:48.8700286+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"0SMdsXdmEJX5fWKt18w0ns1gYUgMTr1MFK0L",{"status":"Accepted","currentTime":"2025-06-26T21:21:48.6955927+07:00","interval":300}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:55.6189053+07:00
+      RemoteStartTransaction => Save ConnectorStatus: ID=Test1234 / Connector=1 
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:55.6189200+07:00
+      RemoteStartTransaction => Response serialized Data:{"connectorId":1,"idTag":"B4A63CDF"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:55.6189439+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [2,"0e464bc1f4344cc2b6c196ce32f521cd","RemoteStartTransaction",{"connectorId":1,"idTag":"B4A63CDF"}]
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:55.6199749+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 60 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:55.6203388+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=3 / ID=0e464bc1f4344cc2b6c196ce32f521cd / Action=)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:55.6221244+07:00
+      HandleReset => API response: {"status": "Accepted"}
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:55.6233838+07:00
+      OCPPMiddleware.Receive16 => Receiving segment: 162 bytes (EndOfMessage=True / MsgType=Text)
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:55.6238683+07:00
+      OCPPMiddleware.Receive16 => OCPP-Message: Type=2 / ID=0e464bc1f4344cc2b6c196ce32f521cd / Action=StartTransaction)
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:55.6247625+07:00
+      DeserializeMessage => Using schema file: D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Server\bin\Debug\net8.0\Schema16\StartTransactionRequest.json
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:55.6262550+07:00
+      Processing startTransaction request...
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:55.6262792+07:00
+      StartTransaction => Message deserialized
+info: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:55.7291953+07:00
+      StartTransaction => Charge tag='B4A63CDF' => Status: Accepted
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:56.1418835+07:00
+      StartTransaction => Response serialized
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:56.2799088+07:00
+      MessageLog => Writing entry 'StartTransaction'
+trce: OCPP.Core.Server.ControllerOCPP16[0] @ 2025-06-26T21:21:56.4587902+07:00
+      MessageLog => Writing entry 'StartTransaction'
+trce: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:21:56.5007206+07:00
+      OCPPMiddleware.OCPP16 => SendOcppMessage: [3,"0e464bc1f4344cc2b6c196ce32f521cd",{"idTagInfo":{"expiryDate":"2026-06-26T00:00:00+00:00","parentIdTag":"","status":"Accepted"},"transactionId":250626000006}]
+info: OCPPMiddleware.OCPP16[0] @ 2025-06-26T21:22:17.2190598+07:00
+      OCPPMiddleware.Receive16 => Websocket disconnected: State=Closed / CloseStatus=3001
+trce: OCPP.Core.Server.Startup[0] @ 2025-07-10T18:17:31.2477107+07:00
+      Startup => Configure(...)
+warn: Microsoft.AspNetCore.Server.Kestrel[0] @ 2025-07-10T18:17:31.5356803+07:00
+      Overriding address(es) 'http://localhost:8081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.

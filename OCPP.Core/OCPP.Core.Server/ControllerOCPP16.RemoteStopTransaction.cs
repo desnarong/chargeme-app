@@ -45,7 +45,7 @@ namespace OCPP.Core.Server
                         DbContext.Update<TblChargingTag>(chargeTags);
                         DbContext.SaveChanges();
 
-                        remoteStopTransactionRequest.TransactionId = transaction.FId;
+                        remoteStopTransactionRequest.TransactionId = transaction.FTransactionNo ?? 0;
                         Logger.LogInformation("RemoteStopTransaction => Save ConnectorStatus: ID={0} / Connector={1} / Meter={2}", ChargePointStatus.Id, connectorId, 0);
 
                         msgOut.JsonPayload = JsonConvert.SerializeObject(remoteStopTransactionRequest);

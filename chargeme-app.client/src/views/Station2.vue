@@ -149,7 +149,7 @@
                                 if (data.pay.data.status == 'Pending') {
                                     await this.$router.push({ name: 'qrcode' });
                                 }
-                                else if (data.pay.data.status == 'Paid' && data.trans && (data.trans.fTransactionStatus == 'Pending' || data.trans.fTransactionStatus == 'Wating')) {
+                                else if (data.pay.data.status == 'Paid' && data.trans && (data.trans.fTransactionStatus == 'Pending' || data.trans.fTransactionStatus == 'Waiting')) {
                                     await this.$router.push({ name: 'status' });
                                 }
                                 else if (data.pay.data.status == 'Paid' && data.trans && data.trans.fTransactionStatus == 'Charging') {

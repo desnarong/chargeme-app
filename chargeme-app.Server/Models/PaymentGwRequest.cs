@@ -6,7 +6,7 @@ namespace chargeme_app.Server.Models
     {
         public required string RefNo { get; set; }
 
-        public required string ChargeType { get; set; } // เช่น "PP" หรือ "V"
+        public required string CardType { get; set; } // เช่น "PP" หรือ "V"
 
         public required string MerchantId { get; set; }
 

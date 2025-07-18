@@ -1,23 +1,24 @@
 {
   "Version": 1,
-  "Hash": "NlPnW0GxRsqgFdxHXt7Ha94xTLRES8QB+no0hTJbldg=",
+  "Hash": "W4Bhkgaeh48ti5ln+Hay72iYVkp+CjD9s3+WOKFQU2Y=",
   "Source": "chargeme-app.Server",
   "BasePath": "_content/chargeme-app.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "D:\\New Proj\\@งานนอก\\_ev\\_evnew\\webapp\\chargeme-app\\chargeme-app.client\\chargeme-app.client.esproj",
+      "Identity": "D:\\NUTTIW-PROJECT\\chargeme-app\\chargeme-app.client\\chargeme-app.client.esproj",
       "Version": 2,
       "Source": "chargeme-app.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "Configuration=Release;Platform=AnyCPU",
+      "AdditionalPublishProperties": "",
       "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "Configuration=Release;Platform=AnyCPU",
+      "AdditionalBuildProperties": "",
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
     }
   ],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

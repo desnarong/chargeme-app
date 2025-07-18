@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\csms\\csms.csproj": {}
+    "D:\\NUTTIW-PROJECT\\chargeme-app\\csms\\csms.csproj": {}
   },
   "projects": {
-    "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\csms\\csms.csproj": {
+    "D:\\NUTTIW-PROJECT\\chargeme-app\\csms\\csms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\csms\\csms.csproj",
+        "projectUniqueName": "D:\\NUTTIW-PROJECT\\chargeme-app\\csms\\csms.csproj",
         "projectName": "evcsms",
-        "projectPath": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\csms\\csms.csproj",
-        "packagesPath": "C:\\Users\\Sukhum\\.nuget\\packages\\",
-        "outputPath": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\csms\\obj\\",
+        "projectPath": "D:\\NUTTIW-PROJECT\\chargeme-app\\csms\\csms.csproj",
+        "packagesPath": "C:\\Users\\nutti\\.nuget\\packages\\",
+        "outputPath": "D:\\NUTTIW-PROJECT\\chargeme-app\\csms\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Sukhum\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nutti\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\OCPP.Core\\OCPP.Core.Lib\\OCPP.Core.Lib.csproj": {
-                "projectPath": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\OCPP.Core\\OCPP.Core.Lib\\OCPP.Core.Lib.csproj"
+              "D:\\NUTTIW-PROJECT\\chargeme-app\\OCPP.Core\\OCPP.Core.Lib\\OCPP.Core.Lib.csproj": {
+                "projectPath": "D:\\NUTTIW-PROJECT\\chargeme-app\\OCPP.Core\\OCPP.Core.Lib\\OCPP.Core.Lib.csproj"
               }
             }
           }
@@ -48,7 +49,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -112,24 +113,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\OCPP.Core\\OCPP.Core.Lib\\OCPP.Core.Lib.csproj": {
+    "D:\\NUTTIW-PROJECT\\chargeme-app\\OCPP.Core\\OCPP.Core.Lib\\OCPP.Core.Lib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\OCPP.Core\\OCPP.Core.Lib\\OCPP.Core.Lib.csproj",
+        "projectUniqueName": "D:\\NUTTIW-PROJECT\\chargeme-app\\OCPP.Core\\OCPP.Core.Lib\\OCPP.Core.Lib.csproj",
         "projectName": "OCPP.Core.Lib",
-        "projectPath": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\OCPP.Core\\OCPP.Core.Lib\\OCPP.Core.Lib.csproj",
-        "packagesPath": "C:\\Users\\Sukhum\\.nuget\\packages\\",
-        "outputPath": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\OCPP.Core\\OCPP.Core.Lib\\obj\\",
+        "projectPath": "D:\\NUTTIW-PROJECT\\chargeme-app\\OCPP.Core\\OCPP.Core.Lib\\OCPP.Core.Lib.csproj",
+        "packagesPath": "C:\\Users\\nutti\\.nuget\\packages\\",
+        "outputPath": "D:\\NUTTIW-PROJECT\\chargeme-app\\OCPP.Core\\OCPP.Core.Lib\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Sukhum\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nutti\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -138,6 +139,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -156,7 +158,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -203,7 +205,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

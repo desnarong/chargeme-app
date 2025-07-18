@@ -1,10 +1,10 @@
 ﻿<template>
-    <div class="relative">
+    <div class="relative pl-5">
         <!-- ปุ่มเปิดเมนู -->
-        <button v-if="!isOpen"
+        <button
                 @click="toggleMenu"
                 ref="menuButton"
-                class="p-2 fixed top-2 left-2 z-50 text-gray-400 hover:text-gray-600 transition-colors duration-200 rounded-full">
+                class="p-2 z-50 text-gray-400 hover:text-gray-600 transition-colors duration-200 rounded-full">
             <i class="fas fa-bars text-[22px]"></i>
         </button>
 

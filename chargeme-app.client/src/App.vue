@@ -1,15 +1,15 @@
 <script setup>
-    // äÁèµéÍ§ import ÊèÇ¹·ÕèäÁèãªé
+    // ï¿½ï¿½ï¿½ï¿½Í§ import ï¿½ï¿½Ç¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 </script>
 
 <template>
     <div class="flex">
         <!-- Sidebar -->
-        <Sidebar v-if="Object.keys(user).length > 0" />
+       
         <div class="flex-1">
             <header class="flex items-center pl-10 pr-4 pt-4 pb-2">
-                <!-- »ÃÑº pl-4 à»ç¹ pl-10 à¾×èÍàÅ×èÍ¹¢ÇÒ -->
-                <!-- Back Icon and Title (µÔ´«éÒÂ) -->
+                <!-- ï¿½ï¿½Ñº pl-4 ï¿½ï¿½ pl-10 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ -->
+                <!-- Back Icon and Title (ï¿½Ô´ï¿½ï¿½ï¿½ï¿½) -->
                 <div v-if="title.length > 0" class="flex items-center">
                     <button @click="goBack" class="text-gray-500">
                         <i class="fas fa-chevron-left text-xl"></i>
@@ -17,10 +17,10 @@
                     <h1 class="text-[14px] font-semibold ml-1" @click="goBack">{{ title }}</h1>
                 </div>
 
-                <!-- Language Switcher (µÔ´¢ÇÒ) -->
+                <!-- Language Switcher (ï¿½Ô´ï¿½ï¿½ï¿½) -->
                 <div class="flex-1 flex justify-end h-auto max-w-full">
                     <label class="inline-flex items-center cursor-pointer">
-                        <label for="lang-toggle" class="mr-3 text-sm font-medium text-gray-900 dark:text-gray-300">{{ translations.THAI_LABEL_TEXT }}</label>
+                        <label for="lang-toggle" class="mr-3 text-sm font-medium">{{ translations.THAI_LABEL_TEXT }}</label>
                         <input id="lang-toggle"
                                type="checkbox"
                                value=""
@@ -28,9 +28,13 @@
                                v-model="isEnglish"
                                @change="toggleLanguage">
                         <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                        <label for="lang-toggle" class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{{ translations.ENG_LABEL_TEXT }}</label>
+                        <label for="lang-toggle" class="ml-3 text-sm font-medium">{{ translations.ENG_LABEL_TEXT }}</label>
                     </label>
+
+                     <Sidebar v-if="Object.keys(user).length > 0" />
                 </div>
+
+                
             </header>
 
             <main class="">
@@ -77,7 +81,7 @@
             },
             currentlanguage: {
                 get() {
-                    if (!this.$store.getters.getCurrentlanguage) this.$store.dispatch('updateCurrentlanguage', 'en');
+                    if (!this.$store.getters.getCurrentlanguage)this.$store.dispatch('updateCurrentlanguage', 'th');
                     return this.$store.getters.getCurrentlanguage;
                 },
                 set(value) { this.$store.dispatch('updateCurrentlanguage', value); }
@@ -87,7 +91,7 @@
             return {
                 isLoading: false,
                 title: '',
-                isEnglish: false // à¾ÔèÁÊÓËÃÑº toggle language
+                isEnglish: false // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñº toggle language
             };
         },
         methods: {
@@ -143,7 +147,8 @@
         async mounted() {
             const browserLanguage = navigator.language.split('-')[0].toLowerCase();
             const supportedLanguages = ['en', 'th'];
-            this.currentlanguage = this.user.fLanguage?.toLowerCase() || (supportedLanguages.includes(browserLanguage) ? browserLanguage : 'th');
+            // this.currentlanguage = this.user.fLanguage?.toLowerCase() || (supportedLanguages.includes(browserLanguage) ? browserLanguage : 'th');
+            this.currentlanguage = this.user.fLanguage?.toLowerCase() ?? 'th';
             this.isEnglish = this.currentlanguage === 'en';
             await this.fetchTranslations();
             await this.getSessionToken();

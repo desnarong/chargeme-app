@@ -26,7 +26,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-
 using OCPP.Core.Server.Entities;
 using OCPP.Core.Server.Messages_OCPP16;
 

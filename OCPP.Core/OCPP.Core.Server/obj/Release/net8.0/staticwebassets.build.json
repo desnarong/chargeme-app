@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "oYxTPcdrm3AcqBp1oaF5yrP0mToZiTAY+NDy9Y8GCkQ=",
+  "Hash": "gCv3Gt//H4MrgHXupIB+OeXJaZnJgIvmepov+erZ6A0=",
   "Source": "OCPP.Core.Server",
   "BasePath": "_content/OCPP.Core.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

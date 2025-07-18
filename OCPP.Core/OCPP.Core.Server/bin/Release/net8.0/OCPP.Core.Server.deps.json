@@ -601,14 +601,7 @@
         }
       },
       "System.Text.Encodings.Web/8.0.0": {},
-      "System.Text.Json/8.0.5": {
-        "runtime": {
-          "lib/net8.0/System.Text.Json.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46610"
-          }
-        }
-      },
+      "System.Text.Json/8.0.5": {},
       "System.Threading.Channels/6.0.0": {},
       "OCPP.Core.Server.Extensions/1.0.0": {
         "dependencies": {
@@ -616,7 +609,10 @@
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2"
         },
         "runtime": {
-          "OCPP.Core.Server.Extensions.dll": {}
+          "OCPP.Core.Server.Extensions.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

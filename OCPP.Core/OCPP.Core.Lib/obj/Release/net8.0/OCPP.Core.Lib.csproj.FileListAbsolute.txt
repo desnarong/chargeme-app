@@ -12,3 +12,18 @@ D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\OCPP.Co
 D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\ref\OCPP.Core.Lib.dll
 D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\OCPP.Core.Lib\bin\Release\net8.0\OCPP.Core.Lib.runtimeconfig.json
 D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\OCPP.Core.Lib.genruntimeconfig.cache
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\bin\Release\net8.0\OCPP.Core.Lib.deps.json
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\bin\Release\net8.0\OCPP.Core.Lib.runtimeconfig.json
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\bin\Release\net8.0\OCPP.Core.Lib.dll
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\bin\Release\net8.0\OCPP.Core.Lib.pdb
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\OCPP.Core.Lib.csproj.AssemblyReference.cache
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\OCPP.Core.Lib.GeneratedMSBuildEditorConfig.editorconfig
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\OCPP.Core.Lib.AssemblyInfoInputs.cache
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\OCPP.Core.Lib.AssemblyInfo.cs
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\OCPP.Core.Lib.csproj.CoreCompileInputs.cache
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\OCPP.Core.Lib.sourcelink.json
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\OCPP.Core.Lib.dll
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\refint\OCPP.Core.Lib.dll
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\OCPP.Core.Lib.pdb
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\OCPP.Core.Lib.genruntimeconfig.cache
+D:\NUTTIW-PROJECT\chargeme-app\OCPP.Core\OCPP.Core.Lib\obj\Release\net8.0\ref\OCPP.Core.Lib.dll

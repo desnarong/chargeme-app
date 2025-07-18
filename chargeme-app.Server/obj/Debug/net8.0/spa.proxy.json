@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:5173",
 "RedirectUrl": "",
 "LaunchCommand": "npm run dev",
-"WorkingDirectory": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\chargeme-app.Server\\..\\chargeme-app.client",
+"WorkingDirectory": "D:\\NUTTIW-PROJECT\\chargeme-app\\chargeme-app.Server\\..\\chargeme-app.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

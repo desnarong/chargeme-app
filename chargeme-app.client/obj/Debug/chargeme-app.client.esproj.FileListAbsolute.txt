@@ -1,2 +1,3 @@
 D:\New Proj\@งานนอก\_ev\_evnew\webapp\chargeme-app\chargeme-app.client\obj\Debug\chargeme-app.client.esproj.CoreCompileInputs.cache
 C:\SDrive\PFT\_Projects\Chargeme\Source\chargeme-app\chargeme-app.client\obj\Debug\chargeme-app.client.esproj.CoreCompileInputs.cache
+D:\NUTTIW-PROJECT\chargeme-app\chargeme-app.client\obj\Debug\chargeme-app.client.esproj.CoreCompileInputs.cache

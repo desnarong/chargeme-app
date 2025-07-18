@@ -13,10 +13,14 @@ namespace chargeme_app.Server.Controllers
         private readonly NpgsqlDbContext _context;
         private readonly string _merchantId;
         private readonly MemoryCacheService _cachService;
-        public PaymentCallBackController(NpgsqlDbContext context, MemoryCacheService cachService)
+        private readonly OCPPService _ocppService;
+        private readonly IConfiguration _configuration;
+        public PaymentCallBackController(NpgsqlDbContext context, MemoryCacheService cachService, OCPPService ocppService, IConfiguration configuration)
         {
             _context = context;
             _cachService = cachService;
+            _ocppService = ocppService;
+            _configuration = configuration;
 
             var api = _context.TblPaymentApis.FirstOrDefault();
             _merchantId = api.FMerchantId;
@@ -61,11 +65,39 @@ namespace chargeme_app.Server.Controllers
             await _context.SaveChangesAsync(); // ✅ รอให้การบันทึกเสร็จ
 
             // อัปเดตแคช
-            _ = _cachService.RefreshCachePaymentIfDatabaseUpdated(payment.FId);
+            await _cachService.RefreshCachePaymentIfDatabaseUpdated(payment.FId);
 
-            // ส่งสถานะตอบกลับไปยัง client
-            return Ok(new { message = "Transaction received successfully." });
+            try
+            {
+                var charger = await _context.TblChargers.FirstOrDefaultAsync(x => x.FId == trans.FChargerId);
+                var station = await _context.TblStations.FirstOrDefaultAsync(x => x.FId == trans.FStationId);
+                if (charger != null && station != null)
+                {
+                    await _ocppService.StartChargingSession(trans.FChargerId, charger.FCode, (int)connector.FConnectorId, station.FRfid);
+                }
+
+                // ส่งสถานะตอบกลับไปยัง client
+                return Ok(new { message = "Transaction received successfully." });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception happened: " + ex.ToString());
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
         }
 
+        [HttpPost("{_merchantId}/start-transaction")]
+        public async Task<IActionResult> StartTransaction(Guid FChargerId, string FCode, int FConnectorId, string FRfid)
+        {
+            try
+            {
+                var message = await _ocppService.StartTransaction(FChargerId, FCode, (int)FConnectorId, FRfid);
+                return Ok(new { message = "Transaction start successfully. " + message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.ToString() });
+            }
+        }
     }
 }
