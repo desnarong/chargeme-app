@@ -1,0 +1,37 @@
+## Build folders (should not be tracked)
+bin/
+obj/
+
+## User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## Visual Studio Cache and Logs
+.vs/
+.vscode/
+*.log
+
+## Rider
+.idea/
+
+## NuGet
+*.nupkg
+packages/
+*.snupkg
+
+## Build Results
+*.dll
+*.exe
+*.app
+*.pdb
+
+## Others
+*.cache
+*.tmp
+*.bak
+*.old
