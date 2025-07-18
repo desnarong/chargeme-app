@@ -203,11 +203,7 @@
         });
     });
 
-    function CreateCardsModal() {
-        $('#cardcreate-modal').modal('show');
-    }
-
-    function CreateCardsClick() {
+    function CreateCardClick() {
         var fileData = new FormData();
         fileData.append('id', $('#card-id').val());
         fileData.append('platenumber', $('#card-platenumber').val());

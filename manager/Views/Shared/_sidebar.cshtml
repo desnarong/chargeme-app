@@ -95,6 +95,36 @@
                         <i class="ri-logout-circle-r-line"></i> <span data-key="t-logout">Logout</span>
                     </a>
                 </li>
+                @if (userInfo.FCompanyId == Guid.Empty)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link menu-link collapsed" href="#ocppprotocols" data-bs-toggle="collapse"
+                           role="button" aria-expanded="false" aria-controls="ocppprotocols">
+                            <i class="ri-apps-2-line"></i> <span data-key="t-ocppprotocol">OCPP Protocol</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="ocppprotocols">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item d-none"><a href="@Url.Action("CancelReservation", "OCPP")" class="nav-link" data-key="t-cancelreservation">Cancel Reservation</a></li>
+                                <li class="nav-item"><a href="@Url.Action("ChangeAvailability", "OCPP")" class="nav-link" data-key="t-changeavailability">Change Availability</a></li>
+                                <li class="nav-item"><a href="@Url.Action("ChangeConfiguration", "OCPP")" class="nav-link" data-key="t-changeconfiguration">Change Configuration</a></li>
+                                <li class="nav-item"><a href="@Url.Action("ClearCache", "OCPP")" class="nav-link" data-key="t-clearcache">Clear Cache</a></li>
+                                <li class="nav-item"><a href="@Url.Action("ClearChargingProfile", "OCPP")" class="nav-link" data-key="t-clearchargingprofile">Clear Charging Profile</a></li>
+                                <li class="nav-item"><a href="@Url.Action("GetCompositeSchedule", "OCPP")" class="nav-link" data-key="t-getcompositeschedule">Get Composite Schedule</a></li>
+                                <li class="nav-item"><a href="@Url.Action("GetConfiguration", "OCPP")" class="nav-link" data-key="t-getconfiguration">Get Configuration</a></li>
+                                <li class="nav-item"><a href="@Url.Action("GetDiagnostics", "OCPP")" class="nav-link" data-key="t-getdiagnostics">Get Diagnostics</a></li>
+                                <li class="nav-item"><a href="@Url.Action("GetLocalListVersion", "OCPP")" class="nav-link" data-key="t-getlocallistversion">Get Local List Version</a></li>
+                                <li class="nav-item"><a href="@Url.Action("RemoteStartTransaction", "OCPP")" class="nav-link" data-key="t-remotestarttransaction">Remote Start Transaction</a></li>
+                                <li class="nav-item"><a href="@Url.Action("RemoteStopTransaction", "OCPP")" class="nav-link" data-key="t-remotestoptransaction">Remote Stop Transaction</a></li>
+                                <li class="nav-item d-none"><a href="@Url.Action("ReserveNow", "OCPP")" class="nav-link" data-key="t-reservenow">Reserve Now</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Reset", "OCPP")" class="nav-link" data-key="t-reset">Reset</a></li>
+                                <li class="nav-item"><a href="@Url.Action("SendLocalList", "OCPP")" class="nav-link" data-key="t-sendlocallist">Send Local List</a></li>
+                                <li class="nav-item"><a href="@Url.Action("SetChargingProfile", "OCPP")" class="nav-link" data-key="t-setchargingprofile">Set Charging Profile</a></li>
+                                <li class="nav-item"><a href="@Url.Action("UnlockConnector", "OCPP")" class="nav-link" data-key="t-unlockconnector">Unlock Connector</a></li>
+                                <li class="nav-item"><a href="@Url.Action("UpdateFirmware", "OCPP")" class="nav-link" data-key="t-updatefirmware">Update Firmware</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                }
             </ul>
         </div>
         <!-- Sidebar -->

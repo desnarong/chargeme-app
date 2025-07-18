@@ -1,7 +1,7 @@
 ﻿@model manager.Models.ConnectorStatusDataModel
 @{
     ViewBag.Title = "Dashboards";
-    ViewBag.pTitle = "ConnecterDetail";
+    ViewBag.pTitle = "Connecter Detail";
     ViewBag.pageTitle = "Dashboards";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
@@ -14,26 +14,56 @@
     var Image = data.Image;
     var ChargePointName = data.ChargerName;
 }
+<style>
+    .btn {
+        --vz-btn-padding-x: 0.4rem;
+        --vz-btn-padding-y: 0.25rem;
+    }
+</style>
 <script src="~/assets/libs/microsoft-signalr/signalr.min.js"></script>
 <div class="row">
     <div class="col-xl-12">
         <div class="row">
             <!-- Number of Chargers -->
             <div class="col-xl-3">
-                <div class="card card-animate">
+                <div class="card" style="height: 90%;">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <div class="avatar-lg flex-shrink-0">
-                                <span class="avatar-title bg-primary-subtle text-primary rounded-2 fs-2">
-                                    <i class="ri-charging-pile-2-line la-2x"></i>
-                                </span>
-                            </div>
                             <div class="flex-grow-1 overflow-hidden ms-3">
-                                <p class="text-uppercase fw-semibold text-muted text-truncate mb-3" data-key="t-numberofchargers">Number of Chargers</p>
-                                <div class="d-flex align-items-center mb-3">
-                                    <h4 class="flex-grow-1 mb-0"><span class="counter-value" id="numberofchargers">0</span></h4>
+                                <div class="row align-middle">
+                                    <div class="col-6 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate" data-key="t-chargers">เครื่องชาร์จ</span>
+                                    </div>
+                                    <div class="col-6 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate">@data.ChargerName</span>
+                                    </div>
                                 </div>
-                                <p class="text-muted fs-11 fw-light text-truncate mb-0" data-key="t-totalnumberofchargersofthecompany">Total chargers owned by the company</p>
+                                <div class="row align-middle">
+                                    <div class="col-6 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate" data-key="t-chargerscode">รหัสเครื่องชาร์จ</span>
+                                    </div>
+                                    <div class="col-6 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate">@data.ChargerCode</span>
+                                    </div>
+                                </div>
+
+                                <div class="row align-middle mt-2 mb-2">
+                                    <div class="col-3 mt-2" id="IsOnline">
+                                        <i class='fa-sharp fa-cloud fa-2x @IsOnline'></i>
+                                    </div>
+                                    <div class="col-9 mt-2">
+                                        <i id="IsHeartBeat" class="fa fa-circle @IsHeartBeat text-muted" aria-hidden="true"></i>
+                                        <span class="fw-semibold text-muted">Last heart beat </span>
+                                        <span id="HeartBeatlastDate"> @HeartBeatlastDate </span>
+                                    </div>
+                                </div>
+                                <div class="row align-middle mb-2">
+                                    <div class="col-12">
+                                        <a href="javascript:ResetChargepoint();" class="btn btn-info fs-12"><span> Restart</span></a>
+                                        <a href='javascript:RemoteStartTransaction("@data.ChargerId", "@data.ConnectorId");' class='btn btn-success color-online fs-12'>START</a> 
+                                        <a href='javascript:RemoteStopTransaction("@data.ChargerId", "@data.ConnectorId");' class='btn btn-danger color-broken fs-12'>STOP</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -42,20 +72,34 @@
 
             <!-- Number of Connectors -->
             <div class="col-xl-3">
-                <div class="card card-animate">
+                <div class="card" style="height: 90%;">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <div class="avatar-lg flex-shrink-0">
-                                <span class="avatar-title bg-primary-subtle text-info rounded-2 fs-2">
-                                    <i class="ri-plug-2-line la-2x"></i>
-                                </span>
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <p class="text-uppercase fw-medium text-muted mb-3" data-key="t-numberofconnectors">Number of Connectors</p>
-                                <div class="d-flex align-items-center mb-3">
-                                    <h4 class="flex-grow-1 mb-0"><span class="counter-value" id="numberofconnectors">0</span></h4>
+                            <div class="flex-grow-1 overflow-hidden ms-3">
+                                <div class="row align-middle">
+                                    <div class="col-6 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate" data-key="t-connector">หัวชาร์จ</span>
+                                    </div>
+                                    <div class="col-6 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate">@data.ConnectorName</span>
+                                    </div>
                                 </div>
-                                <p class="text-muted fs-11 fw-light text-truncate mb-0" data-key="t-totalnumberofconnectorsofthecompany">Total connectors owned by the company</p>
+                                <div class="row align-middle">
+                                    <div class="col-6 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate" data-key="t-code">รหัส</span>
+                                    </div>
+                                    <div class="col-6 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate">@data.ConnectorCode</span>
+                                    </div>
+                                </div>
+                                <div class="row align-middle">
+                                    <div class="col-6 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate" data-key="t-status">สถานะ</span>
+                                    </div>
+                                    <div class="col-6 mt-2">
+                                        <span id="laststatus_@data.Id" class="text-uppercase fw-semibold text-muted text-truncate">@data.LastStatus</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -64,18 +108,42 @@
 
             <!-- Connectors Working -->
             <div class="col-xl-3">
-                <div class="card card-animate">
+                <div class="card" style="height: 90%;">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <div class="avatar-xl flex-shrink-0">
-                                <div id="chart-gauge" data-colors='["--vz-primary"]' class="e-charts"></div>
-                            </div>
                             <div class="flex-grow-1 overflow-hidden ms-3">
-                                <p class="text-uppercase fw-medium text-muted text-truncate mb-3" data-key="t-connectorsworking">Working Connectors</p>
-                                <div class="d-flex align-items-center mb-3">
-                                    <h4 class="flex-grow-1 mb-0"><span class="counter-value" id="connectorsworking">0</span></h4>
+                                <div class="row align-middle">
+                                    <div class="col-7 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate" data-key="t-laststatus">Last Status</span>
+                                    </div>
+                                    <div class="col-5 mt-2">
+                                        <span id="laststatus_@data.Id" class="text-uppercase fw-semibold text-muted text-truncate">@data.LastStatus</span>
+                                    </div>
                                 </div>
-                                <p class="text-muted fs-11 fw-light text-truncate mb-0" data-key="t-totalworkingconnectors">Connectors currently in operation</p>
+                                <div class="row align-middle">
+                                    <div class="col-7 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate" data-key="t-lastmeter">Last Meter</span>
+                                    </div>
+                                    <div class="col-5 mt-2">
+                                        <span id="lastMeter_@data.Id" class="text-uppercase fw-semibold text-muted text-truncate">@data.LastMeter</span>
+                                    </div>
+                                </div>
+                                <div class="row align-middle">
+                                    <div class="col-7 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate" data-key="t-currentcharge">Current Charge</span>
+                                    </div>
+                                    <div class="col-5 mt-2">
+                                        <span id="currentChargeKw_@data.Id" class="text-uppercase fw-semibold text-muted text-truncate">@data.CurrentChargeKw</span>
+                                    </div>
+                                </div>
+                                <div class="row align-middle">
+                                    <div class="col-7 mt-2">
+                                        <span class="text-uppercase fw-semibold text-muted text-truncate" data-key="t-stateofcharge">State of Charge</span>
+                                    </div>
+                                    <div class="col-5 mt-2">
+                                        <span id="stateOfCharge_@data.Id" class="text-uppercase fw-semibold text-muted text-truncate">@data.StateOfCharge</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -84,13 +152,13 @@
 
             <!-- Connectors Lost -->
             <div class="col-xl-3">
-                <div class="card card-animate">
+                <div class="card" style="height: 90%;">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1 overflow-hidden ms-3">
                                 @if (Image != null)
                                 {
-                                    <a href="javascript:LightboxModal()"><img id="charge-image_preview" src="data:image/jpg;base64,@(Convert.ToBase64String(Image))" class="rounded float-right w-80px" /></a>
+                                    <a href="javascript:LightboxModal()"><img id="charge-image_preview" src="data:image/jpg;base64,@(Convert.ToBase64String(Image))" class="rounded float-right w-80px" style="width: 100%;" /></a>
                                 }
                             </div>
                         </div>
@@ -100,80 +168,7 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="shadow p-3 rounded">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="row">
-                                <div class="col-12 mb-2"><span class="h6 font-600">เครื่องชาร์จ @data.ChargerName</span><span class="h6 font-600 ml-3">รหัสเครื่องชาร์จ @data.ChargerCode</span></div>
-                            </div>
-                            <div class="row align-middle">
 
-                                <div class="col-1 mt-1" id="IsOnline">
-                                    <i class='fa-sharp fa-cloud fa-2x @IsOnline'></i>
-                                </div>
-                                <div class="col-9 mt-2">
-                                    <i id="IsHeartBeat" class="fa fa-circle @IsHeartBeat" aria-hidden="true"></i>
-                                    <span class="font-weight-bold">Last heart beat </span><span id="HeartBeatlastDate"> @HeartBeatlastDate </span>
-                                </div>
-                            </div>
-                            <div class="row align-middle">
-                                <div class="col-2">
-                                    <a href="javascript:ResetChargepoint();" class="btn btn-info"><span> Restart</span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="col-12 right">
-                                @if (Image != null)
-                                {
-                                    <a href="javascript:LightboxModal()"><img id="charge-image_preview" src="data:image/jpg;base64,@(Convert.ToBase64String(Image))" class="rounded float-right w-100px" /></a>
-                                }
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <table id="table--detail" class="table mt-3 mb-0 text-center">
-                        <thead>
-                            <tr>
-                                <th>รหัส</th>
-                                <th>หัวชาร์จ</th>
-                                <th>สถานะ</th>
-                                <th>หน่วย(kWh)</th>
-                                <th>กำลังไฟฟ้า(kW)</th>
-                                <th>SoC(%)</th>
-                                <th>เวลา</th>
-                                <th>จำนวนเงิน</th>
-                                <th>คำสั่ง</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in datas)
-                            {
-                                <tr>
-                                    <td>@item.ConnectorCode</td>
-                                    <td>@item.ConnectorName</td>
-                                    <td id="laststatus_@item.Id"></td>
-                                    <td id="lastMeter_@item.Id"></td>
-                                    <td id="currentChargeKw_@item.Id"></td>
-                                    <td id="stateOfCharge_@item.Id"></td>
-                                    <td id="curenttime_@item.Id"></td>
-                                    <td id="curentcost_@item.Id"></td>
-                                    <td class="font-weight-bold"><a href='javascript:RemoteStartTransaction("@item.ChargerId", "@item.Id");' class='color-online'>START</a> | <a href='javascript:RemoteStopTransaction("@item.ChargerId", "@item.Id");' class='color-broken'>STOP</a></td>
-                                </tr>
-                            }
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -230,15 +225,7 @@
         var connection = new signalR.HubConnectionBuilder().withUrl("@Url.Content("/chargePointHub")").build();
         connection.on("ChargePointDetailMessage_@ChargerId", function (message) {
             data = JSON.parse(message);
-
-            //if (data.IsOnline =='color-online') {
-            //    //$('#IsHeartBeat').removeClass(".color-offline .color-online ");
-
-
-            //}
-
-            console.log(data);
-
+            //console.log(data);
             $('#IsOnline').html(data.IsOnline);
             $('#HeartBeatlastDate').html(data.HeartBeatlastDate);
             //console.log($("#IsHeartBeat").find('.color-offline'));
@@ -273,7 +260,7 @@
             "contentType": "application/json; charset=utf-8",
             "scrollY": true,
             "ajax": {
-                url: '/Home/GetChargeLogsTable',
+                url: '/Dashboards/GetChargeLogsTable',
                 type: "POST",
                 data: function (d) {
                     return $.extend({}, d, {
@@ -377,57 +364,67 @@
     }
 
     function ResetChargepoint() {
-        var dialog = new BootstrapDialog({
-            title: 'Reset',
-            message: '@string.Format("Should the charging station '{0}' really be restarted?", ChargePointName)',
-            spinicon: 'fa fa-spinner fa-fw',
-            buttons: [{
-                id: 'btnDialogReset',
-                label: 'Reset',
-                icon: 'fas fa-redo',
-                autospin: true,
-                action: function (dialogRef) {
-                    dialogRef.enableButtons(false);
-                    dialogRef.setClosable(false);
-                    dialogRef.getModalBody().html('Reset');
-
-                    var xmlhttp = new XMLHttpRequest();
+        Swal.fire({
+            title: 'รีเซ็ต',
+            text: `ต้องการรีเซ็ตสถานีชาร์จ @ChargePointName จริงหรือไม่?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: '<i class="fas fa-redo"></i> รีเซ็ต',
+            cancelButtonText: 'ยกเลิก',
+            buttonsStyling: false,
+            customClass: {
+                confirmButton: 'btn btn-primary me-2',
+                cancelButton: 'btn btn-secondary'
+            },
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                return new Promise((resolve, reject) => {
+                    const xmlhttp = new XMLHttpRequest();
                     xmlhttp.onreadystatechange = function () {
-                        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-                            if (xmlhttp.status == 200) {
-                                dialogRef.getModalBody().html(xmlhttp.responseText);
+                        if (xmlhttp.readyState === XMLHttpRequest.DONE) {
+                            if (xmlhttp.status === 200) {
+                                resolve(xmlhttp.responseText);
+                            } else {
+                                reject('เกิดข้อผิดพลาด');
                             }
-                            else {
-                                dialogRef.getModalBody().html('An error occured.');
-                            }
-
-                            dialogRef.setClosable(true);
-                            dialogRef.enableButtons(true);
-                            var $resetButton = dialog.getButton('btnDialogReset');
-                            $resetButton.hide();
-                            var $cancelButton = dialog.getButton('btnDialogCancel');
-                            $cancelButton.text('Close');
-
                         }
                     };
-                    ////xmlhttp.open("GET", "Html.Raw(Url.Content("~/manager/Home/Reset?Id=" + ChargerId))", true);
-                    //xmlhttp.open("GET", "Html.Raw(Url.ActionLink("Reset", "Home", new { Id = ChargerId }, null))", true);
-                    xmlhttp.open("GET", "/Home/Reset?id" + ChargerId, true);
+                    xmlhttp.open("GET", `/Dashboards/Reset?id=@ChargerId`, true);
                     xmlhttp.send();
-                }
-            }, {
-                id: 'btnDialogCancel',
-                label: 'Cancel',
-                action: function (dialogRef) {
-                    dialogRef.close();
-                    //window.location.href = window.location.href; //This is a possibility
-                    //window.location.reload(); //Another possiblity
+                });
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'รีเซ็ตสำเร็จ',
+                    html: result.value,
+                    icon: 'success',
+                    confirmButtonText: 'ปิด',
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'btn btn-primary'
+                    }
+                }).then(() => {
                     chargelog.ajax.reload();
-                    //history.go(0); //And another
+                });
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                chargelog.ajax.reload();
+            }
+        }).catch((error) => {
+            Swal.fire({
+                title: 'ข้อผิดพลาด',
+                text: error,
+                icon: 'error',
+                confirmButtonText: 'ปิด',
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-primary'
                 }
-            }]
+            }).then(() => {
+                chargelog.ajax.reload();
+            });
         });
-        dialog.open();
     }
 
     function RemoteStartTransaction(ChargerId, ConnectorId) {

@@ -23,7 +23,8 @@
                                 <tr>
                                     <th data-key="t-username">User Name</th>
                                     <th data-key="t-name">Name</th>
-                                    <th data-key="t-position">Position</th>
+                                    <th data-key="t-lastname">Last Name</th>
+                                    <th data-key="t-groupname">Group Name</th>
                                     <th data-key="t-resetpassword">Reset Password</th>
                                     <th data-key="t-edit">Edit</th>
                                     <th data-key="t-delete">Delete</th>
@@ -51,6 +52,11 @@
                     <div class="mb-3">
                         <label for="usercreate-company" class="form-label" data-key="t-office">Office <span class="text-danger">*</span></label>
                         <select id="usercreate-company" class="form-control">
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="usercreate-group" class="form-label" data-key="t-group">Group <span class="text-danger">*</span></label>
+                        <select id="usercreate-group" class="form-control">
                         </select>
                     </div>
                     <div class="mb-3">
@@ -133,6 +139,7 @@
     $(document).ready(function () {
         clear();
         GetCompanySelect(0);
+        GetGroupSelect(0);
         tableuserinfo = $('#table--userinfo').DataTable({
             "processing": true,
             "serverSide": true,
@@ -152,6 +159,7 @@
                 { "data": 'username' },
                 { "data": 'name' },
                 { "data": 'lastname' },
+                { "data": 'groupName' },
                 { "data": 'actionReset' },
                 { "data": 'actionEdit' },
                 { "data": 'actionDelete' }
@@ -360,6 +368,30 @@
                 }
                 $("#usercreate-company").append(options);
                 $("#useredit-company").append(options);
+            }
+        });
+    }
+    function GetGroupSelect(id) {
+        $.ajax({
+            url: '/Users/GetGroupSelect',
+            type: "POST",
+            success: function (data) {
+                var obj = data.data;
+                var options = '';
+                $("#usercreate-group").find('option').remove();
+                $("#useredit-group").find('option').remove();
+                if (obj.length > 0) {
+                    for (var i = 0; i < obj.length; i++) {
+                        if (id == obj[i].fId) {
+                            options += '<option selected value="' + obj[i].fId + '">' + obj[i].fName + '</option>';
+                        }
+                        else {
+                            options += '<option value="' + obj[i].fId + '">' + obj[i].fName + '</option>';
+                        }
+                    }
+                }
+                $("#usercreate-group").append(options);
+                $("#useredit-group").append(options);
             }
         });
     }

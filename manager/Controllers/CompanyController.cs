@@ -1,6 +1,8 @@
 ﻿using manager.Helpers;
 using manager.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using manager.Entities;
 
 namespace manager.Controllers
 {
@@ -10,13 +12,11 @@ namespace manager.Controllers
         {
             return View();
         }
-        public IActionResult Holiday(string id)
-        {
-            Entities.TblCompany companyInfoData = CompanyInfoModel.GetCompanyInfo(Guid.Parse(id));
-            return View(companyInfoData);
-        }
         public IActionResult GetCompanyTable()
         {
+            var user = HttpContext.Session.GetString(Constants.SessionUserData);
+            var userInfo = JsonConvert.DeserializeObject<TblUser>(user);
+
             string draw = Request.Form["draw"][0];
             string order = Request.Form["order[0][column]"].Count > 0 ? Request.Form["order[0][column]"][0] : "0";
             string orderDir = Request.Form["order[0][dir]"].Count > 0 ? Request.Form["order[0][dir]"][0] : "asc";
@@ -26,6 +26,8 @@ namespace manager.Controllers
 
 
             var model = CompanyInfoModel.GetCompanyInfoes();
+            if (userInfo.FCompanyId != Guid.Empty) model = model.Where(x => x.Id == userInfo.FCompanyId).ToList();
+
             switch (order)
             {
                 case "0":
@@ -47,7 +49,7 @@ namespace manager.Controllers
 
             return new JsonResult(new { draw = draw, iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords, data = model });
         }
-        public IActionResult CreateStation()
+        public IActionResult CreateCompany()
         {
             byte[]? Logo = null;
             string code = Request.Form["code"];
@@ -86,7 +88,7 @@ namespace manager.Controllers
 
             return Json("success");
         }
-        public IActionResult UpadateStation()
+        public IActionResult UpadateCompany()
         {
             byte[]? Logo = null;
             string id = Request.Form["id"];
@@ -124,7 +126,7 @@ namespace manager.Controllers
 
             return Json("success");
         }
-        public IActionResult DeleteStation(string id)
+        public IActionResult DeleteCompany(string id)
         {
             var company = CompanyInfoModel.GetCompanyInfo(Guid.Parse(id));
             CompanyInfoModel.Delete(company);

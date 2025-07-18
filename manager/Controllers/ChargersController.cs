@@ -1,6 +1,8 @@
-﻿using manager.Helpers;
+﻿using manager.Entities;
+using manager.Helpers;
 using manager.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace manager.Controllers
@@ -13,6 +15,8 @@ namespace manager.Controllers
         }
         public IActionResult GetChargerTable()
         {
+            var userInfo = JsonConvert.DeserializeObject<TblUser>(HttpContext.Session.GetString("UserData"));
+
             string draw = Request.Form["draw"][0];
             string order = Request.Form["order[0][column]"].Count > 0 ? Request.Form["order[0][column]"][0] : "0";
             string orderDir = Request.Form["order[0][dir]"].Count > 0 ? Request.Form["order[0][dir]"][0] : "asc";
@@ -20,7 +24,7 @@ namespace manager.Controllers
             int pageSize = Convert.ToInt32(Request.Form["length"][0]);
 
             var model = ChargerModel.GetChargerDatas();
-
+            if (userInfo.FCompanyId != Guid.Empty) model = model.Where(x => x.CompanyId == userInfo.FCompanyId).ToList();
             switch (order)
             {
                 case "0":
@@ -50,7 +54,7 @@ namespace manager.Controllers
             byte[]? Images = null;
             if (string.IsNullOrEmpty(id))
             {
-                return Json("รหัส RFID เป็นค่าว่าง กรุณาสแกนบัตร");
+                return Json("รหัสเป็นค่าว่างระบุ");
             }
 
             if (Request.Form.Files.Count > 0)
@@ -60,6 +64,7 @@ namespace manager.Controllers
                 using (var ms = new MemoryStream())
                 {
                     file.CopyTo(ms);
+                    ms.Position = 0; // 🔑 สำคัญมาก!
                     Images = ImageSharp.ResizeImageWithImageSharp(ms);
                 }
             }

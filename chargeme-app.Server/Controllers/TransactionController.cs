@@ -18,10 +18,6 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace chargeme_app.Server.Controllers
 {
-    /// <summary>
-    /// Controller responsible for handling electric vehicle charging transactions and payments.
-    /// Provides endpoints for transaction history, payment processing, and status checking.
-    /// </summary>
     [Authorize]
     [ApiController]
     [Route("[controller]")]
@@ -45,11 +41,6 @@ namespace chargeme_app.Server.Controllers
             _configuration = configuration;
         }
 
-        /// <summary>
-        /// Retrieves the transaction history for the authenticated user.
-        /// Returns a list of all completed charging sessions with station and charger details.
-        /// </summary>
-        /// <returns>JSON response containing transaction list with formatted data</returns>
         [HttpPost("trans-list")]
         public IActionResult GetTranslationsList()
         {
@@ -100,12 +91,6 @@ namespace chargeme_app.Server.Controllers
             return Ok(new { data = translist });
         }
 
-        /// <summary>
-        /// Initiates a new payment transaction for electric vehicle charging.
-        /// Creates transaction and payment records, then calls external payment gateway API.
-        /// </summary>
-        /// <param name="request">Transaction request containing station, charger, and payment details</param>
-        /// <returns>Payment gateway response with QR code and order information</returns>
         [HttpPost("payment")]
         public async Task<IActionResult> GetTranslationsAsync([FromBody] TransactionRequestModel request)
         {
@@ -214,12 +199,6 @@ namespace chargeme_app.Server.Controllers
             return Ok(new TransactionResponseModel());
         }
 
-        /// <summary>
-        /// Checks the status of a pending payment transaction.
-        /// Retrieves cached data for real-time payment status updates.
-        /// </summary>
-        /// <param name="request">Request containing the transaction ID to check</param>
-        /// <returns>Cached transaction and payment status data</returns>
         [HttpPost("status")]
         public async Task<IActionResult> GetStatus([FromBody] TransactionCheckRequestModel request)
         {

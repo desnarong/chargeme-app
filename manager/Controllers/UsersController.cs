@@ -1,7 +1,9 @@
 ﻿using manager.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Text;
+using manager.Entities;
 
 namespace manager.Controllers
 {
@@ -13,6 +15,9 @@ namespace manager.Controllers
         }
         public IActionResult GetUserTable()
         {
+            var user = HttpContext.Session.GetString(Constants.SessionUserData);
+            var userInfo = JsonConvert.DeserializeObject<TblUser>(user);
+
             string draw = Request.Form["draw"][0];
             string order = Request.Form["order[0][column]"].Count > 0 ? Request.Form["order[0][column]"][0] : "0";
             string orderDir = Request.Form["order[0][dir]"].Count > 0 ? Request.Form["order[0][dir]"][0] : "asc";
@@ -21,6 +26,8 @@ namespace manager.Controllers
             int totalRecords = 0;
 
             var model = UserInfoModel.GetUserDatas();
+            if (userInfo.FCompanyId != Guid.Empty) model = model.Where(x => x.UserGroupId == userInfo.FUserGroupId).ToList();
+
             switch (order)
             {
                 case "0":
@@ -140,6 +147,19 @@ namespace manager.Controllers
         public IActionResult GetCompanySelect()
         {
             var data = CompanyInfoModel.GetCompanyInfo();
+            data = data.OrderBy(x => x.FName).ToList();
+            return new JsonResult(new { data = data });
+        }
+        public IActionResult GetGroupSelect()
+        {
+            var user = HttpContext.Session.GetString(Constants.SessionUserData);
+            var userInfo = JsonConvert.DeserializeObject<TblUser>(user);
+            var data = UserGroupInfoModel.GetGroups();
+            if (userInfo.FUserGroupId != Guid.Empty)
+            {
+                data = data.Where(x => x.FId != Guid.Empty).ToList();
+            }
+           
             data = data.OrderBy(x => x.FName).ToList();
             return new JsonResult(new { data = data });
         }

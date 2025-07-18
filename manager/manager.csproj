@@ -23,7 +23,6 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
     <PackageReference Include="QuestPDF" Version="2022.12.2" />
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.9" />
-    <PackageReference Include="SkiaSharp" Version="2.88.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +49,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\OCPP\CancelReservation.cshtml" />
+    <None Include="Views\OCPP\ChangeAvailability.cshtml" />
+    <None Include="Views\OCPP\ChangeConfiguration.cshtml" />
+    <None Include="Views\OCPP\ClearCache.cshtml" />
+    <None Include="Views\OCPP\ClearChargingProfile.cshtml" />
+    <None Include="Views\OCPP\GetCompositeSchedule.cshtml" />
+    <None Include="Views\OCPP\GetConfiguration.cshtml" />
+    <None Include="Views\OCPP\GetDiagnostics.cshtml" />
+    <None Include="Views\OCPP\GetLocalListVersion.cshtml" />
+    <None Include="Views\OCPP\RemoteStartTransaction.cshtml" />
+    <None Include="Views\OCPP\RemoteStopTransaction.cshtml" />
+    <None Include="Views\OCPP\ReserveNow.cshtml" />
+    <None Include="Views\OCPP\Reset.cshtml" />
+    <None Include="Views\OCPP\SendLocalList.cshtml" />
+    <None Include="Views\OCPP\SetChargingProfile.cshtml" />
+    <None Include="Views\OCPP\UnlockConnector.cshtml" />
+    <None Include="Views\OCPP\UpdateFirmware.cshtml" />
     <None Include="wwwroot\assets\fonts\k2d\k2d-bold-webfont.woff2" />
     <None Include="wwwroot\assets\fonts\k2d\k2d-bolditalic-webfont.woff2" />
     <None Include="wwwroot\assets\fonts\k2d\k2d-extrabold-webfont.woff2" />
