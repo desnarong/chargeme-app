@@ -44,7 +44,7 @@ namespace manager.Models
                 return data;
             }
         }
-        public static List<TblUser> GetStationInfo()
+        public static List<TblUser> GetUsers()
         {
             using (var context = new NpgsqlDbContext())
             {
@@ -52,7 +52,7 @@ namespace manager.Models
                 return data;
             }
         }
-        public static TblUser GetStationInfo(Guid id)
+        public static TblUser GetUser(Guid id)
         {
             using (var context = new NpgsqlDbContext())
             {

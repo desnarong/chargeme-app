@@ -151,6 +151,7 @@
             type: "POST",
             data: { id: id, connectorid: connectorid, chargetagid: chargetagid },
             success: function (response) {
+                if (!response) return;
                 var url = 'ReserveNowResponse :\n';
                 var obj = JSON.parse(response);
                 var pretty = url + JSON.stringify(obj, undefined, 4);

@@ -181,6 +181,7 @@
             type: "POST",
             data: { id: id, IdTags: tags, version: version, updatetype: updatetype, status: status  },
             success: function (response) {
+                if (!response) return;
                 var url = 'SendLocalListResponse :\n';
                 var obj = JSON.parse(response);
                 var pretty = url + JSON.stringify(obj, undefined, 4);

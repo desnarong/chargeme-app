@@ -126,7 +126,7 @@ namespace OCPP.Core.Server
                     {
                         var chargePoint = DbContext.TblChargers.AsNoTracking().Where(x => x.FShortName == ChargePointStatus.Id).FirstOrDefault() ?? new TblCharger();
                         //var dd = DbContext.TblConnectorStatuses.Where(x => x.FChargerId == chargePoint.FId && x.FConnectorId == startTransactionRequest.ConnectorId).ToList();
-                        var connector = DbContext.TblConnectorStatuses.AsNoTracking().Where(x => x.FChargerId == chargePoint.FId && x.FConnectorId == startTransactionRequest.ConnectorId).FirstOrDefault();
+                        var connector = DbContext.TblConnectorStatuses.Where(x => x.FChargerId == chargePoint.FId && x.FConnectorId == startTransactionRequest.ConnectorId).FirstOrDefault();
                         if(connector != null)
                         {
                             var trans = DbContext.TblTransactions.AsNoTracking().FirstOrDefault(x => x.FId == connector.FTransactionId);
@@ -145,7 +145,12 @@ namespace OCPP.Core.Server
                                 trans.FMeterEnd = 0;
                                 trans.FStationId = chargePoint.FStationId;
                                 trans.FUserId = Guid.Empty;
+                                trans.FTransactionNo = long.Parse(DateTime.UtcNow.ToString("yyyyMMddHHmmss"));
                                 DbContext.TblTransactions.Add(trans);
+                                await DbContext.SaveChangesAsync();
+
+                                connector.FTransactionId = trans.FId;
+                                DbContext.TblConnectorStatuses.Update(connector);
                                 await DbContext.SaveChangesAsync();
                             }
                             else

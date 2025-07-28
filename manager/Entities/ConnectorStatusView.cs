@@ -46,6 +46,6 @@ public partial class ConnectorStatusView
     public decimal? FStateOfCharge { get; set; }
 
     public long? FTransactionNo { get; set; }
-
+    public Guid? FTransactionId { get; set; }
     public Guid? FStationId { get; set; }
 }

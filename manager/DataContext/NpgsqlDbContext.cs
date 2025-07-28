@@ -115,6 +115,7 @@ public partial class NpgsqlDbContext : DbContext
                 .HasColumnName("f_state_of_charge");
             entity.Property(e => e.FStationId).HasColumnName("f_station_id");
             entity.Property(e => e.FTransactionNo).HasColumnName("f_transaction_no");
+            entity.Property(e => e.FTransactionId).HasColumnName("f_transaction_id");
         });
 
         modelBuilder.Entity<TblCharger>(entity =>

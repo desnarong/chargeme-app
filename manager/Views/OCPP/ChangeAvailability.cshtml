@@ -140,6 +140,7 @@
             type: "POST",
             data: { id: id, connectorid: connectorid, changeavailabilityrequesttypeId: changeavailabilityrequesttypeId },
             success: function (response) {
+                if (!response) return;
                 var url = 'ChangeAvailabilityResponse :\n';
                 var obj = JSON.parse(response);
                 var pretty = url + JSON.stringify(obj, undefined, 4);

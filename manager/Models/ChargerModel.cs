@@ -230,6 +230,7 @@ namespace manager.Models
                                 Id = item.FId,
                                 ConnectorCode = item.FCode,
                                 ConnectorName = item.FName,
+                                ConnectorId = item.FConnectorId,
                                 IsOnline = (item.FCurrentStatus == "" ? "<i class='ri-cloud-off-fill la-2x color-offline'></i>" : "<i class='ri-cloud-fill la-2x color-online'></i>"),
                                 LastStatus = item.FCurrentStatus,
                                 LastStatusTime = TimeZoneInfo.ConvertTimeFromUtc(item.FCurrentStatusTime.Value, timeZone),
@@ -240,6 +241,7 @@ namespace manager.Models
                                 Comment = chargepoint.FComment,
                                 Image = chargepoint.FImage,
                                 TransactionNo = item.FTransactionNo,
+                                TransactionId = item.FTransactionId,
                                 ActionView = $"<a href='/Home/Detail?Charger={item.FChargerId}&ConectorId={item.FId}' class='btn btn-soft-secondary btn-sm' title='View'><i class='ri-eye-line la-1-50x'></i></a>",
                                 ActionEdit = $"<a href='JavaScript:EditConectorModal(\"{item.FChargerId}\",\"{item.FId}\")' class='btn btn-soft-secondary btn-sm' title='edit'><i class='ri-edit-box-line la-1-50x'></i></a>",
                             }).ToList();
@@ -512,6 +514,7 @@ namespace manager.Models
         public string? StopReason { get; set; }
         public double? CurrentChargeKw { get; set; }
         public double? StateOfCharge { get; set; }
+        public Guid? TransactionId { get; set; } = null!;
         public long? TransactionNo { get; set; }
         public byte[]? Image { get; set; }
         public string? IsOnline { get; set; }

@@ -90,6 +90,14 @@ namespace manager.Models
             }
             return new List<TransactionData>();
         }
+        public static TblTransaction GetTransaction(Guid fid)
+        {
+            using (var context = new NpgsqlDbContext())
+            {
+                var data = context.TblTransactions.FirstOrDefault(x => x.FId == fid);
+                return data;
+            }
+        }
         public static List<TblTransaction> GetTransactions(string chargerid, string connectorid)
         {
             using (var context = new NpgsqlDbContext())

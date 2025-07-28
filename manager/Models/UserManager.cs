@@ -18,21 +18,26 @@ namespace manager.Models
         {
             try
             {
-                IEnumerable cfgUsers = Configuration.GetSection("Users").GetChildren();
+                ClaimsIdentity identity = new ClaimsIdentity(this.GetUserClaims(user), CookieAuthenticationDefaults.AuthenticationScheme);
+                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 
-                foreach (ConfigurationSection cfgUser in cfgUsers)
-                {
-                    if (cfgUser.GetValue<string>("Username") == user.Username &&
-                        cfgUser.GetValue<string>("Password") == user.Password)
-                    {
-                        user.IsAdmin = cfgUser.GetValue<bool>(Models.Constants.AdminRoleName);
-                        ClaimsIdentity identity = new ClaimsIdentity(this.GetUserClaims(user), CookieAuthenticationDefaults.AuthenticationScheme);
-                        ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+                await httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                        await httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                        break;
-                    }
-                }
+                //IEnumerable cfgUsers = Configuration.GetSection("Users").GetChildren();
+
+                //foreach (ConfigurationSection cfgUser in cfgUsers)
+                //{
+                //    if (cfgUser.GetValue<string>("Username") == user.Username &&
+                //        cfgUser.GetValue<string>("Password") == user.Password)
+                //    {
+                //        user.IsAdmin = cfgUser.GetValue<bool>(Models.Constants.AdminRoleName);
+                //        ClaimsIdentity identity = new ClaimsIdentity(this.GetUserClaims(user), CookieAuthenticationDefaults.AuthenticationScheme);
+                //        ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+
+                //        await httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                //        break;
+                //    }
+                //}
 
             }
             catch //(Exception exp)
@@ -49,7 +54,7 @@ namespace manager.Models
         {
             List<Claim> claims = new List<Claim>();
 
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Username));
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
             claims.Add(new Claim(ClaimTypes.Name, user.Username));
             claims.AddRange(this.GetUserRoleClaims(user));
             return claims;
@@ -59,7 +64,8 @@ namespace manager.Models
         {
             List<Claim> claims = new List<Claim>();
 
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Username));
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
+            claims.Add(new Claim(ClaimTypes.Name, user.Username));
             if (user.IsAdmin)
             {
                 claims.Add(new Claim(ClaimTypes.Role, Models.Constants.AdminRoleName));

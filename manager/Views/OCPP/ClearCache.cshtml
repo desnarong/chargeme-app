@@ -107,6 +107,7 @@
             type: "POST",
             data: { id: id},
             success: function (response) {
+                if (!response) return;
                 var url = 'ClearCacheResponse :\n';
                 var obj = JSON.parse(response);
                 var pretty = url + JSON.stringify(obj, undefined, 4);

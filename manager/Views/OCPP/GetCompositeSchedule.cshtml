@@ -147,6 +147,7 @@
             type: "POST",
             data: { id: chargepointid, connectorId: connectorId, chargingrateunit: chargingrateunit, duration: duration },
             success: function (response) {
+                if (!response) return;
                 var url = 'GetCompositeScheduleResponse :\n';
                 var obj = JSON.parse(response);
                 var pretty = url + JSON.stringify(obj, undefined, 4);

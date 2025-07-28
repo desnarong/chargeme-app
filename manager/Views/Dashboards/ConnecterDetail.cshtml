@@ -428,119 +428,131 @@
     }
 
     function RemoteStartTransaction(ChargerId, ConnectorId) {
-
-        var dialog = new BootstrapDialog({
+        Swal.fire({
             title: 'Start',
-            message: 'Should the charging station really be Start?',
-            spinicon: 'fa fa-spinner fa-fw',
-            buttons: [{
-                id: 'btnStart',
-                label: 'Start',
-                autospin: true,
-                cssClass: 'btn btn-danger',
-                action: function (dialogRef) {
-                    dialogRef.enableButtons(false);
-                    dialogRef.setClosable(false);
-                    dialogRef.getModalBody().html('Start of the charging station is triggered...');
-
-                    const xmlhttp = new XMLHttpRequest()
-                    xmlhttp.open('GET', '/Home/RemoteStartTransaction?id=' + ChargerId + '&connectorId=' + ConnectorId)
-                    xmlhttp.setRequestHeader('Content-type', 'application/json')
-
-                    //http.send() // Make sure to stringify
+            text: `Should the charging station really be Start?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: '<i class="fas fa-play"></i> Start',
+            cancelButtonText: 'Cancel',
+            buttonsStyling: false,
+            customClass: {
+                confirmButton: 'btn btn-primary me-2',
+                cancelButton: 'btn btn-secondary'
+            },
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                return new Promise((resolve, reject) => {
+                    const xmlhttp = new XMLHttpRequest();
                     xmlhttp.onreadystatechange = function () {
-                        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-                            if (xmlhttp.status == 200) {
-                                //console.log(xmlhttp.responseText);
-                                dialogRef.getModalBody().html(xmlhttp.responseText);
+                        if (xmlhttp.readyState === XMLHttpRequest.DONE) {
+                            if (xmlhttp.status === 200) {
+                                resolve(xmlhttp.responseText);
+                            } else {
+                                reject('เกิดข้อผิดพลาด');
                             }
-                            else {
-                                dialogRef.getModalBody().html('An error occured.');
-                            }
-
-                            dialogRef.setClosable(true);
-                            dialogRef.enableButtons(true);
-                            var $resetButton = dialog.getButton('btnStart');
-                            $resetButton.hide();
-                            var $cancelButton = dialog.getButton('btnDialogCancel');
-                            $cancelButton.text('Close');
-
                         }
                     };
-
-                    xmlhttp.send() // Make sure to stringify
-                }
-            }, {
-                id: 'btnDialogCancel',
-                label: 'Cancel',
-                action: function (dialogRef) {
-                    dialogRef.close();
-                    //window.location.href = window.location.href; //This is a possibility
-                    //window.location.reload(); //Another possiblity
+                    xmlhttp.open("GET", `/Dashboards/RemoteStartTransaction?id=${ChargerId}&connectorId=${ConnectorId}`, true);
+                    xmlhttp.send();
+                });
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Start Success',
+                    html: result.value,
+                    icon: 'success',
+                    confirmButtonText: 'Close',
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'btn btn-primary'
+                    }
+                }).then(() => {
                     chargelog.ajax.reload();
-                    //history.go(0); //And another
+                });
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                chargelog.ajax.reload();
+            }
+        }).catch((error) => {
+            Swal.fire({
+                title: 'ข้อผิดพลาด',
+                text: error,
+                icon: 'error',
+                confirmButtonText: 'Close',
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-primary'
                 }
-            }]
+            }).then(() => {
+                chargelog.ajax.reload();
+            });
         });
-        dialog.open();
     }
 
     function RemoteStopTransaction(ChargerId, ConnectorId) {
-
-        var dialog = new BootstrapDialog({
+        Swal.fire({
             title: 'Stop',
-            message: 'Should the charging station really be stop?',
-            spinicon: 'fa fa-spinner fa-fw',
-            buttons: [{
-                id: 'btnStop',
-                label: 'Stop',
-                autospin: true,
-                cssClass: 'btn btn-danger',
-                action: function (dialogRef) {
-                    dialogRef.enableButtons(false);
-                    dialogRef.setClosable(false);
-                    dialogRef.getModalBody().html('Stop of the charging station is triggered...');
-
-                    const xmlhttp = new XMLHttpRequest()
-                    xmlhttp.open('GET', '/Home/RemoteStopTransaction?id=' + ChargerId + '&connectorId=' + ConnectorId)
-                    xmlhttp.setRequestHeader('Content-type', 'application/json')
-
-                    //http.send() // Make sure to stringify
+            text: `Should the charging station really be stop?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: '<i class="fas fa-stop"></i> Stop',
+            cancelButtonText: 'Cancel',
+            buttonsStyling: false,
+            customClass: {
+                confirmButton: 'btn btn-primary me-2',
+                cancelButton: 'btn btn-secondary'
+            },
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                return new Promise((resolve, reject) => {
+                    const xmlhttp = new XMLHttpRequest();
                     xmlhttp.onreadystatechange = function () {
-                        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-                            if (xmlhttp.status == 200) {
-                                //console.log(xmlhttp.responseText);
-                                dialogRef.getModalBody().html(xmlhttp.responseText);
+                        if (xmlhttp.readyState === XMLHttpRequest.DONE) {
+                            if (xmlhttp.status === 200) {
+                                resolve(xmlhttp.responseText);
+                            } else {
+                                reject('เกิดข้อผิดพลาด');
                             }
-                            else {
-                                dialogRef.getModalBody().html('An error occured.');
-                            }
-
-                            dialogRef.setClosable(true);
-                            dialogRef.enableButtons(true);
-                            var $resetButton = dialog.getButton('btnStop');
-                            $resetButton.hide();
-                            var $cancelButton = dialog.getButton('btnDialogCancel');
-                            $cancelButton.text('Close');
-
                         }
                     };
-
-                    xmlhttp.send() // Make sure to stringify
-                }
-            }, {
-                id: 'btnDialogCancel',
-                label: 'Cancel',
-                action: function (dialogRef) {
-                    dialogRef.close();
-                    //window.location.href = window.location.href; //This is a possibility
-                    //window.location.reload(); //Another possiblity
+                    xmlhttp.open("GET", `/Dashboards/RemoteStopTransaction?id=${ChargerId}&connectorId=${ConnectorId}`, true);
+                    xmlhttp.send();
+                });
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Start Success',
+                    html: result.value,
+                    icon: 'success',
+                    confirmButtonText: 'Close',
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'btn btn-primary'
+                    }
+                }).then(() => {
                     chargelog.ajax.reload();
-                    //  history.go(0); //And another
+                });
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                chargelog.ajax.reload();
+            }
+        }).catch((error) => {
+            Swal.fire({
+                title: 'ข้อผิดพลาด',
+                text: error,
+                icon: 'error',
+                confirmButtonText: 'Close',
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-primary'
                 }
-            }]
+            }).then(() => {
+                chargelog.ajax.reload();
+            });
         });
-        dialog.open();
     }
     function getChartColorsArray(chartId) {
         if (document.getElementById(chartId) !== null) {

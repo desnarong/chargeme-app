@@ -153,6 +153,7 @@
             type: "POST",
             data: { id: chargepointid, connectorId: connectorId, chargingprofilepurpose: chargingprofilepurpose, stacklevel: stacklevel, chargingid: chargingid },
             success: function (response) {
+                if (!response) return;
                 var url = 'ClearChargingProfileResponse :\n';
                 var obj = JSON.parse(response);
                 var pretty = url + JSON.stringify(obj, undefined, 4);

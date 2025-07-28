@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Net;
+using System.Runtime.InteropServices;
+using System.Text;
 
 namespace manager.Controllers
 {
@@ -204,7 +206,7 @@ namespace manager.Controllers
                                 serverApiUrl += "/";
                             }
                             Uri uri = new Uri(serverApiUrl);
-                            uri = new Uri(uri, $"RemoteStartTransaction/{Uri.EscapeUriString(chargePoint.FCode)}/{Uri.EscapeUriString(connectorId)}/{Uri.EscapeUriString(station.FRfid)}");
+                            uri = new Uri(uri, $"RemoteStartTransaction/{Uri.EscapeUriString(chargePoint.FCode)}/{Uri.EscapeUriString(connectorId)}/{Uri.EscapeUriString(station.FRfid)}?connectorId={Uri.EscapeUriString(connectorId)}&idTag={Uri.EscapeUriString(station.FRfid)}");
                             httpClient.Timeout = new TimeSpan(0, 0, 4); // use short timeout
 
                             // API-Key authentication?
@@ -296,6 +298,8 @@ namespace manager.Controllers
             var chargePoint = ChargerModel.GetCharger(Guid.Parse(id));
             if (chargePoint != null)
             {
+                var statusview = ChargerModel.GetConnectorStatusViewDatas(Guid.Parse(id)).Where(x => x.ConnectorId == int.Parse(connectorId)).FirstOrDefault();
+                var trans = TransactionModel.GetTransaction(statusview.TransactionId.Value);
                 string serverApiUrl = _config.GetValue<string>("ServerApiUrl");
                 string apiKeyConfig = _config.GetValue<string>("ApiKey");
                 if (!string.IsNullOrEmpty(serverApiUrl))
@@ -310,7 +314,7 @@ namespace manager.Controllers
                             }
                             Uri uri = new Uri(serverApiUrl);
                             uri = new Uri(uri, $"RemoteStopTransaction/{Uri.EscapeUriString(chargePoint.FCode)}/{Uri.EscapeUriString(connectorId)}");
-                            httpClient.Timeout = new TimeSpan(0, 0, 4); // use short timeout
+                            httpClient.Timeout = new TimeSpan(0, 0, 10); // use short timeout
 
                             // API-Key authentication?
                             if (!string.IsNullOrWhiteSpace(apiKeyConfig))
@@ -322,7 +326,14 @@ namespace manager.Controllers
                                 _logger.LogWarning("RemoteStopTransaction: No API-Key configured!");
                             }
 
-                            HttpResponseMessage response = await httpClient.GetAsync(uri);
+                            var payload = new
+                            {
+                                transactionId = $"{statusview.TransactionNo}"
+                            };
+                            var jsonContent = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+
+                            HttpResponseMessage response = await httpClient.PostAsync(uri, jsonContent);
+
                             if (response.StatusCode == HttpStatusCode.OK)
                             {
                                 string jsonResult = await response.Content.ReadAsStringAsync();

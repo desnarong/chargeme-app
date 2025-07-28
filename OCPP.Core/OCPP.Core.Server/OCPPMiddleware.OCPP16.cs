@@ -676,7 +676,11 @@ namespace OCPP.Core.Server
 
                 remoteStopTransactionRequest = new RemoteStopTransactionRequest();
 
-                var chargeTags = dbContext.TblTransactions.Where(x => x.FChargerId == Guid.Parse(chargePointStatus.Id) && x.FConnectorId == Guid.Parse(urlConnectorId) && x.FEndTime == null).FirstOrDefault();
+
+                var charger = dbContext.TblChargers.FirstOrDefault(x => x.FCode == chargePointStatus.Id);
+                var connector = dbContext.TblConnectorStatuses.FirstOrDefault(x => x.FConnectorId == int.Parse(urlConnectorId) && x.FChargerId == charger.FId);
+
+                var chargeTags = dbContext.TblTransactions.Where(x => x.FChargerId == charger.FId && x.FConnectorId == connector.FId && x.FEndTime == null && x.FTransactionStatus == "Charging").FirstOrDefault();
                 remoteStopTransactionRequest.TransactionId = chargeTags.FTransactionNo ?? 0;
             }
             string jsonResetRequest = JsonConvert.SerializeObject(remoteStopTransactionRequest);

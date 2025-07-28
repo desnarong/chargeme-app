@@ -17,16 +17,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using OCPP.Core.Server.Entities;
 using OCPP.Core.Server.Messages_OCPP16;
 using OCPP.Core.Server.Models;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace OCPP.Core.Server
 {
@@ -137,14 +138,32 @@ namespace OCPP.Core.Server
                                 //        // assume "valid" and allow to end the transaction
                                 //    }
                                 //}
+                                /*
+                                 *  else if (newStatus == ConnectorStatusEnum.Finishing)
+                                                    {
+                                                        trans.FTransactionStatus = newStatus.ToString();
+                                                        trans.FEndTime = DateTime.UtcNow;
+                                                        trans.FCost = payment.FPaymentAmount ?? 0;
+                                                        dbContext.TblTransactions.Update(trans);
+                                                        _ = await dbContext.SaveChangesAsync();
 
+                                                        connector.FTransactionId = null;
+                                                        dbContext.TblConnectorStatuses.Update(connector);
+                                                        _ 
+                                 * 
+                                 */
                                 if (valid)
                                 {
                                     //transaction.StopTagId = ct.TagId;
+                                    transaction.FTransactionStatus = ConnectorStatusEnum.Finishing.ToString();
                                     transaction.FMeterEnd = stopTransactionRequest.MeterStop / 1000; // Meter value here is always Wh
                                     transaction.FEndResult = stopTransactionRequest.Reason.ToString();
-                                    transaction.FEndTime = stopTransactionRequest.Timestamp.DateTime.ToLocalTime();
+                                    transaction.FEndTime = stopTransactionRequest.Timestamp.DateTime.ToUniversalTime();
                                     DbContext.TblTransactions.Update(transaction);
+
+                                    connectorStatus.FTransactionId = null;
+                                    DbContext.TblConnectorStatuses.Update(connectorStatus);
+
                                     DbContext.SaveChanges();
                                 }
                             }

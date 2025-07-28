@@ -129,6 +129,7 @@
             type: "POST",
             data: { id: id, location: location, retries: retries, retryInterval: retryInterval, retrieveDate: retrieveDate },
             success: function (response) {
+                if (!response) return;
                 var url = 'UpdateFirmwareResponse :\n';
                 var obj = JSON.parse(response);
                 var pretty = url + JSON.stringify(obj, undefined, 4);

@@ -152,6 +152,7 @@
             type: "POST",
             data: { id: id, connectorid: connectorid, chargetag: chargetagid},
             success: function (response) {
+                if (!response) return;
                 var url = 'RemoteStartTransactionResponse :\n';
                 var obj = JSON.parse(response);
                 var pretty = url + JSON.stringify(obj, undefined, 4);

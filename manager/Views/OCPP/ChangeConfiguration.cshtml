@@ -144,6 +144,7 @@
             type: "POST",
             data: { id: chargepointid, key: key, value: value },
             success: function (response) {
+                if (!response) return;
                 var url = 'ChangeConfigurationResponse :\n';
                 var obj = JSON.parse(response);
                 var pretty = url + JSON.stringify(obj, undefined, 4);

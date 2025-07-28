@@ -157,6 +157,7 @@
             type: "POST",
             data: { id: chargepointid, key: key },
             success: function (response) {
+                if (!response) return;
                 var url = 'GetConfigurationResponse :\n';
                 var obj = JSON.parse(response);
                 var pretty = url + JSON.stringify(obj, undefined, 4);

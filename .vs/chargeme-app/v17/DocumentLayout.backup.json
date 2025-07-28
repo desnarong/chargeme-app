@@ -1,7 +1,132 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\SDrive\\PFT\\_Projects\\Chargeme\\Source\\chargeme-app\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\ocpp.core\\ocpp.core.server\\controllerocpp16.stoptransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|solutionrelative:ocpp.core\\ocpp.core.server\\controllerocpp16.stoptransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\ocpp.core\\ocpp.core.server\\ocppmiddleware.ocpp16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|solutionrelative:ocpp.core\\ocpp.core.server\\ocppmiddleware.ocpp16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\ocpp.core\\ocpp.core.server\\controllerocpp16.remotestoptransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|solutionrelative:ocpp.core\\ocpp.core.server\\controllerocpp16.remotestoptransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\ocpp.core\\ocpp.core.server\\controllerocpp16.starttransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|solutionrelative:ocpp.core\\ocpp.core.server\\controllerocpp16.starttransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\controllers\\dashboardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\controllers\\dashboardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\ocpp.core\\ocpp.core.server\\ocppmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|solutionrelative:ocpp.core\\ocpp.core.server\\ocppmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\ocpp.core\\ocpp.core.server\\controllerocpp16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|solutionrelative:ocpp.core\\ocpp.core.server\\controllerocpp16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\models\\transactionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\models\\transactionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\models\\chargermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\models\\chargermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\dashboards\\connecterdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\dashboards\\connecterdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\ocpp.core\\ocpp.core.server\\controllerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D33EA6C9-CF63-49C5-A145-70BACA8923E3}|OCPP.Core\\OCPP.Core.Server\\OCPP.Core.Server.csproj|solutionrelative:ocpp.core\\ocpp.core.server\\controllerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\updatefirmware.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\updatefirmware.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\unlockconnector.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\unlockconnector.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\setchargingprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\setchargingprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\sendlocallist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\sendlocallist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\reset.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\reset.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\reservenow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\reservenow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\remotestoptransaction.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\remotestoptransaction.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\remotestarttransaction.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\remotestarttransaction.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\getlocallistversion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\getlocallistversion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\getdiagnostics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\getdiagnostics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\getconfiguration.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\getconfiguration.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\getcompositeschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\getcompositeschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\clearchargingprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\clearchargingprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\clearcache.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\clearcache.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\changeconfiguration.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\changeconfiguration.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|d:\\new proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\views\\ocpp\\cancelreservation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CF468426-4D93-4C37-AAAF-282BC558E8FA}|manager\\manager.csproj|solutionrelative:manager\\views\\ocpp\\cancelreservation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,23 +134,414 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ControllerBase.cs",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\ControllerBase.cs",
+              "RelativeDocumentMoniker": "OCPP.Core\\OCPP.Core.Server\\ControllerBase.cs",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\ControllerBase.cs",
+              "RelativeToolTip": "OCPP.Core\\OCPP.Core.Server\\ControllerBase.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAAAI8AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T15:39:02.154Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ControllerOCPP16.RemoteStopTransaction.cs",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.RemoteStopTransaction.cs",
+              "RelativeDocumentMoniker": "OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.RemoteStopTransaction.cs",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.RemoteStopTransaction.cs",
+              "RelativeToolTip": "OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.RemoteStopTransaction.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAAAE0AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T15:39:16.631Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:254354193:0:{71f361cc-493f-47c0-923f-f2570b6f8618}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OCPPMiddleware.OCPP16.cs",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\OCPPMiddleware.OCPP16.cs",
+              "RelativeDocumentMoniker": "OCPP.Core\\OCPP.Core.Server\\OCPPMiddleware.OCPP16.cs",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\OCPPMiddleware.OCPP16.cs",
+              "RelativeToolTip": "OCPP.Core\\OCPP.Core.Server\\OCPPMiddleware.OCPP16.cs",
+              "ViewState": "AgIAAK0CAAAAAAAAAAAAAMMCAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T15:04:45.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OCPPMiddleware.cs",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\OCPPMiddleware.cs",
+              "RelativeDocumentMoniker": "OCPP.Core\\OCPP.Core.Server\\OCPPMiddleware.cs",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\OCPPMiddleware.cs",
+              "RelativeToolTip": "OCPP.Core\\OCPP.Core.Server\\OCPPMiddleware.cs",
+              "ViewState": "AgIAAI8BAAAAAAAAAAAAAKIBAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T15:04:45.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ControllerOCPP16.StopTransaction.cs",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.StopTransaction.cs",
+              "RelativeDocumentMoniker": "OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.StopTransaction.cs",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.StopTransaction.cs",
+              "RelativeToolTip": "OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.StopTransaction.cs",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAAAI4AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T15:04:45.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DashboardsController.cs",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Controllers\\DashboardsController.cs",
+              "RelativeDocumentMoniker": "manager\\Controllers\\DashboardsController.cs",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Controllers\\DashboardsController.cs",
+              "RelativeToolTip": "manager\\Controllers\\DashboardsController.cs",
+              "ViewState": "AgIAACQBAAAAAAAAAAAhwCwBAACfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T16:35:17.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ControllerOCPP16.StartTransaction.cs",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.StartTransaction.cs",
+              "RelativeDocumentMoniker": "OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.StartTransaction.cs",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.StartTransaction.cs",
+              "RelativeToolTip": "OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.StartTransaction.cs",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAAAJUAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T15:04:45.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ControllerOCPP16.cs",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.cs",
+              "RelativeDocumentMoniker": "OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.cs",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.cs",
+              "RelativeToolTip": "OCPP.Core\\OCPP.Core.Server\\ControllerOCPP16.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAASwE4AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T18:32:01.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ChargerModel.cs",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Models\\ChargerModel.cs",
+              "RelativeDocumentMoniker": "manager\\Models\\ChargerModel.cs",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Models\\ChargerModel.cs",
+              "RelativeToolTip": "manager\\Models\\ChargerModel.cs",
+              "ViewState": "AgIAANYAAAAAAAAAAAAqwPIAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T17:58:13.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TransactionModel.cs",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Models\\TransactionModel.cs",
+              "RelativeDocumentMoniker": "manager\\Models\\TransactionModel.cs",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Models\\TransactionModel.cs",
+              "RelativeToolTip": "manager\\Models\\TransactionModel.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAAAFsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T18:00:55.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ConnecterDetail.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\Dashboards\\ConnecterDetail.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\Dashboards\\ConnecterDetail.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\Dashboards\\ConnecterDetail.cshtml",
+              "RelativeToolTip": "manager\\Views\\Dashboards\\ConnecterDetail.cshtml",
+              "ViewState": "AgIAAPEBAAAAAAAAAAAAAAACAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:41:10.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\appsettings.json",
+              "RelativeDocumentMoniker": "manager\\appsettings.json",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\appsettings.json",
+              "RelativeToolTip": "manager\\appsettings.json",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABoAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-28T16:50:37.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "manager\\Controllers\\UsersController.cs",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "manager\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAALAAAAAAAAAAAAAAAMUAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T15:01:48.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "manager\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "manager\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAIwE0AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T15:01:28.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UpdateFirmware.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\UpdateFirmware.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\UpdateFirmware.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\UpdateFirmware.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\UpdateFirmware.cshtml",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAAIwAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:00:56.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UnlockConnector.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\UnlockConnector.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\UnlockConnector.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\UnlockConnector.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\UnlockConnector.cshtml",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAAAIMAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:00:52.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SetChargingProfile.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\SetChargingProfile.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\SetChargingProfile.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\SetChargingProfile.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\SetChargingProfile.cshtml",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAAAIcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:00:47.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "SendLocalList.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\SendLocalList.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\SendLocalList.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\SendLocalList.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\SendLocalList.cshtml",
+              "ViewState": "AgIAALEAAAAAAAAAAAAAALcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:00:41.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Reset.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\Reset.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\Reset.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\Reset.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\Reset.cshtml",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAI0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:00:37.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ReserveNow.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\ReserveNow.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\ReserveNow.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\ReserveNow.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\ReserveNow.cshtml",
+              "ViewState": "AgIAAJIAAAAAAAAAAAAAAJkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:00:32.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "RemoteStopTransaction.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\RemoteStopTransaction.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\RemoteStopTransaction.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\RemoteStopTransaction.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\RemoteStopTransaction.cshtml",
+              "ViewState": "AgIAAKsAAAAAAAAAAAAAALAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:00:27.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "RemoteStartTransaction.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\RemoteStartTransaction.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\RemoteStartTransaction.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\RemoteStartTransaction.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\RemoteStartTransaction.cshtml",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAAAJoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:00:22.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "GetLocalListVersion.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\GetLocalListVersion.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\GetLocalListVersion.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\GetLocalListVersion.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\GetLocalListVersion.cshtml",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAAAG8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:00:16.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "GetDiagnostics.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\GetDiagnostics.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\GetDiagnostics.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\GetDiagnostics.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\GetDiagnostics.cshtml",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAAAIoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:00:11.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "GetConfiguration.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\GetConfiguration.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\GetConfiguration.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\GetConfiguration.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\GetConfiguration.cshtml",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAAAJ8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:00:06.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "GetCompositeSchedule.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\GetCompositeSchedule.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\GetCompositeSchedule.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\GetCompositeSchedule.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\GetCompositeSchedule.cshtml",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAAAJUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T15:00:00.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\Error.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\Error.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\Error.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\Error.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T14:59:58.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ClearChargingProfile.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\ClearChargingProfile.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\ClearChargingProfile.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\ClearChargingProfile.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\ClearChargingProfile.cshtml",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAAAJsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T14:59:51.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ClearCache.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\ClearCache.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\ClearCache.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\ClearCache.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\ClearCache.cshtml",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAG0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T14:59:46.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ChangeConfiguration.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\ChangeConfiguration.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\ChangeConfiguration.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\ChangeConfiguration.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\ChangeConfiguration.cshtml",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAAAJIAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T14:59:41.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "CancelReservation.cshtml",
+              "DocumentMoniker": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\CancelReservation.cshtml",
+              "RelativeDocumentMoniker": "manager\\Views\\OCPP\\CancelReservation.cshtml",
+              "ToolTip": "D:\\New Proj\\@\u0E07\u0E32\u0E19\u0E19\u0E2D\u0E01\\_ev\\_evnew\\chargeme-app\\manager\\Views\\OCPP\\CancelReservation.cshtml",
+              "RelativeToolTip": "manager\\Views\\OCPP\\CancelReservation.cshtml",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAAAK4AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-28T14:59:35.197Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -60,7 +60,8 @@ namespace manager.Controllers
                 }
                 var result = await response.Content.ReadAsStringAsync();
                 var userInfo = JsonConvert.DeserializeObject<TblUser>(result);
-
+                userModel.UserId = userInfo.FId;
+                userInfo.FImage = $"/assets{userInfo.FImage}";
                 //get-token
                 var session = await _client.GetAsync($"/session/get-token/{userInfo.FId}");
 
@@ -72,9 +73,11 @@ namespace manager.Controllers
                 var token = JsonConvert.DeserializeObject<tokenInfo>(tokenInfo);
                 userInfo.FToken = $"{token.token}";
                 HttpContext.Session.SetString(Constants.SessionAuthToken, userInfo.FToken);
-                HttpContext.Session.SetString(Constants.SessionUserData, result);
+                HttpContext.Session.SetString(Constants.SessionUserData, JsonConvert.SerializeObject(userInfo));
                 //return RedirectToLocal(returnUrl);
                 //HttpContext.Session.SetString("UserRoleData", rolejson);
+
+                userModel.IsAdmin = true;
 
                 await UserManager.SignIn(this.HttpContext, userModel, false);
                 if (userModel != null && !string.IsNullOrWhiteSpace(userModel.Username))
